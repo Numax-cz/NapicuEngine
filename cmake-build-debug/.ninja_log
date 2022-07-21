@@ -1,0 +1,8 @@
+# ninja log v5
+0	551	6801335606603590	CMakeFiles/OpenGL.dir/src/main.c.obj	3c2de5e40c4bc679
+25	1179	6801335613483602	glfw/src/CMakeFiles/glfw.dir/context.c.obj	cb392903f8549cfe
+33	1182	6801335613503609	glfw/src/CMakeFiles/glfw.dir/vulkan.c.obj	b6a74e8eab436071
+30	1202	6801335613713588	glfw/src/CMakeFiles/glfw.dir/platform.c.obj	fba66617fa426ce
+35	1226	6801335614083593	glfw/src/CMakeFiles/glfw.dir/monitor.c.obj	a9a13fd9481a6897
+28	1237	6801335614193580	glfw/src/CMakeFiles/glfw.dir/init.c.obj	b7cff93dbaf8f1d9
+38	1286	6801335614673587	glfw/src/CMakeFiles/glfw.dir/input.c.obj	a57b249e6596bce0

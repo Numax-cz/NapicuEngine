@@ -1,9 +1,15 @@
 #include <stdio.h>
 #include "window.h"
+#include "game.h"
 
 int main() {
 
-    window_init(1280, 720, "OpenGLWindow");
+
+    struct NapicuGame game;
+
+    game_init(&game);
+    game_loop();
+    game_destroy();
 
     return 0;
 }
