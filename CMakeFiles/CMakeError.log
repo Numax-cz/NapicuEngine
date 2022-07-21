@@ -1,0 +1,64 @@
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: D:/Dokumenty/OpenGL/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Apps/MinGW/mingw64/bin/mingw32-make.exe -f Makefile cmTC_ef9eb/fast && D:/Apps/MinGW/mingw64/bin/mingw32-make.exe  -f CMakeFiles\cmTC_ef9eb.dir\build.make CMakeFiles/cmTC_ef9eb.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Dokumenty/OpenGL/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ef9eb.dir/src.c.obj
+D:\Apps\MinGW\mingw64\bin\gcc.exe -DCMAKE_HAVE_LIBC_PTHREAD  -std=gnu99 -o CMakeFiles\cmTC_ef9eb.dir\src.c.obj -c D:\Dokumenty\OpenGL\CMakeFiles\CMakeTmp\src.c
+Linking C executable cmTC_ef9eb.exe
+D:\Apps\Cmake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_ef9eb.dir\link.txt --verbose=1
+D:\Apps\Cmake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_ef9eb.dir/objects.a
+D:\Apps\MinGW\mingw64\bin\ar.exe qc CMakeFiles\cmTC_ef9eb.dir/objects.a @CMakeFiles\cmTC_ef9eb.dir\objects1.rsp
+D:\Apps\MinGW\mingw64\bin\gcc.exe -Wl,--whole-archive CMakeFiles\cmTC_ef9eb.dir/objects.a -Wl,--no-whole-archive -o cmTC_ef9eb.exe -Wl,--out-implib,libcmTC_ef9eb.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_ef9eb.dir\linklibs.rsp
+CMakeFiles\cmTC_ef9eb.dir/objects.a(src.c.obj):src.c:(.text+0x35): undefined reference to `pthread_create'
+CMakeFiles\cmTC_ef9eb.dir/objects.a(src.c.obj):src.c:(.text+0x41): undefined reference to `pthread_detach'
+CMakeFiles\cmTC_ef9eb.dir/objects.a(src.c.obj):src.c:(.text+0x4d): undefined reference to `pthread_cancel'
+CMakeFiles\cmTC_ef9eb.dir/objects.a(src.c.obj):src.c:(.text+0x5e): undefined reference to `pthread_join'
+CMakeFiles\cmTC_ef9eb.dir/objects.a(src.c.obj):src.c:(.text+0x68): undefined reference to `pthread_exit'
+collect2.exe: error: ld returned 1 exit status
+mingw32-make.exe[1]: *** [CMakeFiles\cmTC_ef9eb.dir\build.make:100: cmTC_ef9eb.exe] Error 1
+mingw32-make.exe[1]: Leaving directory 'D:/Dokumenty/OpenGL/CMakeFiles/CMakeTmp'
+mingw32-make.exe: *** [Makefile:126: cmTC_ef9eb/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: D:/Dokumenty/OpenGL/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Apps/MinGW/mingw64/bin/mingw32-make.exe -f Makefile cmTC_c774c/fast && D:/Apps/MinGW/mingw64/bin/mingw32-make.exe  -f CMakeFiles\cmTC_c774c.dir\build.make CMakeFiles/cmTC_c774c.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Dokumenty/OpenGL/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c774c.dir/CheckFunctionExists.c.obj
+D:\Apps\MinGW\mingw64\bin\gcc.exe   -DCHECK_FUNCTION_EXISTS=pthread_create -std=gnu99 -o CMakeFiles\cmTC_c774c.dir\CheckFunctionExists.c.obj -c D:\Apps\Cmake\share\cmake-3.24\Modules\CheckFunctionExists.c
+Linking C executable cmTC_c774c.exe
+D:\Apps\Cmake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_c774c.dir\link.txt --verbose=1
+D:\Apps\Cmake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_c774c.dir/objects.a
+D:\Apps\MinGW\mingw64\bin\ar.exe qc CMakeFiles\cmTC_c774c.dir/objects.a @CMakeFiles\cmTC_c774c.dir\objects1.rsp
+D:\Apps\MinGW\mingw64\bin\gcc.exe  -DCHECK_FUNCTION_EXISTS=pthread_create -Wl,--whole-archive CMakeFiles\cmTC_c774c.dir/objects.a -Wl,--no-whole-archive -o cmTC_c774c.exe -Wl,--out-implib,libcmTC_c774c.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_c774c.dir\linklibs.rsp
+D:/Apps/MinGW/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/bin/ld.exe: cannot find -lpthreads
+collect2.exe: error: ld returned 1 exit status
+mingw32-make.exe[1]: *** [CMakeFiles\cmTC_c774c.dir\build.make:100: cmTC_c774c.exe] Error 1
+mingw32-make.exe[1]: Leaving directory 'D:/Dokumenty/OpenGL/CMakeFiles/CMakeTmp'
+mingw32-make.exe: *** [Makefile:126: cmTC_c774c/fast] Error 2
+
+
+
