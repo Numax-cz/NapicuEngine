@@ -16,11 +16,11 @@ struct GLFWwindow* window_init(int width, int height, char* title){
     glfwSetWindowPos(window, (mode->width - width) / 2, (mode->height - height) / 2);
 
 
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    glOrtho(0, width, height, 0, -1, 1);
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
+//    glMatrixMode(GL_PROJECTION);
+//    glLoadIdentity();
+//    glOrtho(0, width, height, 0, -1, 1);
+//    glMatrixMode(GL_MODELVIEW);
+//    glLoadIdentity();
 
     return window;
 }

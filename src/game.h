@@ -14,8 +14,7 @@ struct NapicuGame
 
 };
 
-void game_init(struct NapicuGame* game);
-void game_loop();
-void game_destroy();
-
+void game_start(struct NapicuGame* game);
+void game_update();
+void game_render();
 #endif //OPENGL_GAME_H

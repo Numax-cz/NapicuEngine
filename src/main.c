@@ -3,13 +3,11 @@
 #include "game.h"
 
 int main() {
-
-
     struct NapicuGame game;
 
-    game_init(&game);
-    game_loop();
-    game_destroy();
+    game_start(&game);
+
+    //game_start(&game)
 
     return 0;
 }
