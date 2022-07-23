@@ -4,7 +4,7 @@ project(OpenGL)
 add_subdirectory(glfw/)
 find_package(OpenGL REQUIRED)
 
-file(GLOB_RECURSE SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/*.c")
+file(GLOB SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/*.c")
 add_executable(${PROJECT_NAME} ${SOURCES})
 
 
