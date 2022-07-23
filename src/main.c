@@ -1,11 +1,16 @@
 #include <stdio.h>
-#include "window.h"
+#include "Engine/window.h"
 #include "game.h"
 
 int main() {
-    struct NapicuGame game;
 
-    game_start(&game);
+
+    struct napicu_window game_window = {1280, 720, "NapicuGame"};
+
+    napicu_game_run(game_window);
+
+
+
 
     //game_start(&game)
 

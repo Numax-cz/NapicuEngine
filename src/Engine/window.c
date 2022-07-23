@@ -1,28 +1,31 @@
 #include "window.h"
 
-struct GLFWwindow* window_init(int width, int height, char* title){
+struct GLFWwindow* window_init(GLFWwindow* window){
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
-    struct GLFWwindow* window = glfwCreateWindow(width, height, title, NULL, NULL);
+    struct GLFWwindow* glfwWindow = glfwCreateWindow(window.width, window.height, window.title, NULL, NULL);
 
-    glfwMakeContextCurrent(window);
+    glfwMakeContextCurrent(glfwWindow);
 
     GLFWmonitor *monitor = glfwGetPrimaryMonitor();
     const GLFWvidmode *mode = glfwGetVideoMode(monitor);
-    glfwSetWindowPos(window, (mode->width - width) / 2, (mode->height - height) / 2);
+    glfwSetWindowPos(glfwWindow, (mode->width - window.width) / 2, (mode->height - window.height) / 2);
 
 
+    glfwSwapInterval(1); //V-Sync
 //    glMatrixMode(GL_PROJECTION);
 //    glLoadIdentity();
 //    glOrtho(0, width, height, 0, -1, 1);
 //    glMatrixMode(GL_MODELVIEW);
 //    glLoadIdentity();
 
-    return window;
+
+
+    return glfwWindow;
 }
 
 void window_swap_buffers(struct GLFWwindow *window)
