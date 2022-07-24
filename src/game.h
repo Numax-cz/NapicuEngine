@@ -9,7 +9,8 @@
 
 struct Game
 {
-    struct GLFWwindow *window;
+    struct GLFWwindow* window;
+
     float last_frame, delta_time;
 };
 

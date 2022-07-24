@@ -9,9 +9,15 @@ void napicu_game_run(struct Game* game){
 
 
     while(!glfwWindowShouldClose(game->window)){
+        float current_frame = glfwGetTime();
+        game->delta_time = current_frame - game->last_frame;
+        game->last_frame = current_frame;
+
         window_poll_events();
+
         game_update(game);
         game_render(game);
+
         window_swap_buffers(game->window);
     }
 
