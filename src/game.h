@@ -3,8 +3,8 @@
 #ifndef OPENGL_GAME_H
 #define OPENGL_GAME_H
 
-#include "Engine/window.h"
 #include <GLFW/glfw3.h>
+#include "Engine/window.h"
 
 
 struct Game
@@ -13,9 +13,9 @@ struct Game
     float last_frame, delta_time;
 };
 
-void napicu_game_run(struct Game *game);
-void game_update();
-void game_render();
+void napicu_game_run(struct Game* game);
+void game_update(struct Game* game);
+void game_render(struct Game* game);
 
 #endif //OPENGL_GAME_H
 

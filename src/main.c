@@ -5,9 +5,9 @@
 int main() {
 
 
-    struct napicu_window game_window = {1280, 720, "NapicuGame"};
+    struct Game game;
 
-    napicu_game_run(game_window);
+    napicu_game_run(&game);
 
 
 
