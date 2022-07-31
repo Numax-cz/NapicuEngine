@@ -1,6 +1,0 @@
-
-
-#ifndef OPENGL_MATRIX4F_H
-#define OPENGL_MATRIX4F_H
-
-#endif //OPENGL_MATRIX4F_H

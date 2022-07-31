@@ -5,8 +5,8 @@ add_subdirectory(glad/src)
 add_subdirectory(glfw/)
 find_package(OpenGL REQUIRED)
 
-file(GLOB_RECURSE SOURCES src/*.c)
-add_executable(${PROJECT_NAME} src/main.c ${SOURCES})
+file(GLOB_RECURSE SOURCES src/*.cpp)
+add_executable(${PROJECT_NAME} src/main.cpp ${SOURCES})
 
 
 target_include_directories(${PROJECT_NAME} PUBLIC glfw PUBLIC glad/include)
