@@ -2,9 +2,10 @@
 #include <GL/gl.h>
 
 #include "window.h"
-#include "Utils/Console.h"
+
 
 namespace Napicu{
+    inline Napicu::Scene Window::*current_scene = nullptr;
 
     Window::Window(std::string title, int width, int height)
             :title(title), width(width), height(height) {}
@@ -13,6 +14,20 @@ namespace Napicu{
 
         this->Init();
         this->Loop();
+    }
+
+    void Window::ChangeScene(int scene_index) {
+        switch (scene_index) {
+            case 0:
+                Window::current_scene = new Napicu::LevelEditor();
+                break;
+            case 1:
+                Window::current_scene = new Napicu::Level();
+                break;
+            default:
+                Napicu::Console::Error("Unknown scene");
+                break;
+        }
     }
 
     void Window::Init() {
@@ -47,6 +62,7 @@ namespace Napicu{
         glfwShowWindow(this->window);
 
 
+        this->ChangeScene(0);
 
 
 
@@ -54,15 +70,26 @@ namespace Napicu{
 
     void Window::Loop() {
         while(!glfwWindowShouldClose(this->window)){
-            glfwPollEvents();
 
+            double current_frame = glfwGetTime();
+            this->delta_time = current_frame - this->last_frame;
+            this->last_frame = current_frame;
+
+            glfwPollEvents();
 
             glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT);
+
+            if(this->delta_time >= 0){
+                Napicu::Window::current_scene->update(this->delta_time);
+            }
+
+
 
             glfwSwapBuffers(this->window);
         }
 
     }
+
 }
 

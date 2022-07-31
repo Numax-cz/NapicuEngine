@@ -7,7 +7,7 @@ add_subdirectory(external/imgui)
 
 find_package(OpenGL REQUIRED)
 
-file(GLOB_RECURSE SOURCES src/*.cpp)
+file(GLOB_RECURSE SOURCES src/*.cpp )
 add_executable(${PROJECT_NAME} src/main.cpp ${SOURCES})
 
 
