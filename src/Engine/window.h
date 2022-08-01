@@ -4,12 +4,14 @@
 #define OPENGL_WINDOW_H
 
 #include <iostream>
-#include <GLFW/glfw3.h>
+
 #include "Scene.h"
 #include "LevelEditor.h"
 #include "Level.h"
 #include "Utils/Console.h"
-
+#include "Render/Shader.h"
+#include "glad/glad.h"
+#include "GLFW/glfw3.h"
 
 namespace Napicu
 {

@@ -1,6 +1,4 @@
-#include <GLFW/glfw3.h>
-#include <GL/gl.h>
-
+#include <utility>
 #include "window.h"
 
 
@@ -8,7 +6,7 @@ namespace Napicu{
     inline Napicu::Scene Window::*current_scene = nullptr;
 
     Window::Window(std::string title, int width, int height)
-            :title(title), width(width), height(height) {}
+            :title(std::move(title)), width(width), height(height) {}
 
     void Window::Run() {
 
@@ -62,8 +60,9 @@ namespace Napicu{
         glfwShowWindow(this->window);
 
 
-        this->ChangeScene(0);
+        gladLoadGL();
 
+        this->ChangeScene(0);
 
 
     }
@@ -83,6 +82,7 @@ namespace Napicu{
             if(this->delta_time >= 0){
                 Napicu::Window::current_scene->update(this->delta_time);
             }
+
 
 
 

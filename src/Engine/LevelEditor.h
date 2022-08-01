@@ -5,6 +5,7 @@
 
 #include "Utils/Console.h"
 #include "Scene.h"
+#include "Render/Shader.h"
 
 
 namespace Napicu{
@@ -13,7 +14,10 @@ namespace Napicu{
 
 
     public:
-        LevelEditor() : Napicu::Scene() {};
+        LevelEditor() : Napicu::Scene() {
+            Shader* test = new Shader("src/Engine/shaders/default.glsl");
+
+        };
 
         void update(double delta_time) override;
 
