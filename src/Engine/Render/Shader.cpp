@@ -79,7 +79,27 @@ namespace Napicu {
         glUseProgram(0);
    }
 
+    void Shader::uploadUniformMat4(const std::string& name, const glm::mat4& matrix) {
+        GLint location = glGetUniformLocation(this->programId, name.c_str());
+        this->use();
+        glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
+    }
 
+    void Shader::uploadUniformMVec4(const std::string &name, const glm::vec4 &vec) {
+        GLint location = glGetUniformLocation(this->programId, name.c_str());
+        this->use();
+        glUniform4f(location, vec.x, vec.y, vec.z, vec.x);
+    }
 
+    void Shader::uploadUniformFloat(const std::string &name, float val) {
+        GLint location = glGetUniformLocation(this->programId, name.c_str());
+        this->use();
+        glUniform1f(location, val);
+    }
 
+    void Shader::uploadUniformInt(const std::string &name, int val) {
+        GLint location = glGetUniformLocation(this->programId, name.c_str());
+        this->use();
+        glUniform1i(location, val);
+    }
 }

@@ -14,6 +14,7 @@ namespace Napicu{
 
         }
         void update(double delta_time) override;
+        void init() override;
     };
 }
 

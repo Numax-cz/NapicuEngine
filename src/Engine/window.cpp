@@ -5,7 +5,7 @@
 namespace Napicu{
     inline Napicu::Scene Window::*current_scene = nullptr;
 
-    Window::Window(std::string title, int width, int height)
+    Window::Window(const std::string& title, int width, int height)
             :title(std::move(title)), width(width), height(height) {}
 
     void Window::Run() {
@@ -42,7 +42,7 @@ namespace Napicu{
         glfwDefaultWindowHints();
         glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
-        glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
+        glfwWindowHint(GLFW_MAXIMIZED, GLFW_FALSE);
 
         try {
             this->window = glfwCreateWindow(this->width, this->height, this->title.c_str(), nullptr, nullptr);
@@ -63,7 +63,7 @@ namespace Napicu{
         gladLoadGL();
 
         this->ChangeScene(0);
-
+        Napicu::Window::current_scene->init();
 
     }
 

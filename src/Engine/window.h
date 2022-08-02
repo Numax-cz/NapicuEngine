@@ -26,7 +26,7 @@ namespace Napicu
 
 
     public:
-        Window(std::string title, int width, int height);
+        Window(const std::string& title, int width, int height);
         inline static Napicu::Scene* current_scene;
 
         static void ChangeScene(int scene_index);
