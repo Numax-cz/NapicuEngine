@@ -11,7 +11,9 @@ namespace Napicu{
 
     }
 
+    void Level::init() {
 
+    }
 
 
 }

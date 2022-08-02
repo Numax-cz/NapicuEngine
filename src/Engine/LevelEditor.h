@@ -12,14 +12,31 @@ namespace Napicu{
 
     class LevelEditor : public Napicu::Scene{
 
+    private:
+        int vertexID, fragmentID, shaderProgram;
+        GLuint vaoID, vboID, eboID;
+        float vertexArray[28] = {
+                //Position                      //Color
+                0.5f,-0.5f, 0.0f,    1.0f, 0.0f, 0.0f, 1.0f,
+                -0.5f,0.5f, 0.0f,   0.0f, 1.0f, 0.0f, 1.0f,
+                0.5f, 0.5f, 0.0f,   0.0f, 0.0f, 1.0f, 1.0f,
+                -0.5f,-0.5f,0.0f,   1.0f, 1.0f, 0.0f, 1.0f,
+
+        };
+
+        int elementArray[6] = {
+                2,1,0,
+                0,1,3
+        };
+
 
     public:
         LevelEditor() : Napicu::Scene() {
-            Shader* test = new Shader("src/Engine/shaders/default.glsl");
 
         };
 
         void update(double delta_time) override;
+        void init() override;
 
     };
 }
