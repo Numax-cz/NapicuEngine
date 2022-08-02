@@ -9,8 +9,8 @@ namespace Napicu {
     void LevelEditor::init() {
         Napicu::Shader* shader = new Napicu::Shader("src/Engine/shaders/default.glsl");
 
-//        glGenVertexArrays(1, &this->vaoID);
-//        glBindBuffer(GL_ARRAY_BUFFER, this->vboID);
+        //glGenVertexArrays(1, &this->vaoID);
+        //glBindBuffer(GL_ARRAY_BUFFER, this->vboID);
 
     }
 
