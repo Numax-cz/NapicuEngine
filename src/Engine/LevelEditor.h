@@ -13,6 +13,7 @@ namespace Napicu{
     class LevelEditor : public Napicu::Scene{
 
     private:
+        Napicu::Shader* shader = new Napicu::Shader("src/Engine/shaders/default.glsl");
         int vertexID, fragmentID, shaderProgram;
         GLuint vaoID, vboID, eboID;
         float vertexArray[28] = {

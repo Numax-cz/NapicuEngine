@@ -34,8 +34,8 @@ namespace Napicu {
             } else ss[(int)shader_type] << line << "\n";
         }
 
-        this->vertex = ss[0].str().c_str();
-        this->fragment = ss[1].str().c_str();
+        this->vertex = ss[0].str();
+        this->fragment = ss[1].str();
     }
 
 
@@ -44,19 +44,46 @@ namespace Napicu {
         GLint success = 0;
         //Compile Vertex
         vertexID = glCreateShader(GL_VERTEX_SHADER);
-        glShaderSource(vertexID, 1, &this->vertex, nullptr);
+        const char* vertexSrc = this->vertex.c_str();
+        glShaderSource(vertexID, 1, &vertexSrc, nullptr);
         glCompileShader(vertexID);
 
         glGetShaderiv(vertexID, GL_COMPILE_STATUS, &success);
-        if(success == GL_FALSE) Napicu::Console::Error("Vertex shader compilation failed");
+        if(success == GL_FALSE){
+
+            GLint max_length = 0;
+            glGetShaderiv(vertexID, GL_INFO_LOG_LENGTH, &max_length);
+
+            std::vector<GLchar> log(max_length);
+            glGetShaderInfoLog(vertexID, max_length, &max_length, log.data());
+
+            glDeleteShader(vertexID);
+
+            Napicu::Console::Error("Vertex shader compilation failed");
+            std::cout << log.data() << std::endl;
+
+        }
 
         //Compile Fragment
         fragmentID = glCreateShader(GL_FRAGMENT_SHADER);
-        glShaderSource(fragmentID, 1, &this->fragment, nullptr);
+        const char* fragmentSrc = this->fragment.c_str();
+        glShaderSource(fragmentID, 1, &fragmentSrc, nullptr);
         glCompileShader(fragmentID);
 
         glGetShaderiv(fragmentID, GL_COMPILE_STATUS, &success);
-        if(success == GL_FALSE) Napicu::Console::Error("Fragment shader compilation failed");
+        if(success == GL_FALSE){
+
+            GLint max_length = 0;
+            glGetShaderiv(fragmentID, GL_INFO_LOG_LENGTH, &max_length);
+
+            std::vector<GLchar> log(max_length);
+            glGetShaderInfoLog(fragmentID, max_length, &max_length, log.data());
+
+            glDeleteShader(fragmentID);
+
+            Napicu::Console::Error("Fragment shader compilation failed");
+            std::cout << log.data() << std::endl;
+        }
 
 
         //Linking Vertex & Fragment
@@ -71,7 +98,6 @@ namespace Napicu {
     }
 
     void Shader::use() {
-
         glUseProgram(this->programId);
     }
 

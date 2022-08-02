@@ -24,8 +24,8 @@ namespace Napicu{
         unsigned int programId;
 
     public:
-        const char* vertex;
-        const char* fragment;
+        std::string vertex;
+        std::string fragment;
         explicit Shader(const std::string& file_path);
         void compile();
         void use();
