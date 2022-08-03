@@ -3,9 +3,16 @@ project(OpenGL)
 
 find_package(OpenGL REQUIRED)
 
+include_directories(
+        PUBLIC external/glad/include
+        PUBLIC external/glad/include
+)
+
+add_library(IMGUI external/imgui/imgui.cpp external/imgui/imgui_widgets.cpp external/imgui/imgui_tables.cpp external/imgui/imgui_draw.cpp)
+
 add_subdirectory(external/glad)
 add_subdirectory(external/glfw)
-add_subdirectory(external/imgui)
+#add_subdirectory(external/imgui)
 add_subdirectory(external/glm)
 
 
