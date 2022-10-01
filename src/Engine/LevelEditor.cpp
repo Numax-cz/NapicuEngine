@@ -26,17 +26,17 @@ namespace Napicu {
 
 
         //Set vertex attribute pointers
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 7 * sizeof(float), nullptr);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(float), nullptr);
         glEnableVertexAttribArray(0);
 
         //Set indices attribute pointer
-        glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 7 * sizeof(float), (void*)(4 * sizeof(float)));
+        glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(4 * sizeof(float)));
         glEnableVertexAttribArray(1);
 
 
-//        //Set Texcoords attribute pointers
-//        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(6 * sizeof(float)));
-//        glEnableVertexAttribArray(2);
+        //Set Texcoords attribute pointers
+        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(2 * sizeof(float))); //6
+        glEnableVertexAttribArray(2);
 
         //Unbind all
         glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -52,6 +52,14 @@ namespace Napicu {
 
 
         this->shader->use();
+
+//        this->shader->uploadTexture("texSampler");
+//        this->texture->Bind();
+
+
+
+        this->shader->uploadUniformMat4("uProjection", this->camera.GetViewProjectionMatrix());
+
 
         glBindVertexArray(this->vaoID);
         if(this->eboID > 0) glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->eboID);

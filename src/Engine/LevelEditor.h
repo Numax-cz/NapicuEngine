@@ -6,6 +6,7 @@
 #include "Utils/Console.h"
 #include "Scene.h"
 #include "Render/Shader.h"
+#include "Render/Texture.h"
 
 
 namespace Napicu{
@@ -14,14 +15,16 @@ namespace Napicu{
 
     private:
         Napicu::Shader* shader = new Napicu::Shader("src/Engine/shaders/default.glsl");
+        Napicu::Texture* texture = new Napicu::Texture("src/Engine/imgs/bird.png");
+
         int vertexID, fragmentID, shaderProgram;
         GLuint vaoID, vboID, eboID;
-        float vertexArray[28] = {
+        float vertexArray[36] = {
                 //Position                      //Color
-                0.5f,-0.5f, 0.0f,    1.0f, 0.0f, 0.0f, 1.0f,
-                -0.5f,0.5f, 0.0f,   0.0f, 1.0f, 0.0f, 1.0f,
-                0.5f, 0.5f, 0.0f,   0.0f, 0.0f, 1.0f, 1.0f,
-                -0.5f,-0.5f,0.0f,   1.0f, 1.0f, 0.0f, 1.0f,
+                 0.5f,-0.5f, 0.0f,    1.0f, 0.0f, 0.0f, 1.0f,   1, 0,
+                -0.5f,0.5f, 0.0f,     1.0f, 1.0f, 0.0f, 1.0f,   0, 1,
+                 0.5f, 0.5f, 0.0f,    1.0f, 0.0f, 1.0f, 1.0f,   1, 1,
+                -0.5f,-0.5f,0.0f,     1.0f, 1.0f, 0.0f, 1.0f,   0, 0
 
         };
 

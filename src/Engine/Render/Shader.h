@@ -34,6 +34,7 @@ namespace Napicu{
         void uploadUniformMVec4(const std::string& name, const glm::vec4& vec);
         void uploadUniformFloat(const std::string& name, float val);
         void uploadUniformInt(const std::string& name, int val);
+        void uploadTexture(const std::string& name);
 
     };
 }

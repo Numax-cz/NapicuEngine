@@ -9,7 +9,7 @@ int main(){
     Napicu::Window* window = new Napicu::Window("window", 1280, 720);
 
     window->Run();
-    
+
 
     //Napicu::Console::Info("Hello, world!");
 

@@ -1,7 +1,7 @@
 
 
 #include "Shader.h"
-
+#include <glm/gtc/type_ptr.hpp>
 namespace Napicu {
 
 
@@ -59,7 +59,7 @@ namespace Napicu {
 
             glDeleteShader(vertexID);
 
-            Napicu::Console::Error("Vertex shader compilation failed");
+            Napicu::Console::Error("(Shader) Vertex shader compilation failed");
             std::cout << log.data() << std::endl;
 
         }
@@ -81,7 +81,7 @@ namespace Napicu {
 
             glDeleteShader(fragmentID);
 
-            Napicu::Console::Error("Fragment shader compilation failed");
+            Napicu::Console::Error("(Shader) Fragment shader compilation failed");
             std::cout << log.data() << std::endl;
         }
 
@@ -94,7 +94,7 @@ namespace Napicu {
 
         GLint is_link = GL_FALSE;
         glGetProgramiv(this->programId, GL_LINK_STATUS, &is_link);
-        if(is_link == GL_FALSE) Napicu::Console::Error("Failed to linking shader");
+        if(is_link == GL_FALSE) Napicu::Console::Error("(Shader) Failed to linking shader");
     }
 
     void Shader::use() {
@@ -127,5 +127,11 @@ namespace Napicu {
         GLint location = glGetUniformLocation(this->programId, name.c_str());
         this->use();
         glUniform1i(location, val);
+    }
+
+    void Shader::uploadTexture(const std::string &name) {
+        GLint location = glGetUniformLocation(this->programId, name.c_str());
+        this->use();
+        glUniform1f(location, 0); //Slot
     }
 }

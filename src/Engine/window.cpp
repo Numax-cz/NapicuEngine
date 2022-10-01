@@ -9,7 +9,6 @@ namespace Napicu{
             :title(std::move(title)), width(width), height(height) {}
 
     void Window::Run() {
-
         this->Init();
         this->Loop();
     }
@@ -59,7 +58,6 @@ namespace Napicu{
 
         glfwShowWindow(this->window);
 
-
         gladLoadGL();
 
         this->ChangeScene(0);
@@ -82,9 +80,6 @@ namespace Napicu{
             if(this->delta_time >= 0){
                 Napicu::Window::current_scene->update(this->delta_time);
             }
-
-
-
 
             glfwSwapBuffers(this->window);
         }
