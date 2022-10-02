@@ -16,7 +16,6 @@ add_subdirectory(external/glfw)
 add_subdirectory(external/glm)
 add_subdirectory(external/stb)
 
-
 file(GLOB_RECURSE SOURCES src/*.cpp src/**/*.cpp )
 add_executable(${PROJECT_NAME} src/main.cpp ${SOURCES})
 

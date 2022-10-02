@@ -26,16 +26,16 @@ namespace Napicu {
 
 
         //Set vertex attribute pointers
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(float), nullptr);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), nullptr);
         glEnableVertexAttribArray(0);
 
         //Set indices attribute pointer
-        glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(4 * sizeof(float)));
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
         glEnableVertexAttribArray(1);
 
 
         //Set Texcoords attribute pointers
-        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(2 * sizeof(float))); //6
+        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float))); //6
         glEnableVertexAttribArray(2);
 
         //Unbind all
@@ -43,7 +43,9 @@ namespace Napicu {
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
         glBindVertexArray(0);
 
+
         this->shader->compile();
+
     }
 
 
@@ -53,8 +55,11 @@ namespace Napicu {
 
         this->shader->use();
 
-//        this->shader->uploadTexture("texSampler");
-//        this->texture->Bind();
+
+        this->texture->Bind();
+        this->shader->uploadTexture("texSampler");
+
+
 
 
 
