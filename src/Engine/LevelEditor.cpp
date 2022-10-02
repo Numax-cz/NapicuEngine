@@ -46,6 +46,10 @@ namespace Napicu {
 
         this->shader->compile();
 
+        this->texture->Bind();
+        this->shader->uploadTexture("texSampler");
+
+
     }
 
 
@@ -56,14 +60,13 @@ namespace Napicu {
         this->shader->use();
 
 
-        this->texture->Bind();
-        this->shader->uploadTexture("texSampler");
 
 
 
 
 
-        this->shader->uploadUniformMat4("uProjection", this->camera.GetViewProjectionMatrix());
+
+        this->shader->uploadUniformMat4("uProjection", this->camera.getViewProjectionMatrix());
 
 
         glBindVertexArray(this->vaoID);

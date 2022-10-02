@@ -2,12 +2,12 @@
 
 namespace Napicu{
     Camera::Camera(float left, float right, float bottom, float top)
-        : pMatrix(glm::ortho(left, right, bottom, top, -1.0f, 1.0f)), vMatrix(1.0f){
+        : pMatrix(glm::ortho(left, right, bottom, top, 0.0f, 100.0f)), vMatrix(1.0f){
         this->vPMatrix = this->pMatrix * this->vMatrix;
 
     }
 
-    void Camera::RecalculateVMatrix() {
+    void Camera::recalculateVMatrix() {
         glm::mat4 tr = glm::translate(glm::mat4(1.0f), this->position)
                 * glm::rotate(glm::mat4(1.0f), this->rotation, glm::vec3(0,0,1));
 

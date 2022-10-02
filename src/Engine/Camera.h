@@ -15,21 +15,24 @@ namespace Napicu{
         glm::mat4 vMatrix;
         glm::mat4 vPMatrix;
         glm::vec3 position;
-
         float rotation;
 
-        void RecalculateVMatrix();
+        void recalculateVMatrix();
 
 
     public:
         Camera(float left, float right, float bottom, float top);
-        void setPosition(const glm::vec3& position) {this->position = position; this->RecalculateVMatrix();}
-        void setRotation(float angle) {this->rotation = rotation; this->RecalculateVMatrix();}
+        void setPosition(const glm::vec3& position) {this->position = position;
+            this->recalculateVMatrix();}
+        void setRotation(float angle) {this->rotation = rotation;
+            this->recalculateVMatrix();}
 
-        const glm::mat4& GetProjectionMatrix() const {return this->pMatrix;}
-        const glm::mat4& GetViewMatrix() const {return this->vMatrix;}
-        const glm::mat4 GetViewProjectionMatrix() const {return this->vPMatrix;}
+        const glm::mat4& getProjectionMatrix() const {return this->pMatrix;}
+        const glm::mat4& getViewMatrix() const {return this->vMatrix;}
+        const glm::mat4 getViewProjectionMatrix() const {return this->vPMatrix;}
 
+        const float getRotation() const {return this->rotation;}
+        const glm::vec3 getPosition() const {return this->position;}
 
     };
 }
