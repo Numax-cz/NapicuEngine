@@ -3,13 +3,13 @@
 #version 460 core
 
 layout (location=0) in vec3 aPos;
-layout (location=1) in vec4 aColor;
+layout (location=1) in vec3 aColor;
 layout (location=2) in vec2 aTexCords;
 
 uniform mat4 uProjection;
 uniform mat4 uView;
 
-out vec4 fColor;
+out vec3 fColor;
 out vec2 vTexCords;
 
 void main() {
