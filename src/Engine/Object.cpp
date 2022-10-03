@@ -1,7 +1,4 @@
-
-
 #include "Object.h"
-#include "Component.h"
 
 namespace Napicu {
 
@@ -21,7 +18,7 @@ namespace Napicu {
 
     template<typename T, typename std::enable_if<std::is_base_of<Napicu::Component, T>::value>::type *>
     void Object::removeComponent(T& componentClass) {
-        for(auto const& i : this->components){
+        for(Napicu::Component const& i : this->components){
             if(i == componentClass){
                 this->components.remove(i);
                 return;
@@ -29,9 +26,14 @@ namespace Napicu {
         }
     }
 
-
-    void Object::addComponent(Napicu::Component componentClass) {
+    void Object::addComponent(Napicu::Component& componentClass) {
         this->components.push_back(componentClass);
+        componentClass.object = this;
+    }
 
+    void Object::update(float delta_time) {
+        for(Napicu::Component& i : this->components){
+            i.update(delta_time);
+        }
     }
 }
