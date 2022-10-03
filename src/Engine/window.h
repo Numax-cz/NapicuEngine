@@ -12,7 +12,7 @@
 #include "Render/Shader.h"
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
-#include "Object.h"
+
 
 namespace Napicu
 {
