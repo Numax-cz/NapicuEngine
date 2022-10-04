@@ -4,7 +4,7 @@
 #define OPENGL_SCENE_H
 #include <iostream>
 #include "Camera.h"
-#include "Object.h"
+#include "Object/Object.h"
 
 namespace Napicu{
 

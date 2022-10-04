@@ -2,7 +2,7 @@
 #include <crtdbg.h>
 #include "Engine/window.h"
 #include "Engine/Utils/Console.h"
-#include "Engine/Object.h"
+#include "Engine/Object/Object.h"
 
 int main(){
 

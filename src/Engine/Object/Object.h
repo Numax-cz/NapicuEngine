@@ -4,7 +4,7 @@
 #include <iostream>
 #include <list>
 #include "Component.h"
-#include "./Utils/Console.h"
+#include "../Utils/Console.h"
 
 namespace Napicu{
     class Object {
