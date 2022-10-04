@@ -25,6 +25,11 @@ namespace Napicu{
                 Napicu::Console::Error("Unknown scene");
                 break;
         }
+
+        if(Window::current_scene){
+            Window::current_scene->init();
+            Window::current_scene->start();
+        }
     }
 
     void Window::Init() {

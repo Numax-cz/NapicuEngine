@@ -31,9 +31,15 @@ namespace Napicu {
         componentClass.object = this;
     }
 
-    void Object::update(float delta_time) {
+    void Object::update(double delta_time) {
         for(Napicu::Component& i : this->components){
             i.update(delta_time);
+        }
+    }
+
+    void Object::start() {
+        for(Napicu::Component& i : this->components){
+            i.start();
         }
     }
 }

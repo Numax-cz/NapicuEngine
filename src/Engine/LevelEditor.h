@@ -5,6 +5,7 @@
 
 #include "Utils/Console.h"
 #include "Scene.h"
+#include "Object.h"
 #include "Render/Shader.h"
 #include "Render/Texture.h"
 
@@ -16,6 +17,9 @@ namespace Napicu{
     private:
         Napicu::Shader* shader = new Napicu::Shader("src/Engine/shaders/default.glsl");
         Napicu::Texture* texture = new Napicu::Texture("src/Engine/imgs/bird.png");
+
+        Napicu::Object* test = new Napicu::Object("Object");
+
 
         int vertexID, fragmentID, shaderProgram;
         GLuint vaoID, vboID, eboID;

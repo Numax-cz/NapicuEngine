@@ -4,7 +4,7 @@
 #include <iostream>
 #include <list>
 #include "Component.h"
-
+#include "./Utils/Console.h"
 
 namespace Napicu{
     class Object {
@@ -19,7 +19,8 @@ namespace Napicu{
         template<typename T, typename std::enable_if<std::is_base_of<Component, T>::value>::type* = nullptr> T getComponent(T componentClass);
         template<typename T, typename std::enable_if<std::is_base_of<Component, T>::value>::type* = nullptr> void removeComponent(T& componentClass);
         void addComponent(Component& componentClass);
-        void update(float delta_time);
+        void update(double delta_time);
+        void start();
     };
 
 }

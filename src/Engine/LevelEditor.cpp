@@ -2,11 +2,17 @@
 
 #include "LevelEditor.h"
 
+#include "Components/TestObject.h"
+
 namespace Napicu {
 
 
 
     void LevelEditor::init() {
+
+        this->test->addComponent(*new TestObject());
+        this->addObjectToScene(*this->test);
+
 
         //Gen
         glGenBuffers(1, &this->vboID);
@@ -61,7 +67,9 @@ namespace Napicu {
 
 
 
-
+        for(Napicu::Object& ob : this->sceneObjects){
+            ob.update(delta_time);
+        }
 
 
 
