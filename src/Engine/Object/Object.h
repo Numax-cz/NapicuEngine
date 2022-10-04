@@ -3,10 +3,17 @@
 #define OPENGL_OBJECT_H
 #include <iostream>
 #include <list>
+#include <glm/vec2.hpp>
 #include "Component.h"
 #include "../Utils/Console.h"
 
 namespace Napicu{
+
+    struct ObjectTransform{
+        glm::vec2 position;
+        glm::vec2 scale;
+    };
+
     class Object {
 
     private:
