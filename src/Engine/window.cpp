@@ -66,7 +66,6 @@ namespace Napicu{
         gladLoadGL();
 
         this->ChangeScene(0);
-        Napicu::Window::current_scene->init();
 
     }
 
