@@ -2,7 +2,11 @@
 
 namespace Napicu {
 
-    Object::Object(const std::string &name):name(name){
+    Object::Object(const std::string &name): name(name), components(*new std::list<Component*>()), transform(*new Napicu::ObjectTransform()){
+
+    }
+
+    Object::Object(const std::string &name, Napicu::ObjectTransform transform): name(name), components(*new std::list<Component*>()), transform(transform){
 
     }
 

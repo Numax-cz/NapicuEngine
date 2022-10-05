@@ -8,14 +8,12 @@
 
 class TestObject : public Napicu::Component{
 
+    glm::vec3 color;
 
     void start() override{
-        Napicu::Console::Info("Starting");
     }
 
     void update(double delta_time) override{
-        Napicu::Console::Info("Updating");
-
     }
 
 

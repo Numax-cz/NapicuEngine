@@ -13,6 +13,7 @@ namespace Napicu{
         std::list<Object> sceneObjects;
 
     private:
+        Napicu::Camera camera = *new Napicu::Camera(-1.0f, 1.0f, -1.0f, 1.0f);
         bool isRunning = false;
 
     public:
@@ -22,7 +23,6 @@ namespace Napicu{
 
         virtual void init() {};
 
-        Napicu::Camera camera = *new Napicu::Camera(-1.0f, 1.0f, -1.0f, 1.0f);
 
         void start(){
             for(Object& object : this->sceneObjects){
@@ -37,6 +37,8 @@ namespace Napicu{
                 sceneObject.start();
             }
         };
+
+        const Napicu::Camera getCamera() const {return this->camera;}
     };
 }
 

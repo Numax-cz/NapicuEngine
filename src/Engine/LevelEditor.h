@@ -8,7 +8,7 @@
 #include "Object/Object.h"
 #include "Render/Shader.h"
 #include "Render/Texture.h"
-
+#include "Render/Batch.h"
 
 namespace Napicu{
 
@@ -21,8 +21,7 @@ namespace Napicu{
         Napicu::Object* test = new Napicu::Object("Object");
 
 
-        int vertexID, fragmentID, shaderProgram;
-        GLuint vaoID, vboID, eboID;
+
         float vertexArray[36] = {
                 //Position                      //Color
                  0.5f,0.5f, 0.0f,    1.0f, 0.0f, 0.0f,   1.0f, 1.0f,
