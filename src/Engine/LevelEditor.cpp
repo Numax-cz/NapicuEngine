@@ -2,7 +2,7 @@
 
 #include "LevelEditor.h"
 
-#include "Components/TestObject.h"
+#include "Components/SpriteRender.h"
 
 namespace Napicu {
 
@@ -10,7 +10,7 @@ namespace Napicu {
 
     void LevelEditor::init() {
 
-        this->test->addComponent(*new TestObject());
+        this->test->addComponent(*new Napicu::SpriteRender(new glm::vec3(1, 1, 1)));
         this->addObjectToScene(*this->test);
 
 

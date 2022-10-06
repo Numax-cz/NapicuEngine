@@ -34,10 +34,10 @@ namespace Napicu{
     private:
         std::string name;
         std::list<Component*> components;
-        Napicu::ObjectTransform transform;
 
 
     public:
+        Napicu::ObjectTransform transform;
         Object(const std::string& name);
         Object(const std::string& name, Napicu::ObjectTransform transform);
         template<typename T, typename std::enable_if<std::is_base_of<Component, T>::value>::type* = nullptr> T getComponent(T componentClass);

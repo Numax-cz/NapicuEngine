@@ -8,6 +8,9 @@
 #include <list>
 #include "Texture.h"
 #include "Shader.h"
+#include "../Camera.h"
+#include "../window.h"
+#include "../Components/SpriteRender.h"
 
 namespace Napicu{
     class Batch {
@@ -19,8 +22,9 @@ namespace Napicu{
         Napicu::Shader* shader;
         float* vertexArray;
 
+        Napicu::SpriteRender* sprites;
 
-        int vertexID, fragmentID, shaderProgram;
+        int vertexID, fragmentID, shaderProgram, spritesNum;
         GLuint vaoID, vboID, eboID;
 
         const float POS_SIZE = 2;
@@ -31,11 +35,15 @@ namespace Napicu{
 
         const int COLOR_SIZE = 3;
 
+        void loadElementArray(int* elements, int index);
+        int* generateElementArray();
+
     public:
         Batch(int batchSize);
         void start();
-        int* generateElementArray();
-
+        void render();
+        void addSprite(Napicu::SpriteRender* obj);
+        void loadVertexP(int index);
 
 
 
