@@ -10,7 +10,7 @@ namespace Napicu{
         this->vertexArray = new float[batchSize * 4 * VERTEX_SIZE];
         this->spritesNum = 0;
         this->sprites = {};
-
+        this->room = true;
     }
 
     void Batch::start() {
@@ -72,6 +72,9 @@ namespace Napicu{
         this->sprites[this->spritesNum] = *obj;
         this->spritesNum++;
 
+        if(this->spritesNum >= this->batchSize){
+            this->room = false;
+        }
     }
 
     void Batch::loadVertexP(int index) {

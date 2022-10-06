@@ -12,6 +12,7 @@ namespace Napicu{
     protected:
         std::list<Object> sceneObjects;
 
+
     private:
         Napicu::Camera camera = *new Napicu::Camera(-1.0f, 1.0f, -1.0f, 1.0f);
         bool isRunning = false;
@@ -27,6 +28,7 @@ namespace Napicu{
         void start(){
             for(Object& object : this->sceneObjects){
                 object.start();
+
             }
             this->isRunning = true;
         }

@@ -8,6 +8,7 @@
 #include <list>
 #include "Texture.h"
 #include "Shader.h"
+#include "../Object/Object.h"
 #include "../Camera.h"
 #include "../window.h"
 #include "../Components/SpriteRender.h"
@@ -26,6 +27,7 @@ namespace Napicu{
 
         int vertexID, fragmentID, shaderProgram, spritesNum;
         GLuint vaoID, vboID, eboID;
+        bool room;
 
         const float POS_SIZE = 2;
         const float POS_OFFSET = 0;
@@ -44,6 +46,8 @@ namespace Napicu{
         void render();
         void addSprite(Napicu::SpriteRender* obj);
         void loadVertexP(int index);
+
+        bool const hasRoom() const {return this->room;}
 
 
 
