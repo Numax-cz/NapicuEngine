@@ -78,7 +78,7 @@ namespace Napicu{
         Napicu::SpriteRender& sp = this->sprites[index];
         int offSet = this->VERTEX_SIZE * index * 4;
 
-        glm::vec3& color = sp.getColor();
+        glm::vec3* color = sp.getColor();
 
         float xA = 1.0f;
         float yA = 1.0f;
@@ -97,9 +97,9 @@ namespace Napicu{
             this->vertexArray[offSet + 1] = sp.object->transform.position.y + (yA * sp.object->transform.scale.y);
 
             //Color
-            this->vertexArray[offSet + 2] = color.x; //R
-            this->vertexArray[offSet + 3] = color.y; //G
-            this->vertexArray[offSet + 4] = color.z; //B
+            this->vertexArray[offSet + 2] = color->x; //R
+            this->vertexArray[offSet + 3] = color->y; //G
+            this->vertexArray[offSet + 4] = color->z; //B
 
             offSet += this->VERTEX_SIZE;
         }
