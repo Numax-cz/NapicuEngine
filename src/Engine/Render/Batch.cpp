@@ -100,6 +100,8 @@ namespace Napicu{
             this->vertexArray[offSet + 2] = color.x; //R
             this->vertexArray[offSet + 3] = color.y; //G
             this->vertexArray[offSet + 4] = color.z; //B
+
+            offSet += this->VERTEX_SIZE;
         }
     }
 

@@ -9,13 +9,13 @@ namespace Napicu{
     class SpriteRender : public Napicu::Component{
 
     protected:
-        glm::vec3& color;
+        glm::vec3* color;
 
 
     public:
-        glm::vec3& getColor() const {return this->color;}
+        glm::vec3* getColor() const {return this->color;}
 
-        SpriteRender(glm::vec3* color) : color(*color){
+        SpriteRender(glm::vec3* color) : color(color){
 
         }
 
