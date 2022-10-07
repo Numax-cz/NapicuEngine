@@ -21,6 +21,7 @@ namespace Napicu{
     public:
         Render();
         void add(Napicu::SpriteRender* sprite);
+        void add(Napicu::Object* object);
         void render();
     };
 

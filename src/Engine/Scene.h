@@ -10,17 +10,20 @@
 
 namespace Napicu{
 
+
     class Scene {
     protected:
         std::list<Object> sceneObjects;
+        Napicu::Render* render;
 
 
     private:
-        Napicu::Camera camera = *new Napicu::Camera(-1.0f, 1.0f, -1.0f, 1.0f);
         bool isRunning = false;
 
     public:
         Scene() {};
+
+        Napicu::Camera camera = *new Napicu::Camera(-1.0f, 1.0f, -1.0f, 1.0f);
 
         virtual void update(double delta_time) {};
 
@@ -30,8 +33,9 @@ namespace Napicu{
         void start(){
             for(Object& object : this->sceneObjects){
                 object.start();
-
+               this->render->add(&object);
             }
+
             this->isRunning = true;
         }
 
@@ -39,6 +43,7 @@ namespace Napicu{
             this->sceneObjects.push_back(sceneObject);
             if(this->isRunning) {
                 sceneObject.start();
+                this->render->add(&sceneObject);
             }
         };
 

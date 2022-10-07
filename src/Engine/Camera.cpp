@@ -4,7 +4,6 @@ namespace Napicu{
     Camera::Camera(float left, float right, float bottom, float top)
         : pMatrix(glm::ortho(left, right, bottom, top, 0.0f, 100.0f)), vMatrix(1.0f){
         this->vPMatrix = this->pMatrix * this->vMatrix;
-
     }
 
     void Camera::recalculateVMatrix() {

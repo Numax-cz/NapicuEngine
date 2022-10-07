@@ -26,9 +26,18 @@ namespace Napicu{
         }
     }
 
+    void Render::add(Napicu::Object *object) {
+        Napicu::SpriteRender* sp = object->getComponent(*new Napicu::SpriteRender);
+        if(sp){
+            this->add(sp);
+        }
+    }
+
     void Render::render() {
         for(Napicu::Batch* batch : this->batches){
             batch->render();
         }
     }
+
+
 }
