@@ -1,4 +1,5 @@
 
+#pragma once
 
 #ifndef OPENGL_COMPONENT_H
 #define OPENGL_COMPONENT_H

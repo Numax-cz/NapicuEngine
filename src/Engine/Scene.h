@@ -1,3 +1,4 @@
+#pragma once
 
 
 #ifndef OPENGL_SCENE_H

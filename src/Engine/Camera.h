@@ -1,3 +1,4 @@
+#pragma once
 
 
 #ifndef OPENGL_CAMERA_H
