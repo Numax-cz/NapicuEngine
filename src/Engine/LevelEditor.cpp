@@ -10,17 +10,17 @@ namespace Napicu {
 
     void LevelEditor::init() {
 
-        this->test->addComponent(*new Napicu::SpriteRender(new glm::vec3(1, 1, 1)));
-        this->addObjectToScene(*this->test);
-
-
-
-
-
-        this->shader->compile();
-
-        this->texture->Bind();
-        this->shader->uploadTexture("texSampler");
+//        this->test->addComponent(*new Napicu::SpriteRender(new glm::vec3(1, 1, 1)));
+//        this->addObjectToScene(*this->test);
+//
+//
+//
+//
+//
+//        this->shader->compile();
+//
+//        this->texture->Bind();
+//        this->shader->uploadTexture("texSampler");
 
 
     }

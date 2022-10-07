@@ -6,6 +6,7 @@
 #include <iostream>
 #include "Camera.h"
 #include "Object/Object.h"
+#include "Render/Render.h"
 
 namespace Napicu{
 

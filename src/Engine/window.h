@@ -1,21 +1,19 @@
 #pragma once
 
 #ifndef OPENGL_WINDOW_H
+
 #define OPENGL_WINDOW_H
 
 #include <iostream>
 
-#include "Scene.h"
-#include "LevelEditor.h"
-#include "Level.h"
-#include "Utils/Console.h"
-#include "Render/Shader.h"
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
+#include "Scene.h"
 
 
 namespace Napicu
 {
+    class Scene;
     class Window
     {
     private:
