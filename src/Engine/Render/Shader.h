@@ -1,9 +1,6 @@
 #pragma once
 
 
-#ifndef OPENGL_SHADER_H
-#define OPENGL_SHADER_H
-
 #include "../Utils/Console.h"
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
@@ -41,4 +38,3 @@ namespace Napicu{
 }
 
 
-#endif //OPENGL_SHADER_H

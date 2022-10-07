@@ -1,8 +1,6 @@
 #pragma once
 
 
-#ifndef OPENGL_BATCH_H
-#define OPENGL_BATCH_H
 
 #include <iostream>
 #include <list>
@@ -57,5 +55,3 @@ namespace Napicu{
 
 }
 
-
-#endif //OPENGL_BATCH_H

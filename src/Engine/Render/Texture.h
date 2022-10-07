@@ -1,9 +1,6 @@
 #pragma once
 
 
-#ifndef OPENGL_TEXTURE_H
-#define OPENGL_TEXTURE_H
-
 #include <iostream>
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
@@ -33,4 +30,3 @@ namespace Napicu{
 }
 
 
-#endif //OPENGL_TEXTURE_H

@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef OPENGL_WINDOW_H
-
-#define OPENGL_WINDOW_H
 
 #include <iostream>
 
@@ -37,4 +34,3 @@ namespace Napicu
     };
 }
 
-#endif //OPENGL_WINDOW_H

@@ -1,8 +1,7 @@
 #pragma once
 
 
-#ifndef OPENGL_LEVELEDITOR_H
-#define OPENGL_LEVELEDITOR_H
+
 #include "Scene.h"
 
 
@@ -44,5 +43,3 @@ namespace Napicu{
     };
 }
 
-
-#endif //OPENGL_LEVELEDITOR_H

@@ -1,9 +1,6 @@
 #pragma once
 
 
-#ifndef OPENGL_RENDER_H
-#define OPENGL_RENDER_H
-
 #include <iostream>
 #include <list>
 #include "Batch.h"
@@ -27,5 +24,3 @@ namespace Napicu{
 
 }
 
-
-#endif //OPENGL_RENDER_H

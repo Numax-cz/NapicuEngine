@@ -1,6 +1,5 @@
 #pragma once
-#ifndef OPENGL_OBJECT_H
-#define OPENGL_OBJECT_H
+
 #include <iostream>
 
 #include <list>
@@ -52,4 +51,3 @@ namespace Napicu{
 
 
 
-#endif //OPENGL_OBJECT_H
