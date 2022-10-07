@@ -1,6 +1,8 @@
-
+#include "../Object/Object.h"
 
 #include "Render.h"
+
+
 namespace Napicu{
     Render::Render(): batches(*new std::list<Napicu::Batch*>()) {
 
@@ -27,7 +29,7 @@ namespace Napicu{
     }
 
     void Render::add(Napicu::Object *object) {
-        Napicu::SpriteRender* sp = object->getComponent(*new Napicu::SpriteRender);
+        auto* sp = object->getComponent(new Napicu::SpriteRender);
         if(sp){
             this->add(sp);
         }

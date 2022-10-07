@@ -1,12 +1,11 @@
 #pragma once
 
-
-
-
 #include <iostream>
 #include "Camera.h"
 #include "Object/Object.h"
 #include "Render/Render.h"
+
+
 
 namespace Napicu{
 
@@ -14,7 +13,7 @@ namespace Napicu{
     class Scene {
     protected:
         std::list<Object> sceneObjects;
-        Napicu::Render* render;
+        Render* render;
 
 
     private:

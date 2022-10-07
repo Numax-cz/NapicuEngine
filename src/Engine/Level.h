@@ -4,7 +4,6 @@
 #ifndef OPENGL_LEVELSCENE_H
 #define OPENGL_LEVELSCENE_H
 #include "Scene.h"
-#include "Render/Shader.h"
 
 
 namespace Napicu{

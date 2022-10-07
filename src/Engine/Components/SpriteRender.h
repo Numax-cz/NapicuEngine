@@ -1,4 +1,4 @@
-
+#pragma once
 
 #ifndef OPENGL_SPRITERENDER_H
 #define OPENGL_SPRITERENDER_H
@@ -37,7 +37,6 @@ namespace Napicu{
 
     };
 }
-
 
 
 #endif //OPENGL_SPRITERENDER_H

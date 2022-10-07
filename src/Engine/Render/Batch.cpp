@@ -1,7 +1,6 @@
-
-
 #include "Batch.h"
-
+#include "../window.h"
+#include "Texture.h"
 
 namespace Napicu{
 

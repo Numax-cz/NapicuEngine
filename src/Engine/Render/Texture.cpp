@@ -2,7 +2,7 @@
 
 #include "Texture.h"
 #include "../Utils/Console.h"
-
+#include "stb_image.h"
 
 namespace Napicu{
     Texture::Texture(const std::string &path)

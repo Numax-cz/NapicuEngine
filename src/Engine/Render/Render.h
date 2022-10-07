@@ -6,8 +6,7 @@
 #include "Batch.h"
 
 namespace Napicu{
-    class Batch;
-    class SpriteRender;
+
     class Render {
 
     private:
@@ -23,4 +22,6 @@ namespace Napicu{
     };
 
 }
+
+
 

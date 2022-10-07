@@ -1,14 +1,9 @@
 #pragma once
 
 
-
 #include <iostream>
 #include <list>
-#include "Texture.h"
 #include "Shader.h"
-#include "../Object/Object.h"
-#include "../Camera.h"
-#include "../window.h"
 #include "../Components/SpriteRender.h"
 
 namespace Napicu{
