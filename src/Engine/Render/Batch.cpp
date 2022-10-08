@@ -56,6 +56,7 @@ namespace Napicu{
         this->shader->use();
         this->shader->uploadUniformMat4("uProjection", Napicu::Window::current_scene->getCamera().getViewProjectionMatrix());
 
+
         glBindVertexArray(this->vaoID);
         glEnableVertexAttribArray(0);
         glEnableVertexAttribArray(1);
@@ -70,6 +71,8 @@ namespace Napicu{
     void Batch::addSprite(Napicu::SpriteRender* obj) {
         this->sprites[this->spritesNum] = *obj;
         this->spritesNum++;
+
+        this->loadVertexP(this->spritesNum);
 
         if(this->spritesNum >= this->batchSize){
             this->room = false;
