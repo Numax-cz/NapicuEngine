@@ -6,9 +6,9 @@ namespace Napicu{
 
     Batch::Batch(int batchSize) : batchSize(batchSize){
         this->shader =  new Napicu::Shader("src/Engine/shaders/default.glsl");
+        this->sprites = new Napicu::SpriteRender();
         this->vertexArray = new float[batchSize * 4 * VERTEX_SIZE];
         this->spritesNum = 0;
-        this->sprites = {};
         this->room = true;
     }
 

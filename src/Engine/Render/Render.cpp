@@ -4,20 +4,22 @@
 
 
 namespace Napicu{
-    Render::Render(): batches(*new std::list<Napicu::Batch*>()) {
+    Render::Render() {
 
 
     }
 
-    void Render::add(Napicu::SpriteRender *sprite) {
+    void Render::add(Napicu::SpriteRender* sprite) {
         bool add = false;
-        for(Napicu::Batch* batch : this->batches){
+         for(Napicu::Batch* const batch : this->batches){
             if(batch->hasRoom()){
                 batch->addSprite(sprite);
                 add = true;
                 break;
             }
         }
+
+
 
         if(!add){
             Napicu::Batch* bt = new Napicu::Batch(this->BATCH_SIZE);
@@ -28,8 +30,8 @@ namespace Napicu{
         }
     }
 
-    void Render::add(Napicu::Object *object) {
-        auto* sp = object->getComponent(new Napicu::SpriteRender);
+    void Render::add(Napicu::Object* object) {
+        Napicu::SpriteRender* sp = object->getComponent(new Napicu::SpriteRender);
         if(sp){
             this->add(sp);
         }

@@ -12,8 +12,8 @@ namespace Napicu{
 
     class Scene {
     protected:
-        std::list<Object> sceneObjects;
-        Render* render;
+        std::list<Object*> sceneObjects = {};
+        Napicu::Render* render = new Napicu::Render();
 
 
     private:
@@ -30,19 +30,19 @@ namespace Napicu{
 
 
         void start(){
-            for(Object& object : this->sceneObjects){
-                object.start();
-               this->render->add(&object);
+            for(Object* object : this->sceneObjects){
+                object->start();
+               this->render->add(object);
             }
 
             this->isRunning = true;
         }
 
-        void addObjectToScene(Object& sceneObject) {
+        void addObjectToScene(Object* sceneObject) {
             this->sceneObjects.push_back(sceneObject);
             if(this->isRunning) {
-                sceneObject.start();
-                this->render->add(&sceneObject);
+                sceneObject->start();
+                this->render->add(sceneObject);
             }
         };
 

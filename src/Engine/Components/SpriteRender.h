@@ -16,7 +16,7 @@ namespace Napicu{
         glm::vec3* getColor() const {return this->color;}
 
 
-        SpriteRender() : color(new glm::vec3(0, 0, 0)){
+        SpriteRender() : color(new glm::vec3(1, 1, 1)){
 
         }
 
