@@ -16,7 +16,7 @@ namespace Napicu{
         Napicu::Shader* shader;
         float* vertexArray;
 
-        Napicu::SpriteRender* sprites;
+        Napicu::SpriteRender* sprites {};
 
         int vertexID, fragmentID, shaderProgram, spritesNum;
         GLuint vaoID, vboID, eboID;
@@ -28,7 +28,7 @@ namespace Napicu{
         const int VERTEX_SIZE = 6;
         const int VERTEX_SIZE_BYTES = VERTEX_SIZE * sizeof(float);
 
-        const int COLOR_SIZE = 3;
+        const int COLOR_SIZE = 4;
 
         void loadElementArray(int* elements, int index);
         int* generateElementArray();

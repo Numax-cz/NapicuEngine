@@ -15,7 +15,7 @@ namespace Napicu{
     private:
 
     public:
-        Napicu::Object* object = nullptr;
+        Napicu::Object* object{};
         virtual void update(double delta_time) {};
 
         virtual void start()  {};

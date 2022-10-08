@@ -16,7 +16,7 @@ namespace Napicu{
         glm::vec2 scale;
 
         ObjectTransform(){
-            this->position = *new glm::vec2(0, 0);
+            this->position = *new glm::vec2(1, 1);
             this->scale = *new glm::vec2(1, 1);
         }
 
@@ -41,9 +41,9 @@ namespace Napicu{
 
 
     public:
-        Napicu::ObjectTransform transform;
+        Napicu::ObjectTransform* transform;
         Object(const std::string& name);
-        Object(const std::string& name, Napicu::ObjectTransform transform);
+        Object(const std::string& name, Napicu::ObjectTransform* transform);
 
         template<typename T, typename  = typename std::enable_if<std::is_base_of<Napicu::Component, T>::value>::type *>
         T* getComponent(T* componentClass) {
