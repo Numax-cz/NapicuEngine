@@ -8,7 +8,7 @@ namespace Napicu{
         this->shader =  new Napicu::Shader("src/Engine/shaders/default.glsl");
 //        this->sprites = new Napicu::SpriteRender();
         this->vertexArray = new float[batchSize * 4 * VERTEX_SIZE];
-        this->spritesNum = 0;
+        //this->spritesNum = 0;
         this->room = true;
     }
 
@@ -57,11 +57,14 @@ namespace Napicu{
         this->shader->uploadUniformMat4("uProjection", Napicu::Window::current_scene->getCamera().getViewProjectionMatrix());
 
 
+
+
+
         glBindVertexArray(this->vaoID);
         glEnableVertexAttribArray(0);
         glEnableVertexAttribArray(1);
 
-        glDrawElements(GL_TRIANGLES, this->spritesNum * 6, GL_UNSIGNED_INT, (void*)nullptr);
+        glDrawElements(GL_TRIANGLES, this->getSpritesSizeIndex() * 6, GL_UNSIGNED_INT, (void*)nullptr);
 
         glDisableVertexAttribArray(0);
         glDisableVertexAttribArray(1);
@@ -69,21 +72,24 @@ namespace Napicu{
     }
 
     void Batch::addSprite(Napicu::SpriteRender* obj) {
-        this->sprites[this->spritesNum] = *obj;
-        this->spritesNum++;
 
-        this->loadVertexP(this->spritesNum);
+        //this->sprites[this->spritesNum] = obj;
+        this->sprites.push_back(obj);
 
-        if(this->spritesNum >= this->batchSize){
+
+        this->loadVertexP(this->getSpritesSizeIndex());
+//        this->spritesNum++;
+
+        if(this->getSpritesSizeIndex() >= this->batchSize){
             this->room = false;
         }
     }
 
     void Batch::loadVertexP(int index) {
-        Napicu::SpriteRender& sp = this->sprites[index];
+        Napicu::SpriteRender* spriteRender = this->sprites[index];
         int offSet = this->VERTEX_SIZE * index * 4;
 
-        glm::vec4* color = sp.getColor();
+        glm::vec4* color = spriteRender->getColor();
 
         float xA = 1.0f;
         float yA = 1.0f;
@@ -102,8 +108,8 @@ namespace Napicu{
 
 
             //Position
-            this->vertexArray[offSet] = sp.object->transform->position.x + (xA * sp.object->transform->scale.x);
-            this->vertexArray[offSet + 1] = sp.object->transform->position.y + (yA * sp.object->transform->scale.y);
+            this->vertexArray[offSet] = spriteRender->object->transform->position.x + (xA *  spriteRender->object->transform->scale.x);
+            this->vertexArray[offSet + 1] = spriteRender->object->transform->position.y + (yA *  spriteRender->object->transform->scale.y);
 
             //Color
             this->vertexArray[offSet + 2] = color->x; //R

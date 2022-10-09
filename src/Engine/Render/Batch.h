@@ -16,9 +16,9 @@ namespace Napicu{
         Napicu::Shader* shader;
         float* vertexArray;
 
-        Napicu::SpriteRender* sprites {};
+        std::vector<Napicu::SpriteRender*> sprites = *new std::vector<Napicu::SpriteRender*>();
 
-        int vertexID, fragmentID, shaderProgram, spritesNum;
+        int vertexID, fragmentID, shaderProgram;
         GLuint vaoID, vboID, eboID;
         bool room;
 
@@ -42,7 +42,7 @@ namespace Napicu{
 
         bool const hasRoom() const {return this->room;}
 
-
+        int const getSpritesSizeIndex() const {return this->sprites.size() - 1;}
 
 
 

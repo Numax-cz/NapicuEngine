@@ -8,7 +8,6 @@
 
 namespace Napicu{
     class Object;
-
     class Component{
 
 

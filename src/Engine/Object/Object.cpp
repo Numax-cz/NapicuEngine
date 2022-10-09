@@ -17,7 +17,7 @@ namespace Napicu {
 
     void Object::update(double delta_time) {
         for(Napicu::Component* i : this->components){
-            (*i).update(delta_time);
+            i->update(delta_time);
         }
     }
 

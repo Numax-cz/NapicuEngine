@@ -17,6 +17,7 @@ namespace Napicu {
             object->update(delta_time);
         }
 
+
         this->render->render();
     }
 }
