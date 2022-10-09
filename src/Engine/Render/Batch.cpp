@@ -7,12 +7,27 @@ namespace Napicu{
     Batch::Batch(int batchSize) : batchSize(batchSize){
         this->shader =  new Napicu::Shader("src/Engine/shaders/default.glsl");
 //        this->sprites = new Napicu::SpriteRender();
-        this->vertexArray = new float[batchSize * 4 * VERTEX_SIZE];
+
+//        this->vertexArray = {
+//                        0.5f,0.5f, 0.0f,    1.0f, 0.0f, 0.0f,   1.0f, 1.0f,
+//                        0.5f,-0.5f, 0.0f,     1.0f, 1.0f, 0.0f,   1.0f, 0.0f,
+//                        -0.5f, -0.5f, 0.0f,    1.0f, 0.0f, 1.0f,   0.0f, 0.0f,
+//                        -0.5f,0.5f,0.0f,     1.0f, 1.0f, 0.0f,     0.0f, 1.0f
+//        };
+
+        this->vertexArray = *new std::vector<float>() = {
+                        0.5f,0.5f, 0.0f,    1.0f, 0.0f, 0.0f, 1.0f,   1.0f, 1.0f,
+                        0.5f,-0.5f, 0.0f,     1.0f, 1.0f, 0.0f, 1.0f,   1.0f, 0.0f,
+                        -0.5f, -0.5f, 0.0f,    1.0f, 0.0f, 1.0f, 1.0f,  0.0f, 0.0f,
+                        -0.5f,0.5f,0.0f,     1.0f, 1.0f, 0.0f,  1.0f,   0.0f, 1.0f
+        };
+
         //this->spritesNum = 0;
         this->room = true;
     }
 
     void Batch::start() {
+
         //Gen
         glGenBuffers(1, &this->vboID);
         glGenVertexArrays(1, &this->vaoID);
@@ -26,17 +41,16 @@ namespace Napicu{
         int* elementArray = this->generateElementArray();
 
         //Set vertex attribute pointers
-        glBufferData(GL_ARRAY_BUFFER, sizeof(this->vertexArray), this->vertexArray, GL_STATIC_DRAW); //GL_DYNAMIC_DRAW
+        glBufferData(GL_ARRAY_BUFFER, (GLsizeiptr)(this->vertexArray.size() * sizeof(float)), this->vertexArray.data(), GL_STATIC_DRAW);
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(elementArray), elementArray, GL_STATIC_DRAW);
 
         //Set vertex attribute pointers
-        glVertexAttribPointer(0, this->POS_SIZE, GL_FLOAT, GL_FALSE, this->VERTEX_SIZE_BYTES, nullptr);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, this->VERTEX_SIZE_BYTES, nullptr);
         glEnableVertexAttribArray(0);
 
-        //Set indices attribute pointer (color)
-        glVertexAttribPointer(1, this->COLOR_SIZE, GL_FLOAT, GL_FALSE, this->VERTEX_SIZE_BYTES, (void*)(this->COLOR_SIZE * sizeof(float)));
+        //Set indices attribute pointer
+        glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, this->VERTEX_SIZE_BYTES, (void*)(3 * sizeof(float)));
         glEnableVertexAttribArray(1);
-
 
         //Set Texcoords attribute pointers
         glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, this->VERTEX_SIZE_BYTES, (void*)(6 * sizeof(float))); //6
@@ -64,7 +78,8 @@ namespace Napicu{
         glEnableVertexAttribArray(0);
         glEnableVertexAttribArray(1);
 
-        glDrawElements(GL_TRIANGLES, this->getSpritesSizeIndex() * 6, GL_UNSIGNED_INT, (void*)nullptr);
+        //glDrawElements(GL_TRIANGLES, this->getSpritesSizeIndex() * 6, GL_UNSIGNED_INT, (void*)nullptr);
+        glDrawElements(GL_TRIANGLES, sizeof (this->getSpritesSizeIndex()), GL_UNSIGNED_INT, (void*)nullptr);
 
         glDisableVertexAttribArray(0);
         glDisableVertexAttribArray(1);
@@ -106,7 +121,6 @@ namespace Napicu{
             }
 
 
-
             //Position
             this->vertexArray[offSet] = spriteRender->object->transform->position.x + (xA *  spriteRender->object->transform->scale.x);
             this->vertexArray[offSet + 1] = spriteRender->object->transform->position.y + (yA *  spriteRender->object->transform->scale.y);
@@ -131,8 +145,8 @@ namespace Napicu{
     }
 
     void Batch::loadElementArray(int* elements, int index) {
-        int offSet = 4 * index;
         int offSetArrayIndex = 6 * index;
+        int offSet = 4 * index;
 
         elements[offSetArrayIndex] = offSet + 3;
         elements[offSetArrayIndex + 1] = offSet + 2;
