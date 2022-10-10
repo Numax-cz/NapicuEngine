@@ -39,8 +39,8 @@ namespace Napicu{
 
         const int COLOR_SIZE = 4;
 
-        void loadElementArray(int* elements, int index);
-        int* generateElementArray();
+        void loadElementArray(std::vector<int>&  elements, int index);
+        std::vector<int> generateElementArray();
 
     public:
         Batch(int batchSize);

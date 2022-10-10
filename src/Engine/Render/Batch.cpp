@@ -16,7 +16,7 @@ namespace Napicu{
 //        };
 
         this->vertexArray = *new std::vector<float>() = {
-                        0.5f,0.5f, 0.0f,    1.0f, 0.0f, 0.0f, 1.0f,   1.0f, 1.0f,
+                        0.5f,0.5f, 0.0f,    1.0f, 0.0f, 0.0f, 0.0f,   1.0f, 1.0f,
                         0.5f,-0.5f, 0.0f,     1.0f, 1.0f, 0.0f, 1.0f,   1.0f, 0.0f,
                         -0.5f, -0.5f, 0.0f,    1.0f, 0.0f, 1.0f, 1.0f,  0.0f, 0.0f,
                         -0.5f,0.5f,0.0f,     1.0f, 1.0f, 0.0f,  1.0f,   0.0f, 1.0f
@@ -38,11 +38,12 @@ namespace Napicu{
         glBindVertexArray(this->vaoID);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->eboID);
 
-        int* elementArray = this->generateElementArray();
+        std::vector<int> elementArray = this->generateElementArray();
+
 
         //Set vertex attribute pointers
         glBufferData(GL_ARRAY_BUFFER, (GLsizeiptr)(this->vertexArray.size() * sizeof(float)), this->vertexArray.data(), GL_STATIC_DRAW);
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(elementArray), elementArray, GL_STATIC_DRAW);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(this->batchSize * 6) * sizeof(float), elementArray.data(), GL_STATIC_DRAW);
 
         //Set vertex attribute pointers
         glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, this->VERTEX_SIZE_BYTES, nullptr);
@@ -71,15 +72,12 @@ namespace Napicu{
         this->shader->uploadUniformMat4("uProjection", Napicu::Window::current_scene->getCamera().getViewProjectionMatrix());
 
 
-
-
-
         glBindVertexArray(this->vaoID);
         glEnableVertexAttribArray(0);
         glEnableVertexAttribArray(1);
 
         //glDrawElements(GL_TRIANGLES, this->getSpritesSizeIndex() * 6, GL_UNSIGNED_INT, (void*)nullptr);
-        glDrawElements(GL_TRIANGLES, sizeof (this->getSpritesSizeIndex()), GL_UNSIGNED_INT, (void*)nullptr);
+        glDrawElements(GL_TRIANGLES, (this->getSpritesSizeIndex() + 1) * 6 , GL_UNSIGNED_INT, (void*)nullptr);
 
         glDisableVertexAttribArray(0);
         glDisableVertexAttribArray(1);
@@ -122,29 +120,32 @@ namespace Napicu{
 
 
             //Position
-            this->vertexArray[offSet] = spriteRender->object->transform->position.x + (xA *  spriteRender->object->transform->scale.x);
-            this->vertexArray[offSet + 1] = spriteRender->object->transform->position.y + (yA *  spriteRender->object->transform->scale.y);
+            this->vertexArray.at(offSet) = spriteRender->object->transform->position.x + (xA *  spriteRender->object->transform->scale.x);
+            this->vertexArray.at(offSet + 1) = spriteRender->object->transform->position.y + (yA *  spriteRender->object->transform->scale.y);
 
             //Color
-            this->vertexArray[offSet + 2] = color->x; //R
-            this->vertexArray[offSet + 3] = color->y; //G
-            this->vertexArray[offSet + 4] = color->z; //B
-            this->vertexArray[offSet + 5] = color->w; //A
+            this->vertexArray.at(offSet + 2) = color->x; //R
+            this->vertexArray.at(offSet + 3) = color->y; //G
+            this->vertexArray.at(offSet + 4) = color->z; //B
+            this->vertexArray.at(offSet + 5) = color->w; //A
+
 
             offSet += this->VERTEX_SIZE;
         }
     }
 
-    int* Batch::generateElementArray() {
-        int* elements = new int[6 * this->batchSize];
+    std::vector<int> Batch::generateElementArray() {
+        std::vector<int> elements;
+        elements.reserve(6 * this->batchSize);
+
         for(int i = 0; i < this->batchSize; i++){
-            this->loadElementArray(elements, i);
+           this->loadElementArray(elements, i);
         }
 
         return elements;
     }
 
-    void Batch::loadElementArray(int* elements, int index) {
+    void Batch::loadElementArray(std::vector<int>& elements, int index) {
         int offSetArrayIndex = 6 * index;
         int offSet = 4 * index;
 
