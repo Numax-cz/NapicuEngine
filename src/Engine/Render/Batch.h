@@ -14,7 +14,7 @@ namespace Napicu{
         int batchSize;
 
         Napicu::Shader* shader;
-        std::vector<float> vertexArray;
+        float* vertexArray;
 
 
 
@@ -27,27 +27,26 @@ namespace Napicu{
 
         std::vector<Napicu::SpriteRender*> sprites = *new std::vector<Napicu::SpriteRender*>();
 
-        int vertexID, fragmentID, shaderProgram;
+        int vertexID, fragmentID, shaderProgram, spritesNum;
         GLuint vaoID, vboID, eboID;
+
         bool room;
 
         const float POS_SIZE = 2;
         const float POS_OFFSET = 0;
 
-        const int VERTEX_SIZE = 9;
+        const int VERTEX_SIZE = 6;
         const int VERTEX_SIZE_BYTES = VERTEX_SIZE * sizeof(float);
 
         const int COLOR_SIZE = 4;
 
-        void loadElementArray(std::vector<int>&  elements, int index);
-        std::vector<int> generateElementArray();
+        void loadElementArray(int*  elements, int index);
+        int* generateElementArray();
 
     public:
         Batch(int batchSize);
         ~Batch(){
-//            if(this->vertexArray != nullptr){
-//                delete this->vertexArray;
-//            }
+           delete this->vertexArray;
         }
         void start();
         void render();
@@ -56,7 +55,10 @@ namespace Napicu{
 
         bool const hasRoom() const {return this->room;}
 
-        int const getSpritesSizeIndex() const {return this->sprites.size() - 1;}
+//        int const getSpritesSizeIndex() const {
+//            if(this->sprites.size() - 1 > 0 ) return this->sprites.size() - 1;
+//            return 0;
+//        }
 
 
 

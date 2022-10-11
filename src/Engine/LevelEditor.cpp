@@ -12,7 +12,7 @@ namespace Napicu {
         this->addObjectToScene(object);
     }
 
-    void LevelEditor::update(double delta_time) {
+    void LevelEditor::update(double delta_time)  {
         for (Napicu::Object* object : this->sceneObjects){
             object->update(delta_time);
         }
