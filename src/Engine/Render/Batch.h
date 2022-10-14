@@ -14,7 +14,7 @@ namespace Napicu{
         int batchSize;
 
         Napicu::Shader* shader;
-        float* vertexArray;
+        float* vertexArray{};
 
 
 

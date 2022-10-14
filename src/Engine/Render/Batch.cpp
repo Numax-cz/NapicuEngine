@@ -23,13 +23,14 @@ namespace Napicu{
 //                        -0.5f,0.5f,    1.0f, 1.0f, 0.0f,  1.0f,
 //        };
 
-        this->vertexArray = new float[batchSize * 4 * VERTEX_SIZE]{
-                        0.5f,0.5f,     1.0f, 0.0f, 0.0f, 0.0f,
-                        0.5f,-0.5f,     1.0f, 1.0f, 0.0f, 1.0f,
-                        -0.5f, -0.5f,     1.0f, 0.0f, 1.0f, 1.0f,
-                        -0.5f,0.5f,    1.0f, 1.0f, 0.0f,  1.0f,
-        };
+//        this->vertexArray = new float[batchSize * 4 * VERTEX_SIZE]{
+//                        0.5f,0.5f,     1.0f, 0.0f, 0.0f, 0.0f,
+//                        0.5f,-0.5f,     1.0f, 1.0f, 0.0f, 1.0f,
+//                        -0.5f, -0.5f,     1.0f, 0.0f, 1.0f, 1.0f,
+//                        -0.5f,0.5f,    1.0f, 1.0f, 0.0f,  1.0f,
+//        };
 
+        this->vertexArray = new float[batchSize * 4 * VERTEX_SIZE]{};
         this->spritesNum = 0;
         this->room = true;
     }
@@ -100,9 +101,8 @@ namespace Napicu{
         this->sprites.push_back(obj);
         //this->spritesNum += 1;
 
-
         this->loadVertexP(this->spritesNum);
-       this->spritesNum++;
+        this->spritesNum++;
 
         if(this->spritesNum >= this->batchSize){
             this->room = false;

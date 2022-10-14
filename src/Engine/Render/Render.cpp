@@ -24,9 +24,9 @@ namespace Napicu{
         if(!add){
             Napicu::Batch* bt = new Napicu::Batch(this->BATCH_SIZE);
 
-            bt->start();
             this->batches.push_back(bt);
             bt->addSprite(sprite);
+            bt->start();
         }
     }
 
