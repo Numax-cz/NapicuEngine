@@ -11,12 +11,6 @@ int main(){
 
     window->Run();
 
-    //Napicu::Object* object = new Napicu::Object("xd");
-
-    //Napicu::Console::Info("Hello, world!");
-
-
-
     return 0;
 
 }
