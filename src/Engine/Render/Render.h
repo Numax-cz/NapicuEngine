@@ -12,7 +12,7 @@ namespace Napicu{
         std::list<Napicu::Batch*> batches = *new std::list<Napicu::Batch*>();
 
     private:
-        const int BATCH_SIZE = 100;
+        const int BATCH_SIZE = 1000;
 
 
     public:

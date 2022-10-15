@@ -5,6 +5,7 @@
 #include <list>
 #include "Shader.h"
 #include "../Components/SpriteRender.h"
+#include "Texture.h"
 
 namespace Napicu{
     class Batch {
@@ -14,16 +15,10 @@ namespace Napicu{
         int batchSize;
 
         Napicu::Shader* shader;
+        Napicu::Texture* texture;
+
         float* vertexArray{};
-
-
-
-
-//        int elementArray[6] = {
-//                0,1,3,
-//                1,2,3
-//        };
-
+        int* elementArray{};
 
         std::vector<Napicu::SpriteRender*> sprites = *new std::vector<Napicu::SpriteRender*>();
 
@@ -33,15 +28,17 @@ namespace Napicu{
         bool room;
 
         const float POS_SIZE = 2;
-        const float POS_OFFSET = 0;
+        const int POS_OFFSET = 0;
 
         const int VERTEX_SIZE = 6;
         const int VERTEX_SIZE_BYTES = VERTEX_SIZE * sizeof(float);
 
         const int COLOR_SIZE = 4;
+        const float COLOR_OFFSET = POS_OFFSET + POS_SIZE * sizeof(float);
 
-        void loadElementArray(int*  elements, int index);
-        int* generateElementArray();
+
+        void loadElementArray(int index);
+        void generateElementArray();
 
     public:
         Batch(int batchSize);
