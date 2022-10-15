@@ -22,7 +22,7 @@ namespace Napicu{
     public:
         Scene() {};
 
-        Napicu::Camera camera = *new Napicu::Camera(-1.0f, 1.0f, -1.0f, 1.0f);
+        Napicu::Camera camera = *new Napicu::Camera(0.0f, 1920, 0.0f, 1080);
 
         virtual void update(double delta_time) {};
 

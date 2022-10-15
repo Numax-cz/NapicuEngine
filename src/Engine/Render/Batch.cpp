@@ -61,7 +61,7 @@ namespace Napicu{
         this->shader->use();
 
 
-       // this->shader->uploadUniformMat4("uProjection", Napicu::Window::current_scene->getCamera().getViewProjectionMatrix());
+       this->shader->uploadUniformMat4("uProjection", Napicu::Window::current_scene->getCamera().getViewProjectionMatrix());
 
 
         glBindVertexArray(this->vaoID);
@@ -110,8 +110,8 @@ namespace Napicu{
             }
 
             //Position
-            this->vertexArray[offSet] = spriteRender->object->transform->position.x + (xA *  spriteRender->object->transform->scale.x);
-            this->vertexArray[offSet + 1] = spriteRender->object->transform->position.y + (yA *  spriteRender->object->transform->scale.y);
+            this->vertexArray[offSet] = spriteRender->object->transform.position.x + (xA *  spriteRender->object->transform.scale.x);
+            this->vertexArray[offSet + 1] = spriteRender->object->transform.position.y + (yA *  spriteRender->object->transform.scale.y);
 
             //Color
             this->vertexArray[offSet + 2] = color->x; //R
