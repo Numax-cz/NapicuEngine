@@ -2,22 +2,22 @@
 #pragma once
 
 
-
-
 #include "Object.h"
 
-namespace Napicu{
+namespace Napicu {
     class Object;
-    class Component{
+
+    class Component {
 
 
     private:
 
     public:
-        Napicu::Object* object{};
+        Napicu::Object *object{};
+
         virtual void update(double delta_time) {};
 
-        virtual void start()  {};
+        virtual void start() {};
     };
 
 

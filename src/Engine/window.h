@@ -8,13 +8,12 @@
 #include "Scene.h"
 
 
-namespace Napicu
-{
+namespace Napicu {
     class Scene;
-    class Window
-    {
+
+    class Window {
     private:
-        GLFWwindow* window;
+        GLFWwindow *window;
 
         std::string title;
         int width, height;
@@ -22,15 +21,18 @@ namespace Napicu
 
 
     public:
-        Window(const std::string& title, int width, int height);
-        inline static Napicu::Scene* current_scene;
-        static void ChangeScene(int scene_index);
-        void Run();
+        Window(const std::string &title, int width, int height);
 
+        inline static Napicu::Scene *current_scene;
+
+        static void ChangeScene(int scene_index);
+
+        void Run();
 
 
     protected:
         void Loop();
+
         void Init();
     };
 }

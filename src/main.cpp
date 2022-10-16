@@ -5,9 +5,9 @@
 #include "Engine/Object/Object.h"
 #include "array"
 
-int main(){
+int main() {
 
-    Napicu::Window* window = new Napicu::Window("window", 1280, 720);
+    Napicu::Window *window = new Napicu::Window("window", 1280, 720);
 
     window->Run();
 

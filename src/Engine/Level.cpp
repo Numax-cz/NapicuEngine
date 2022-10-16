@@ -3,8 +3,7 @@
 #include "Level.h"
 
 
-
-namespace Napicu{
+namespace Napicu {
 
 
     void Level::update(double delta_time) {

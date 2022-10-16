@@ -4,9 +4,9 @@
 #include "../Utils/Console.h"
 #include "stb_image.h"
 
-namespace Napicu{
+namespace Napicu {
     Texture::Texture(const std::string &path)
-        : file_path(path), width(0), height(0), buffer(nullptr), bpp(0), render_id(0){
+            : file_path(path), width(0), height(0), buffer(nullptr), bpp(0), render_id(0) {
 
         stbi_set_flip_vertically_on_load(1);
         this->buffer = stbi_load(path.c_str(), &this->width, &this->height, &bpp, 4);
@@ -27,7 +27,7 @@ namespace Napicu{
 
         this->Unbind();
 
-        if(this->buffer) stbi_image_free(this->buffer);
+        if (this->buffer) stbi_image_free(this->buffer);
 
     }
 

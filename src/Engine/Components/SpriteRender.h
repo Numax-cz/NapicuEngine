@@ -5,34 +5,31 @@
 
 #include "../Object/Component.h"
 #include "../Utils/Console.h"
-namespace Napicu{
-    class SpriteRender : public Napicu::Component{
+
+namespace Napicu {
+    class SpriteRender : public Napicu::Component {
 
     protected:
-        glm::vec4* color;
+        glm::vec4 *color;
 
 
     public:
-        glm::vec4* getColor() const {return this->color;}
+        glm::vec4 *getColor() const { return this->color; }
 
 
         SpriteRender() : color(new glm::vec4(0, 1, 1, 1)) {
 
         }
 
-        SpriteRender(glm::vec4* color) : color(color){
+        SpriteRender(glm::vec4 *color) : color(color) {
 
         }
 
-        void start() override{
+        void start() override {
         }
 
-        void update(double delta_time) override{
+        void update(double delta_time) override {
         }
-
-
-
-
 
 
     };

@@ -1,16 +1,14 @@
 #pragma once
 
 
-
 #include "Scene.h"
 
 
-namespace Napicu{
+namespace Napicu {
 
-    class LevelEditor : public Napicu::Scene{
+    class LevelEditor : public Napicu::Scene {
 
     private:
-
 
 
     public:
@@ -19,6 +17,7 @@ namespace Napicu{
         };
 
         void update(double delta_time) override;
+
         void init() override;
 
     };

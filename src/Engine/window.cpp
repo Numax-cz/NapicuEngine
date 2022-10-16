@@ -4,11 +4,11 @@
 #include "Level.h"
 
 
-namespace Napicu{
+namespace Napicu {
     inline Napicu::Scene Window::*current_scene = nullptr;
 
-    Window::Window(const std::string& title, int width, int height)
-            :title(std::move(title)), width(width), height(height) {}
+    Window::Window(const std::string &title, int width, int height)
+            : title(std::move(title)), width(width), height(height) {}
 
     void Window::Run() {
         this->Init();
@@ -28,7 +28,7 @@ namespace Napicu{
                 break;
         }
 
-        if(Window::current_scene){
+        if (Window::current_scene) {
             Window::current_scene->init();
             Window::current_scene->start();
         }
@@ -36,11 +36,11 @@ namespace Napicu{
 
     void Window::Init() {
 
-        try{
-            if(!glfwInit()){
+        try {
+            if (!glfwInit()) {
                 throw std::runtime_error("Unable to initialize GLFW");
             }
-        }catch (const std::exception& e){
+        } catch (const std::exception &e) {
             Napicu::Console::Error(e.what());
         }
 
@@ -52,10 +52,10 @@ namespace Napicu{
 
         try {
             this->window = glfwCreateWindow(this->width, this->height, this->title.c_str(), nullptr, nullptr);
-            if(this->window == nullptr) {
+            if (this->window == nullptr) {
                 throw std::runtime_error("Failed to creat the GLFW window");
             }
-        } catch (const std::exception& e){
+        } catch (const std::exception &e) {
             Napicu::Console::Error(e.what());
         }
 
@@ -72,7 +72,7 @@ namespace Napicu{
     }
 
     void Window::Loop() {
-        while(!glfwWindowShouldClose(this->window)){
+        while (!glfwWindowShouldClose(this->window)) {
 
             double current_frame = glfwGetTime();
             this->delta_time = current_frame - this->last_frame;
@@ -83,7 +83,7 @@ namespace Napicu{
             glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT);
 
-            if(this->delta_time >= 0){
+            if (this->delta_time >= 0) {
                 Napicu::Window::current_scene->update(this->delta_time);
             }
 

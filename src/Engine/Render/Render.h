@@ -5,11 +5,11 @@
 #include "Batch.h"
 #include <list>
 
-namespace Napicu{
+namespace Napicu {
 
     class Render {
     protected:
-        std::list<Napicu::Batch*> batches = *new std::list<Napicu::Batch*>();
+        std::list<Napicu::Batch *> batches = *new std::list<Napicu::Batch *>();
 
     private:
         const int BATCH_SIZE = 1000;
@@ -17,8 +17,11 @@ namespace Napicu{
 
     public:
         Render();
-        void add(Napicu::SpriteRender* sprite);
-        void add(Napicu::Object* object);
+
+        void add(Napicu::SpriteRender *sprite);
+
+        void add(Napicu::Object *object);
+
         void render();
     };
 

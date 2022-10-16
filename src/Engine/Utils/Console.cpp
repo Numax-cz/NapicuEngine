@@ -1,14 +1,15 @@
 
 
 #include "Console.h"
-namespace Napicu{
+
+namespace Napicu {
 
     void Console::Log(std::string msg) {
         //std::cout << "\033[31m" << "Error!" << msg << "\033[0m"  << std::endl;
         std::cout << "[NAPICUENGINE]" << " - " << msg << std::endl;
     }
 
-    void Console::Info(std::string info){
+    void Console::Info(std::string info) {
         std::cout << "[NAPICUENGINE - Info]" << " - " << info << std::endl;
     }
 
