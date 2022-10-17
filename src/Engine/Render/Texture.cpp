@@ -35,8 +35,8 @@ namespace Napicu {
         glDeleteTextures(1, &this->render_id);
     }
 
-    void Texture::Bind() const {
-        glActiveTexture(GL_TEXTURE0);
+    void Texture::Bind(int index) const {
+        glActiveTexture(GL_TEXTURE0 + index);
         glBindTexture(GL_TEXTURE_2D, this->render_id);
     }
 

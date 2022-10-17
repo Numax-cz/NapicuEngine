@@ -133,4 +133,10 @@ namespace Napicu {
         this->use();
         glUniform1f(location, 0); //Slot
     }
+
+    void Shader::uploadTexture(const std::string &name, std::vector<int> arraySlot) {
+        GLint location = glGetUniformLocation(this->programId, name.c_str());
+        this->use();
+        glUniform1iv(location, arraySlot.size(), arraySlot.data());
+    }
 }

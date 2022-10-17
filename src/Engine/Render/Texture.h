@@ -19,7 +19,7 @@ namespace Napicu {
 
         ~Texture();
 
-        void Bind() const;
+        void Bind(int index) const;
 
         void Unbind() const;
 

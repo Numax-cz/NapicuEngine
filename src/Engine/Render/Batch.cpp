@@ -1,6 +1,8 @@
 #include "Batch.h"
 #include "../window.h"
 #include "Texture.h"
+#include <iostream>
+#include <algorithm>
 
 namespace Napicu {
 
@@ -9,6 +11,8 @@ namespace Napicu {
         this->shader->compile();
 
         this->vertexArray = new float[batchSize * 4 * VERTEX_SIZE]{};
+        this->textures = {};
+
         this->spritesNum = 0;
         this->room = true;
     }
@@ -43,8 +47,12 @@ namespace Napicu {
         glEnableVertexAttribArray(1);
 
         //Set Texcoords attribute pointers
-//        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, this->VERTEX_SIZE_BYTES, (void*)(6 * sizeof(float))); //6
-//        glEnableVertexAttribArray(2);
+        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, this->VERTEX_SIZE_BYTES, (void*)(6 * sizeof(float))); //6
+        glEnableVertexAttribArray(2);
+
+        //Set Texcoords attribute pointers
+        glVertexAttribPointer(3, 1, GL_FLOAT, GL_FALSE, this->VERTEX_SIZE_BYTES, (void*)(8 * sizeof(float))); //6
+        glEnableVertexAttribArray(3);
 
         //Unbind all
         glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -66,6 +74,16 @@ namespace Napicu {
         this->shader->uploadUniformMat4("uProjection",
                                         Napicu::Window::current_scene->getCamera().getViewProjectionMatrix());
 
+        for(int i = 0; i < this->textures.size(); i++){
+            this->textures[i]->Bind(i + 1);
+        }
+
+
+        this->shader->uploadTexture("texSampler", this->texturesSlots);
+
+
+
+
 
         glBindVertexArray(this->vaoID);
         glEnableVertexAttribArray(0);
@@ -78,6 +96,11 @@ namespace Napicu {
         glDisableVertexAttribArray(1);
         glBindVertexArray(0);
 
+
+        for(int i = 0; i < this->textures.size(); i++){
+            this->textures[i]->Unbind();
+        }
+
         this->shader->detach();
     }
 
@@ -86,6 +109,12 @@ namespace Napicu {
         //this->sprites[this->spritesNum] = obj;
         this->sprites.push_back(obj);
         //this->spritesNum += 1;
+
+        if(obj->getTexture() != nullptr){
+            if(std::find(this->textures.begin(), this->textures.end(),obj->getTexture()) == this->textures.end()){
+                this->textures.push_back(obj->getTexture());
+            }
+        }
 
         this->loadVertexP(this->spritesNum);
         this->spritesNum++;
@@ -98,8 +127,23 @@ namespace Napicu {
     void Batch::loadVertexP(int index) {
         Napicu::SpriteRender *spriteRender = this->sprites[index];
         int offSet = this->VERTEX_SIZE * index * 4;
+        int texId = 0;
 
-        glm::vec4 *color = spriteRender->getColor();
+        glm::vec4* color = spriteRender->getColor();
+        std::vector<glm::vec2> texCoords = spriteRender->getTexCords();
+
+
+
+        if(spriteRender->getTexture() != nullptr){
+            for (int i = 0; i < this->textures.size(); ++i) {
+                if(this->textures[i] == spriteRender->getTexture()){
+                    texId = i + 1;
+                    break;
+                }
+            }
+        }
+
+
 
         float xA = 1.0f;
         float yA = 1.0f;
@@ -123,6 +167,13 @@ namespace Napicu {
             this->vertexArray[offSet + 3] = color->y; //G
             this->vertexArray[offSet + 4] = color->z; //B
             this->vertexArray[offSet + 5] = color->w; //A
+
+            //TextureCoords
+            this->vertexArray[offSet + 6] = texCoords[i].x;
+            this->vertexArray[offSet + 7] = texCoords[i].y;
+
+            //TextureID
+            this->vertexArray[offSet + 8] = texId;
 
 
             offSet += this->VERTEX_SIZE;

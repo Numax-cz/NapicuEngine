@@ -15,26 +15,21 @@ namespace Napicu {
         int batchSize;
 
         Napicu::Shader *shader;
-        Napicu::Texture *texture;
+        std::vector<Napicu::Texture*> textures;
 
         float *vertexArray{};
         int *elementArray{};
 
         std::vector<Napicu::SpriteRender *> sprites = *new std::vector<Napicu::SpriteRender *>();
+        std::vector<int> texturesSlots = {0, 1, 2, 3, 4, 5, 6, 7};
 
         int vertexID, fragmentID, shaderProgram, spritesNum;
         GLuint vaoID, vboID, eboID;
 
         bool room;
 
-        const float POS_SIZE = 2;
-        const int POS_OFFSET = 0;
-
-        const int VERTEX_SIZE = 6;
+        const int VERTEX_SIZE = 9;
         const int VERTEX_SIZE_BYTES = VERTEX_SIZE * sizeof(float);
-
-        const int COLOR_SIZE = 4;
-        const float COLOR_OFFSET = POS_OFFSET + POS_SIZE * sizeof(float);
 
 
         void loadElementArray(int index);

@@ -40,8 +40,9 @@ namespace Napicu {
 
         void uploadUniformInt(const std::string &name, int val);
 
-        void uploadTexture(const std::string &name);
+        void uploadTexture(const std::string &name, std::vector<int> arraySlot);
 
+        void uploadTexture(const std::string &name);
     };
 }
 
