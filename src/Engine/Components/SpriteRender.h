@@ -14,7 +14,7 @@ namespace Napicu {
 
     protected:
         glm::vec4 *color = nullptr;
-        Napicu::Sprite* sprite = nullptr;
+        Napicu::Sprite* sprite = new Napicu::Sprite(nullptr);
 
     public:
         SpriteRender() {
@@ -46,6 +46,7 @@ namespace Napicu {
         }
     };
 }
+
 
 
 #endif //OPENGL_SPRITERENDER_H

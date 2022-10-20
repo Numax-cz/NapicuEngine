@@ -31,7 +31,6 @@ namespace Napicu {
 
         this->generateElementArray();
 
-
         //Set vertex attribute pointers
         glBufferData(GL_ARRAY_BUFFER, (GLsizeiptr) ((this->batchSize * 4 * VERTEX_SIZE) * sizeof(float)),
                      this->vertexArray, GL_STATIC_DRAW);

@@ -14,6 +14,7 @@ namespace Napicu {
         for (Napicu::Batch *const batch: this->batches) {
             if (batch->hasRoom()) {
                 batch->addSprite(sprite);
+                batch->start(); // TODO
                 add = true;
                 break;
             }

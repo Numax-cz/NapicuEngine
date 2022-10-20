@@ -9,7 +9,7 @@ namespace Napicu {
 
     class Render {
     protected:
-        std::list<Napicu::Batch *> batches = *new std::list<Napicu::Batch *>();
+        std::list<Napicu::Batch *> batches = {};
 
     private:
         const int BATCH_SIZE = 1000;
