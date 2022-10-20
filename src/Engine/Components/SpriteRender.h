@@ -13,7 +13,7 @@ namespace Napicu {
     class SpriteRender : public Napicu::Component {
 
     protected:
-        glm::vec4 *color = nullptr;
+        glm::vec4 *color = new glm::vec4(0, 1, 1, 1);
         Napicu::Sprite* sprite = new Napicu::Sprite(nullptr);
 
     public:
@@ -25,7 +25,7 @@ namespace Napicu {
 
         }
 
-        SpriteRender(Napicu::Sprite* sprite) : sprite(sprite), color(new glm::vec4(0, 1, 1, 1)){
+        SpriteRender(Napicu::Sprite* sprite) : sprite(sprite){
 
         }
 
