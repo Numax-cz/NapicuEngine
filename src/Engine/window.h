@@ -6,7 +6,7 @@
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 #include "Scene.h"
-
+#include "ImGuiLayout.h"
 
 namespace Napicu {
     class Scene;
@@ -14,6 +14,9 @@ namespace Napicu {
     class Window {
     private:
         GLFWwindow *window;
+        Napicu::ImGuiLayout *imGuiLayout;
+
+
 
         std::string title;
         int width, height;
@@ -34,6 +37,8 @@ namespace Napicu {
         void Loop();
 
         void Init();
+
+        void Destroy();
     };
 }
 

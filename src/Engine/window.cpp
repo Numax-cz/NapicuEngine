@@ -13,6 +13,7 @@ namespace Napicu {
     void Window::Run() {
         this->Init();
         this->Loop();
+        this->Destroy();
     }
 
     void Window::ChangeScene(int scene_index) {
@@ -70,6 +71,10 @@ namespace Napicu {
         glEnable(GL_BLEND);
         glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 
+        this->imGuiLayout = new Napicu::ImGuiLayout(this->window);
+        this->imGuiLayout->initImGui();
+
+
         this->ChangeScene(0);
 
     }
@@ -90,10 +95,20 @@ namespace Napicu {
                 Napicu::Window::current_scene->update(this->delta_time);
             }
 
+            this->imGuiLayout->update();
+            //Render ImGui
+            this->imGuiLayout->render();
+
+
             glfwSwapBuffers(this->window);
         }
+    }
+
+    void Window::Destroy() {
+        this->imGuiLayout->destroy();
 
     }
+
 
 }
 
