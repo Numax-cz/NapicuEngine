@@ -12,7 +12,7 @@ namespace Napicu {
     void Render::add(Napicu::SpriteRender *sprite) {
         bool add = false;
         for (Napicu::Batch *const batch: this->batches) {
-            if (batch->hasRoom()) {
+            if (batch->hasRoom() && batch->getZIndex() == sprite->object->transform.zIndex) {
                 batch->addSprite(sprite);
                 batch->start(); // TODO
                 add = true;
@@ -22,11 +22,12 @@ namespace Napicu {
 
 
         if (!add) {
-            Napicu::Batch *bt = new Napicu::Batch(this->BATCH_SIZE);
+            Napicu::Batch *bt = new Napicu::Batch(this->BATCH_SIZE, sprite->object->transform.zIndex);
 
             this->batches.push_back(bt);
             bt->addSprite(sprite);
             bt->start();
+            this->batches.sort(this->comp);
         }
     }
 
@@ -41,6 +42,10 @@ namespace Napicu {
         for (Napicu::Batch *batch: this->batches) {
             batch->render();
         }
+    }
+
+    bool Render::comp(Napicu::Batch *a, Napicu::Batch *b) {
+        return (a->getZIndex() < b->getZIndex());
     }
 
 

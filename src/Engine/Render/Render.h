@@ -23,6 +23,8 @@ namespace Napicu {
         void add(Napicu::Object *object);
 
         void render();
+
+        static bool comp(Napicu::Batch* a, Napicu::Batch* b);
     };
 
 }

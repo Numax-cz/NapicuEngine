@@ -15,6 +15,7 @@ namespace Napicu {
     protected:
         glm::vec4 *color = new glm::vec4(0, 1, 1, 1);
         Napicu::Sprite* sprite = new Napicu::Sprite(nullptr);
+        bool dirty = true;
 
     public:
         SpriteRender() {

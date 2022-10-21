@@ -14,21 +14,13 @@ namespace Napicu {
     struct ObjectTransform {
         glm::vec2 position;
         glm::vec2 scale;
+        int zIndex;
 
-        ObjectTransform() {
-            this->position = *new glm::vec2(1, 1);
-            this->scale = *new glm::vec2(1, 1);
-        }
+        ObjectTransform(): position(*new glm::vec2(1, 1)), scale(*new glm::vec2(1, 1)), zIndex(0) { }
 
-        ObjectTransform(glm::vec2 position) {
-            this->position = position;
-            this->scale = *new glm::vec2(1, 1);
-        }
+        ObjectTransform(glm::vec2 position): position(position), scale(*new glm::vec2(1, 1)) { }
 
-        ObjectTransform(glm::vec2 position, glm::vec2 scale) {
-            this->position = position;
-            this->scale = scale;
-        }
+        ObjectTransform(glm::vec2 position, glm::vec2 scale, int zIndex): position(position), scale(scale), zIndex(zIndex) { }
     };
 
     class Object {

@@ -12,7 +12,7 @@ namespace Napicu {
     protected:
 
     private:
-        int batchSize;
+        int batchSize, zIndex;
 
         Napicu::Shader *shader;
         std::vector<Napicu::Texture*> textures;
@@ -37,7 +37,7 @@ namespace Napicu {
         void generateElementArray();
 
     public:
-        Batch(int batchSize);
+        Batch(int batchSize, int zIndex);
 
         ~Batch() {
             delete this->vertexArray;
@@ -53,10 +53,15 @@ namespace Napicu {
 
         bool const hasRoom() const { return this->room; }
 
+        int const getZIndex() const { return this->zIndex; }
+
+
 //        int const getSpritesSizeIndex() const {
 //            if(this->sprites.size() - 1 > 0 ) return this->sprites.size() - 1;
 //            return 0;
 //        }
+
+
 
 
 

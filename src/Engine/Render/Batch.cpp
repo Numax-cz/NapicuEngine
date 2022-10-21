@@ -6,7 +6,7 @@
 
 namespace Napicu {
 
-    Batch::Batch(int batchSize) : batchSize(batchSize) {
+    Batch::Batch(int batchSize, int zIndex) : batchSize(batchSize), zIndex(zIndex) {
         this->shader = new Napicu::Shader("src/Engine/shaders/default.glsl");
         this->shader->compile();
 
@@ -200,4 +200,5 @@ namespace Napicu {
         this->elementArray[offSetArrayIndex + 4] = offSet + 2;
         this->elementArray[offSetArrayIndex + 5] = offSet + 1;
     }
+
 }
