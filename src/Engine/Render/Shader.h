@@ -24,7 +24,7 @@ namespace Napicu {
         std::string vertex;
         std::string fragment;
 
-        explicit Shader(const std::string &file_path);
+        explicit Shader(std::string file_path);
 
         void compile();
 
@@ -32,17 +32,17 @@ namespace Napicu {
 
         void detach();
 
-        void uploadUniformMat4(const std::string &name, const glm::mat4 &matrix);
+        void uploadUniformMat4(std::string name, const glm::mat4 &matrix);
 
-        void uploadUniformMVec4(const std::string &name, const glm::vec4 &vec);
+        void uploadUniformMVec4(std::string name, const glm::vec4 &vec);
 
-        void uploadUniformFloat(const std::string &name, float val);
+        void uploadUniformFloat(std::string name, float val);
 
-        void uploadUniformInt(const std::string &name, int val);
+        void uploadUniformInt(std::string name, int val);
 
-        void uploadTexture(const std::string &name, std::vector<int> arraySlot);
+        void uploadTexture(std::string name, std::vector<int> arraySlot);
 
-        void uploadTexture(const std::string &name);
+        void uploadTexture(std::string name);
     };
 }
 

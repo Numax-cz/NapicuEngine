@@ -6,7 +6,7 @@
 namespace Napicu {
 
 
-    Shader::Shader(const std::string &file_path) {
+    Shader::Shader(std::string file_path) {
         std::ifstream stream(file_path);
 
 
@@ -104,37 +104,37 @@ namespace Napicu {
         glUseProgram(0);
     }
 
-    void Shader::uploadUniformMat4(const std::string &name, const glm::mat4 &matrix) {
+    void Shader::uploadUniformMat4(std::string name, const glm::mat4 &matrix) {
         GLint location = glGetUniformLocation(this->programId, name.c_str());
         this->use();
         glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
     }
 
-    void Shader::uploadUniformMVec4(const std::string &name, const glm::vec4 &vec) {
+    void Shader::uploadUniformMVec4(std::string name, const glm::vec4 &vec) {
         GLint location = glGetUniformLocation(this->programId, name.c_str());
         this->use();
         glUniform4f(location, vec.x, vec.y, vec.z, vec.x);
     }
 
-    void Shader::uploadUniformFloat(const std::string &name, float val) {
+    void Shader::uploadUniformFloat(std::string name, float val) {
         GLint location = glGetUniformLocation(this->programId, name.c_str());
         this->use();
         glUniform1f(location, val);
     }
 
-    void Shader::uploadUniformInt(const std::string &name, int val) {
+    void Shader::uploadUniformInt(std::string name, int val) {
         GLint location = glGetUniformLocation(this->programId, name.c_str());
         this->use();
         glUniform1i(location, val);
     }
 
-    void Shader::uploadTexture(const std::string &name) {
+    void Shader::uploadTexture(std::string name) {
         GLint location = glGetUniformLocation(this->programId, name.c_str());
         this->use();
         glUniform1f(location, 0); //Slot
     }
 
-    void Shader::uploadTexture(const std::string &name, std::vector<int> arraySlot) {
+    void Shader::uploadTexture(std::string name, std::vector<int> arraySlot) {
         GLint location = glGetUniformLocation(this->programId, name.c_str());
         this->use();
         glUniform1iv(location, arraySlot.size(), arraySlot.data());
