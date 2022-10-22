@@ -18,6 +18,8 @@ namespace Napicu {
         virtual void update(double delta_time) {};
 
         virtual void start() {};
+
+        virtual void imGui() {};
     };
 
 

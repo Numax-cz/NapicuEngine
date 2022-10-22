@@ -1,6 +1,6 @@
 #pragma once
 #include <GLFW/glfw3.h>
-
+#include "Scene.h"
 
 namespace Napicu {
     class ImGuiLayout{
@@ -15,7 +15,7 @@ namespace Napicu {
 
         ImGuiLayout(GLFWwindow *glfWwindow);
         void initImGui();
-        void update();
+        void update(Napicu::Scene *scene);
         void render();
         void destroy();
     };

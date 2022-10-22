@@ -27,5 +27,11 @@ namespace Napicu {
         }
     }
 
+    void Object::imGui() {
+        for(Napicu::Component *i: this->components){
+            i->imGui();
+        }
+    }
+
 
 }

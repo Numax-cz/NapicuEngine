@@ -1,7 +1,12 @@
-
-
 #include "Shader.h"
 #include <glm/gtc/type_ptr.hpp>
+#include "../Utils/Console.h"
+#include "glad/glad.h"
+#include <iostream>
+#include <vector>
+#include <fstream>
+#include <sstream>
+
 
 namespace Napicu {
 

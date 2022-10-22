@@ -2,7 +2,6 @@
 #include <imgui.h>
 #include <imgui_impl_glfw.h>
 #include "imgui_impl_opengl3.h"
-#include <iostream>
 
 
 namespace Napicu{
@@ -21,10 +20,12 @@ namespace Napicu{
     }
 
 
-    void ImGuiLayout::update() {
+    void ImGuiLayout::update(Napicu::Scene* scene) {
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
+
+        scene->imGuiScene();
     }
 
     void ImGuiLayout::render() {

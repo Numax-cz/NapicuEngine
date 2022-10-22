@@ -86,7 +86,7 @@ namespace Napicu {
             this->delta_time = current_frame - this->last_frame;
             this->last_frame = current_frame;
 
-            this->imGuiLayout->update();
+            this->imGuiLayout->update(this->current_scene);
 
 
 

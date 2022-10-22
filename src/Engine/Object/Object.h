@@ -61,6 +61,8 @@ namespace Napicu {
 
         void update(double delta_time);
 
+        void imGui();
+
         void start();
     };
 

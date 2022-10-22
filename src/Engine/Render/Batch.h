@@ -24,7 +24,7 @@ namespace Napicu {
         std::vector<int> texturesSlots = {0, 1, 2, 3, 4, 5, 6, 7};
 
         int vertexID, fragmentID, shaderProgram, spritesNum;
-        GLuint vaoID, vboID, eboID;
+        unsigned int vaoID, vboID, eboID;
 
         bool room;
 

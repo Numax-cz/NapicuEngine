@@ -34,4 +34,13 @@ namespace Napicu {
 
         this->render->render();
     }
+
+    void LevelEditor::imGui() {
+
+        ImGui::Begin("Test");
+        ImGui::Text("Test text");
+        ImGui::End();
+    }
+
+
 }

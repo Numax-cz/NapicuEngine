@@ -4,7 +4,7 @@
 #include "Camera.h"
 #include "Object/Object.h"
 #include "Render/Render.h"
-
+#include <imgui.h>
 
 namespace Napicu {
 
@@ -28,13 +28,18 @@ namespace Napicu {
 
         virtual void init() {};
 
-        void sceneImgui(){
 
+
+        void imGuiScene(){
+            if(this->activeGameObject != nullptr){
+                ImGui::Begin("Inspector");
+                this->activeGameObject->imGui();
+                ImGui::End();
+            }
+            this->imGui();
         }
 
-        void imgui(){
-
-        }
+        virtual void imGui() {}
 
 
         void start() {
