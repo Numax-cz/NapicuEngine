@@ -11,8 +11,9 @@ namespace Napicu {
 
     class Scene {
     protected:
-        std::list<Object *> sceneObjects = {};
+        std::list<Napicu::Object *> sceneObjects = {};
         Napicu::Render *render = new Napicu::Render();
+        Napicu::Object* activeGameObject = nullptr;
 
 
     private:
@@ -26,6 +27,14 @@ namespace Napicu {
         virtual void update(double delta_time) {};
 
         virtual void init() {};
+
+        void sceneImgui(){
+
+        }
+
+        void imgui(){
+
+        }
 
 
         void start() {
