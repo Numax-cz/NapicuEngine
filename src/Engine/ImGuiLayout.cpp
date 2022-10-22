@@ -18,7 +18,7 @@ namespace Napicu{
         ImGui::StyleColorsDark();
         ImGui_ImplGlfw_InitForOpenGL(this->glfWwindow, true);
         ImGui_ImplOpenGL3_Init("#version 460");
-        }
+    }
 
 
     void ImGuiLayout::update() {
