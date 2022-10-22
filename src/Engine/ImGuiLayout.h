@@ -6,7 +6,7 @@ namespace Napicu {
     class ImGuiLayout{
 
     private:
-        GLFWwindow* glfWwindow = nullptr;
+        GLFWwindow* glfWwindow;
 
 
 
@@ -15,7 +15,6 @@ namespace Napicu {
 
         ImGuiLayout(GLFWwindow *glfWwindow);
         void initImGui();
-        void newFrame();
         void update();
         void render();
         void destroy();

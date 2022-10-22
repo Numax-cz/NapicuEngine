@@ -86,6 +86,10 @@ namespace Napicu {
             this->delta_time = current_frame - this->last_frame;
             this->last_frame = current_frame;
 
+            this->imGuiLayout->update();
+
+
+
             glfwPollEvents();
 
             glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -95,7 +99,6 @@ namespace Napicu {
                 Napicu::Window::current_scene->update(this->delta_time);
             }
 
-            this->imGuiLayout->update();
             //Render ImGui
             this->imGuiLayout->render();
 
