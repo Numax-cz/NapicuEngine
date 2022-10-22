@@ -1,10 +1,5 @@
 #pragma once
-
-
-#ifndef OPENGL_LEVELSCENE_H
-#define OPENGL_LEVELSCENE_H
-
-#include "Scene.h"
+#include "../Scene.h"
 
 
 namespace Napicu {
@@ -22,6 +17,3 @@ namespace Napicu {
         void init() override;
     };
 }
-
-
-#endif //OPENGL_LEVELSCENE_H

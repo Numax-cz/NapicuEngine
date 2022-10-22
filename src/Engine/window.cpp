@@ -1,7 +1,7 @@
 #include <utility>
 #include "window.h"
-#include "LevelEditor.h"
-#include "Level.h"
+#include "Scenes/LevelEditor.h"
+#include "Scenes/Level.h"
 
 
 namespace Napicu {

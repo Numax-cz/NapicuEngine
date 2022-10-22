@@ -2,7 +2,7 @@
 
 #include "LevelEditor.h"
 
-#include "Components/SpriteRender.h"
+#include "../Components/SpriteRender.h"
 
 namespace Napicu {
 
