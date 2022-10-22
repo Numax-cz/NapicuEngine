@@ -4,11 +4,19 @@ project(OpenGL)
 find_package(OpenGL REQUIRED)
 
 include_directories(
+        PUBLIC external/glfw/include
         PUBLIC external/glad/include
-        PUBLIC external/glad/include
+        PUBLIC external/imgui/
 )
 
-add_library(IMGUI external/imgui/imgui.cpp external/imgui/imgui_widgets.cpp external/imgui/imgui_tables.cpp external/imgui/imgui_draw.cpp)
+add_library(IMGUI
+        external/imgui/imgui.cpp
+        external/imgui/imgui_widgets.cpp
+        external/imgui/imgui_tables.cpp
+        external/imgui/imgui_draw.cpp
+        external/imgui/backends/imgui_impl_glfw.cpp
+        external/imgui/backends/imgui_impl_opengl3.cpp
+        )
 
 add_subdirectory(external/glad)
 add_subdirectory(external/glfw)
@@ -25,6 +33,7 @@ target_include_directories(${PROJECT_NAME}
         PUBLIC external/glad/include
         PUBLIC external/stb/include
         PUBLIC external/imgui/
+        PUBLIC external/imgui/backends/
         PUBLIC external/glm/
         )
 
@@ -32,6 +41,7 @@ target_include_directories(${PROJECT_NAME}
 target_link_directories(${PROJECT_NAME}
         PRIVATE external/glad/
         PRIVATE external/glfw/
+        PRIVATE external/imgui/backends/
         PRIVATE external/imgui/
         PRIVATE external/glm/
         PRIVATE external/stb/
