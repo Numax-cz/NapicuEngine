@@ -9,20 +9,12 @@ namespace Napicu {
     void LevelEditor::init() {
 
 
-
-
-
         Napicu::Object *ob = new Napicu::Object("Obj", new Napicu::ObjectTransform(*new glm::vec2(400, 100),
-                                                                                    *new glm::vec2(500, 500), 1));
+                                                                                   *new glm::vec2(500, 500), 1));
         ob->addComponent(new Napicu::SpriteRender());
 
         this->addObjectToScene(ob);
         this->activeGameObject = ob;
-
-
-
-
-
 
 
     }

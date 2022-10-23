@@ -24,7 +24,7 @@ namespace Napicu {
 
         void render();
 
-        static bool comp(Napicu::Batch* a, Napicu::Batch* b);
+        static bool comp(Napicu::Batch *a, Napicu::Batch *b);
     };
 
 }

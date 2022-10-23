@@ -4,8 +4,7 @@
 #include "imgui_impl_opengl3.h"
 
 
-namespace Napicu{
-
+namespace Napicu {
 
 
     ImGuiLayout::ImGuiLayout(GLFWwindow *glfWwindow) : glfWwindow(glfWwindow) {
@@ -20,7 +19,7 @@ namespace Napicu{
     }
 
 
-    void ImGuiLayout::update(Napicu::Scene* scene) {
+    void ImGuiLayout::update(Napicu::Scene *scene) {
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();

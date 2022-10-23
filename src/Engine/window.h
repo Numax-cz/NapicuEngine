@@ -17,7 +17,6 @@ namespace Napicu {
         Napicu::ImGuiLayout *imGuiLayout;
 
 
-
         std::string title;
         int width, height;
         double last_frame, delta_time;

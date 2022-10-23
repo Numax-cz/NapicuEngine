@@ -1,22 +1,26 @@
 #pragma once
+
 #include <GLFW/glfw3.h>
 #include "Scene.h"
 
 namespace Napicu {
-    class ImGuiLayout{
+    class ImGuiLayout {
 
     private:
-        GLFWwindow* glfWwindow;
-
+        GLFWwindow *glfWwindow;
 
 
     public:
 
 
         ImGuiLayout(GLFWwindow *glfWwindow);
+
         void initImGui();
+
         void update(Napicu::Scene *scene);
+
         void render();
+
         void destroy();
     };
 }

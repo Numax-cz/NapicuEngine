@@ -89,7 +89,6 @@ namespace Napicu {
             this->imGuiLayout->update(this->current_scene);
 
 
-
             glfwPollEvents();
 
             glClearColor(0.0f, 0.0f, 0.0f, 1.0f);

@@ -15,7 +15,7 @@ namespace Napicu {
         int batchSize, zIndex;
 
         Napicu::Shader *shader;
-        std::vector<Napicu::Texture*> textures;
+        std::vector<Napicu::Texture *> textures;
 
         float *vertexArray{};
         int *elementArray{};

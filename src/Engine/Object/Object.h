@@ -20,7 +20,7 @@ namespace Napicu {
 
 
     public:
-        Napicu::ObjectTransform* transform;
+        Napicu::ObjectTransform *transform;
 
         Object(const std::string &name);
 

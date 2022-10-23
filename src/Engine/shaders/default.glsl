@@ -20,8 +20,8 @@ void main() {
     gl_Position = uProjection *  vec4(aPos, 1.0);
 }
 
-#shader fragment
-#version 460 core
+    #shader fragment
+    #version 460 core
 
 in vec4 fColor;
 in vec2 fTexCords;
@@ -33,9 +33,9 @@ uniform sampler2D texSampler[8];
 
 void main(){
 
-    if(fTexId > 0){
+    if (fTexId > 0){
         int id = int(fTexId);
         //color = fColor * texture(texSampler[id], fTexCords);
         color = texture(texSampler[id], fTexCords);
-    }else color = fColor;
+    } else color = fColor;
 }

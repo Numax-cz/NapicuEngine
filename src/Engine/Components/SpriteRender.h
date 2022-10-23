@@ -15,8 +15,8 @@ namespace Napicu {
 
     protected:
         glm::vec4 *color = new glm::vec4(0, 1, 1, 1);
-        Napicu::Sprite* sprite = new Napicu::Sprite(nullptr);
-        Napicu::ObjectTransform* lastTransform;
+        Napicu::Sprite *sprite = new Napicu::Sprite(nullptr);
+        Napicu::ObjectTransform *lastTransform;
         bool dirty = true;
 
     public:
@@ -28,7 +28,7 @@ namespace Napicu {
 
         }
 
-        SpriteRender(Napicu::Sprite* sprite) : sprite(sprite) , lastTransform(this->object->transform){
+        SpriteRender(Napicu::Sprite *sprite) : sprite(sprite), lastTransform(this->object->transform) {
 
         }
 
@@ -37,16 +37,16 @@ namespace Napicu {
         }
 
         void update(double delta_time) override {
-            if(!this->lastTransform->equals(this->object->transform)){
+            if (!this->lastTransform->equals(this->object->transform)) {
                 this->object->transform->copy(this->lastTransform);
                 this->dirty = true;
             }
         }
 
-        void imGui() override{
+        void imGui() override {
             float colors[4] = {this->color->x, this->color->y, this->color->z, this->color->w};
-            if(ImGui::ColorPicker4("Pico picker vole: ", (float*)&colors)){ //TODO
-                this->setColor(new glm::vec4(colors[0] , colors[1], colors[2], colors[3]));
+            if (ImGui::ColorPicker4("Pico picker vole: ", (float *) &colors)) { //TODO
+                this->setColor(new glm::vec4(colors[0], colors[1], colors[2], colors[3]));
             }
         }
 
@@ -65,18 +65,17 @@ namespace Napicu {
             return this->sprite->getTexCords();
         }
 
-        void setSprite(Napicu::Sprite* sprite) {
+        void setSprite(Napicu::Sprite *sprite) {
             this->sprite = sprite;
             this->dirty = true;
         }
 
-        void setColor(glm::vec4* color){
+        void setColor(glm::vec4 *color) {
             this->color = color;
             this->dirty = true;
         }
     };
 }
-
 
 
 #endif //OPENGL_SPRITERENDER_H

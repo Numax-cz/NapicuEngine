@@ -13,7 +13,7 @@ namespace Napicu {
     protected:
         std::list<Napicu::Object *> sceneObjects = {};
         Napicu::Render *render = new Napicu::Render();
-        Napicu::Object* activeGameObject = nullptr;
+        Napicu::Object *activeGameObject = nullptr;
 
 
     private:
@@ -29,9 +29,8 @@ namespace Napicu {
         virtual void init() {};
 
 
-
-        void imGuiScene(){
-            if(this->activeGameObject != nullptr){
+        void imGuiScene() {
+            if (this->activeGameObject != nullptr) {
                 ImGui::Begin("Inspector");
                 this->activeGameObject->imGui();
                 ImGui::End();
