@@ -41,7 +41,7 @@ namespace Napicu {
         glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, this->VERTEX_SIZE_BYTES, nullptr);
         glEnableVertexAttribArray(0);
 
-        //Set indices attribute pointerí
+        //Set indices attribute pointers
         glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, this->VERTEX_SIZE_BYTES, (void *) (2 * sizeof(float)));
         glEnableVertexAttribArray(1);
 
