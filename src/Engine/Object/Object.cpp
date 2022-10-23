@@ -2,11 +2,11 @@
 
 namespace Napicu {
 
-    Object::Object(const std::string &name) : name(name), transform(*new Napicu::ObjectTransform()) {
+    Object::Object(const std::string &name) : name(name), transform(new Napicu::ObjectTransform()) {
 
     }
 
-    Object::Object(const std::string &name, Napicu::ObjectTransform transform) : name(name), transform(transform) {
+    Object::Object(const std::string &name, Napicu::ObjectTransform *transform) : name(name), transform(transform) {
 
     }
 

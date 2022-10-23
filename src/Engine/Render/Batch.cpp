@@ -60,9 +60,25 @@ namespace Napicu {
     }
 
     void Batch::render() {
+
+        bool bf = false;
+        for (int i = 0; i < this->sprites.size(); ++i){
+            if(this->sprites[i]->isDirty()){
+
+                this->loadVertexP(i);
+                this->sprites[i]->resetDirty();
+                bf = true;
+            }
+        }
+
+        if(bf){
+            glBindBuffer(GL_ARRAY_BUFFER, this->vboID);
+            glBufferSubData(GL_ARRAY_BUFFER, 0, (GLsizeiptr)((this->batchSize * 4 * VERTEX_SIZE) * sizeof(float)), this->vertexArray);
+        }
+
+
         glBindVertexArray(this->vaoID);
         if (this->eboID > 0) glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->eboID);
-        //glBufferSubData(GL_ARRAY_BUFFER, 0, (GLsizeiptr)((this->batchSize * 4 * VERTEX_SIZE) * sizeof(float)), this->vertexArray);
 
 
 
@@ -84,7 +100,6 @@ namespace Napicu {
 
 
 
-        glBindVertexArray(this->vaoID);
         glEnableVertexAttribArray(0);
         glEnableVertexAttribArray(1);
 
@@ -157,9 +172,13 @@ namespace Napicu {
 
             //Position
             this->vertexArray[offSet] =
-                    spriteRender->object->transform.position.x + (xA * spriteRender->object->transform.scale.x);
+                    spriteRender->object->transform->position.x + (xA * spriteRender->object->transform->scale.x);
             this->vertexArray[offSet + 1] =
-                    spriteRender->object->transform.position.y + (yA * spriteRender->object->transform.scale.y);
+                    spriteRender->object->transform->position.y + (yA * spriteRender->object->transform->scale.y);
+
+
+
+
 
             //Color
             this->vertexArray[offSet + 2] = color->x; //R

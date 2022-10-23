@@ -12,12 +12,13 @@ namespace Napicu {
 
 
 
-        Napicu::Object *ob = new Napicu::Object("Obj", *new Napicu::ObjectTransform(*new glm::vec2(400, 100),
+        Napicu::Object *ob = new Napicu::Object("Obj", new Napicu::ObjectTransform(*new glm::vec2(400, 100),
                                                                                     *new glm::vec2(500, 500), 1));
-        ob->addComponent(new Napicu::SpriteRender(
-                new Napicu::Sprite(new Napicu::Texture("src/assets/bird.png"))));
+        ob->addComponent(new Napicu::SpriteRender());
 
         this->addObjectToScene(ob);
+        this->activeGameObject = ob;
+
 
 
 
