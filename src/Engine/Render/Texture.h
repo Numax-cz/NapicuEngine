@@ -25,6 +25,7 @@ namespace Napicu {
 
         inline int GetHeight() const { return this->height; }
 
+        inline unsigned int getTextureID() const { return this->render_id; }
 
     };
 }

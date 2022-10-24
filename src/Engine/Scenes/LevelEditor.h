@@ -8,6 +8,7 @@ namespace Napicu {
     class LevelEditor : public Napicu::Scene {
 
     private:
+        Napicu::Sprite flappyBirdImage = *new Napicu::Sprite(new Napicu::Texture("src/assets/bird.png"));
 
 
     public:

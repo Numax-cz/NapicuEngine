@@ -34,7 +34,28 @@ namespace Napicu {
     }
 
     void LevelEditor::imGui() {
+        ImGui::Begin("Explorer");
 
+        ImVec2 windowPosition = ImGui::GetWindowPos();
+        ImVec2 windowScale = ImGui::GetWindowSize();
+
+        float windowXY = windowPosition.x + windowPosition.y;
+
+
+
+
+
+        if(ImGui::ImageButton(reinterpret_cast<ImTextureID>(this->flappyBirdImage.getTexture()->getTextureID()),
+                              ImVec2(50, 50),
+                              ImVec2(this->flappyBirdImage.getTexCords()[0].x, this->flappyBirdImage.getTexCords()[0].y),
+                            ImVec2(this->flappyBirdImage.getTexCords()[2].x, this->flappyBirdImage.getTexCords()[2].y),
+                            0
+
+                              )){
+
+        }
+
+        ImGui::End();
     }
 
 
