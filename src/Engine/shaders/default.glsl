@@ -20,8 +20,8 @@ void main() {
     gl_Position = uProjection *  vec4(aPos, 1.0);
 }
 
-    #shader fragment
-    #version 460 core
+#shader fragment
+#version 460 core
 
 in vec4 fColor;
 in vec2 fTexCords;

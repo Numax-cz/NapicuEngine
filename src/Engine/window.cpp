@@ -30,6 +30,7 @@ namespace Napicu {
         }
 
         if (Window::current_scene) {
+            Window::current_scene->load();
             Window::current_scene->init();
             Window::current_scene->start();
         }

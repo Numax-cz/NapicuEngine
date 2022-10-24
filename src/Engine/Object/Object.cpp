@@ -1,12 +1,14 @@
 #include "Object.h"
 
+#include <utility>
+
 namespace Napicu {
 
-    Object::Object(const std::string &name) : name(name), transform(new Napicu::ObjectTransform()) {
+    Object::Object(std::string name) : name(std::move(name)), transform(new Napicu::ObjectTransform()) {
 
     }
 
-    Object::Object(const std::string &name, Napicu::ObjectTransform *transform) : name(name), transform(transform) {
+    Object::Object(std::string name, Napicu::ObjectTransform *transform) : name(std::move(name)), transform(transform) {
 
     }
 

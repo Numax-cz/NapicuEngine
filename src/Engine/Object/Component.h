@@ -4,6 +4,7 @@
 
 #include "Object.h"
 
+
 namespace Napicu {
     class Object;
 
@@ -19,7 +20,9 @@ namespace Napicu {
 
         virtual void start() {};
 
-        virtual void imGui() {};
+        virtual void imGui() {
+
+        };
     };
 
 

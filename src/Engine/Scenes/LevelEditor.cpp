@@ -1,17 +1,22 @@
 
 
 #include "LevelEditor.h"
-
-#include "../Components/SpriteRender.h"
+#include "../Components/Rigid.h"
 
 namespace Napicu {
 
     void LevelEditor::init() {
 
+//        if(levelLoad){
+//
+//            return;
+//        }
+
 
         Napicu::Object *ob = new Napicu::Object("Obj", new Napicu::ObjectTransform(*new glm::vec2(400, 100),
                                                                                    *new glm::vec2(500, 500), 1));
         ob->addComponent(new Napicu::SpriteRender());
+        ob->addComponent(new Napicu::Rigid());
 
         this->addObjectToScene(ob);
         this->activeGameObject = ob;
@@ -30,9 +35,6 @@ namespace Napicu {
 
     void LevelEditor::imGui() {
 
-        ImGui::Begin("Test");
-        ImGui::Text("Test text");
-        ImGui::End();
     }
 
 

@@ -14,6 +14,7 @@ namespace Napicu {
         std::list<Napicu::Object *> sceneObjects = {};
         Napicu::Render *render = new Napicu::Render();
         Napicu::Object *activeGameObject = nullptr;
+        bool levelLoad = false;
 
 
     private:
@@ -27,6 +28,12 @@ namespace Napicu {
         virtual void update(double delta_time) {};
 
         virtual void init() {};
+
+        void load(){
+            //TODO LOAD CONFIG DATA
+
+            this->levelLoad = true;
+        }
 
 
         void imGuiScene() {
