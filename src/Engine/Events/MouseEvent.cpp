@@ -1,5 +1,5 @@
 #include "MouseEvent.h"
-#include "../window.h"
+
 
 namespace Napicu{
 
@@ -43,7 +43,7 @@ namespace Napicu{
     }
 
     float MouseEvent::getOrthoX() {
-        float i = (Window::)
+
         return 0;
     }
 

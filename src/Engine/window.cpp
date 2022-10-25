@@ -4,13 +4,16 @@
 #include "Scenes/Level.h"
 #include "Events/MouseEvent.h"
 
+
 namespace Napicu {
     inline Napicu::Scene Window::*current_scene = nullptr;
 
-    Window::Window(const std::string &title, int width, int height)
-            : title(std::move(title)), width(width), height(height) {}
+    Window::Window()
+            : title("Window"), width(1280), height(720) {
 
-    void Window::Run() {
+    }
+
+    void Window::run() {
         this->Init();
         this->Loop();
         this->Destroy();
@@ -53,7 +56,7 @@ namespace Napicu {
         glfwWindowHint(GLFW_MAXIMIZED, GLFW_FALSE);
 
         try {
-            this->window = glfwCreateWindow(this->width, this->height, this->title.c_str(), nullptr, nullptr);
+            this->glfwWindow = glfwCreateWindow(this->width, this->height, this->title.c_str(), nullptr, nullptr);
             if (this->window == nullptr) {
                 throw std::runtime_error("Failed to creat the GLFW window");
             }
@@ -61,22 +64,22 @@ namespace Napicu {
             Napicu::Console::Error(e.what());
         }
 
-        glfwSetMouseButtonCallback(this->window, MouseEvent::mouseEventButtonCallback);
-        glfwSetCursorPosCallback(this->window, MouseEvent::mouseEventPositionCallback);
-        glfwSetScrollCallback(this->window, MouseEvent::mouseEventScrollCallback);
+        glfwSetMouseButtonCallback(this->glfwWindow, MouseEvent::mouseEventButtonCallback);
+        glfwSetCursorPosCallback(this->glfwWindow, MouseEvent::mouseEventPositionCallback);
+        glfwSetScrollCallback(this->glfwWindow, MouseEvent::mouseEventScrollCallback);
 
-        glfwMakeContextCurrent(this->window);
+        glfwMakeContextCurrent(this->glfwWindow);
 
         glfwSwapInterval(1); //TODO V-Sync
 
-        glfwShowWindow(this->window);
+        glfwShowWindow(this->glfwWindow);
 
         gladLoadGL();
 
         glEnable(GL_BLEND);
         glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 
-        this->imGuiLayout = new Napicu::ImGuiLayout(this->window);
+        this->imGuiLayout = new Napicu::ImGuiLayout(this->glfwWindow);
         this->imGuiLayout->initImGui();
 
 
@@ -85,7 +88,7 @@ namespace Napicu {
     }
 
     void Window::Loop() {
-        while (!glfwWindowShouldClose(this->window)) {
+        while (!glfwWindowShouldClose(this->glfwWindow)) {
 
             double current_frame = glfwGetTime();
             this->delta_time = current_frame - this->last_frame;
@@ -107,7 +110,7 @@ namespace Napicu {
             this->imGuiLayout->render();
 
 
-            glfwSwapBuffers(this->window);
+            glfwSwapBuffers(this->glfwWindow);
         }
     }
 

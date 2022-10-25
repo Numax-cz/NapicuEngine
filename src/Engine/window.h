@@ -1,9 +1,12 @@
 #pragma once
 
-
 #include <iostream>
 
-#include "glad/glad.h"
+
+#if !defined(__gl_h_)
+    #include "glad/glad.h"
+#endif
+
 #include "GLFW/glfw3.h"
 #include "Scene.h"
 #include "ImGuiLayout.h"
@@ -13,9 +16,9 @@ namespace Napicu {
 
     class Window {
     private:
-        GLFWwindow *window;
+        GLFWwindow *glfwWindow;
         Napicu::ImGuiLayout *imGuiLayout;
-
+        inline static Window *window;
 
         std::string title;
         int width, height;
@@ -23,13 +26,23 @@ namespace Napicu {
 
 
     public:
-        Window(const std::string &title, int width, int height);
+        Window();
 
         inline static Napicu::Scene *current_scene;
 
         static void ChangeScene(int scene_index);
 
-        void Run();
+        void run();
+
+        static Window* get() {
+            if(Window::window == nullptr){
+                Window::window = new Window();
+            }
+            return Window::window;
+        }
+
+        int getWidth() {return this->width;}
+        int getHeight() {return this->height;}
 
 
     protected:

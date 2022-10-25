@@ -1,11 +1,12 @@
 #pragma once
-#include "GLFW/glfw3.h"
+
+#include "../window.h"
 
 namespace Napicu{
     class MouseEvent {
 
     private:
-        static MouseEvent *mouseEvent;
+        inline static MouseEvent *mouseEvent;
         double xScroll, yScroll;
         double xPosition, yPosition, xLast, yLast;
         bool mouseButtonPressed[3] = {};
@@ -14,6 +15,8 @@ namespace Napicu{
         MouseEvent();
 
     public:
+
+
 
         static MouseEvent *get();
 
