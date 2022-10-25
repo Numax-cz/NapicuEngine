@@ -2,7 +2,7 @@
 #include "window.h"
 #include "Scenes/LevelEditor.h"
 #include "Scenes/Level.h"
-
+#include "Events/MouseEvent.h"
 
 namespace Napicu {
     inline Napicu::Scene Window::*current_scene = nullptr;
@@ -60,6 +60,10 @@ namespace Napicu {
         } catch (const std::exception &e) {
             Napicu::Console::Error(e.what());
         }
+
+        glfwSetMouseButtonCallback(this->window, MouseEvent::mouseEventButtonCallback);
+        glfwSetCursorPosCallback(this->window, MouseEvent::mouseEventPositionCallback);
+        glfwSetScrollCallback(this->window, MouseEvent::mouseEventScrollCallback);
 
         glfwMakeContextCurrent(this->window);
 

@@ -49,9 +49,9 @@ namespace Napicu {
                               ImVec2(50, 50),
                               ImVec2(this->flappyBirdImage.getTexCords()[0].x, this->flappyBirdImage.getTexCords()[0].y),
                             ImVec2(this->flappyBirdImage.getTexCords()[2].x, this->flappyBirdImage.getTexCords()[2].y),
-                            0
+                            0)){
 
-                              )){
+            //TODO CLICK
 
         }
 
