@@ -1,4 +1,5 @@
 #include "MouseEvent.h"
+#include "../window.h"
 
 namespace Napicu{
 
@@ -39,5 +40,14 @@ namespace Napicu{
         get()->yScroll = 0;
         get()->xLast = get()->xPosition;
         get()->yLast = get()->yPosition;
+    }
+
+    float MouseEvent::getOrthoX() {
+        float i = (Window::)
+        return 0;
+    }
+
+    float MouseEvent::getOrthoY() {
+        return 0;
     }
 }

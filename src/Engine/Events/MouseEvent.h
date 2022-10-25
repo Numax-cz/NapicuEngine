@@ -25,9 +25,17 @@ namespace Napicu{
 
         static void endFrame();
 
+        static float getOrthoX();
+
+        static float getOrthoY();
+
         static float getX() {return (float)get()->xPosition;}
 
         static float getY() {return (float)get()->yPosition;}
+
+        static float getDx() {return (float)(get()->xLast - get()->xLast);}
+
+        static float getDy() {return (float)(get()->yLast - get()->yLast);}
 
         static float getScrollX() {return (float)get()->xScroll;}
 
