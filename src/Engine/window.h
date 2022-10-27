@@ -41,8 +41,8 @@ namespace Napicu {
             return Window::window;
         }
 
-        int getWidth() {return this->width;}
-        int getHeight() {return this->height;}
+        float static getWidth() {return Window::get()->width;}
+        int static getHeight() {return Window::get()->height;}
 
 
     protected:
