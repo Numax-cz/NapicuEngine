@@ -14,9 +14,9 @@ namespace Napicu {
         float rotation = 0.0f;
 
 
-
     public:
         Camera(float left, float right, float bottom, float top);
+
         void recalculateVMatrix();
 
         void setPosition(const glm::vec3 &position) {

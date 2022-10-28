@@ -29,7 +29,7 @@ namespace Napicu {
 
         virtual void init() {};
 
-        void load(){
+        void load() {
             //TODO LOAD CONFIG DATA
 
             this->levelLoad = true;

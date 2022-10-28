@@ -120,7 +120,7 @@ namespace Napicu {
 
     }
 
-    void Window::windowSizeCallback(GLFWwindow* window, int width, int height) {
+    void Window::windowSizeCallback(GLFWwindow *window, int width, int height) {
         Window::get()->setWidth(width);
         Window::get()->setHeight(height);
     }

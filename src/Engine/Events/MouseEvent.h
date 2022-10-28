@@ -2,7 +2,7 @@
 
 #include "../window.h"
 
-namespace Napicu{
+namespace Napicu {
     class MouseEvent {
 
     private:
@@ -17,14 +17,13 @@ namespace Napicu{
     public:
 
 
-
         static MouseEvent *get();
 
-        static void mouseEventPositionCallback(GLFWwindow* window, double xPosition, double yPosition);
+        static void mouseEventPositionCallback(GLFWwindow *window, double xPosition, double yPosition);
 
-        static void mouseEventButtonCallback(GLFWwindow* window, int button, int action, int mods);
+        static void mouseEventButtonCallback(GLFWwindow *window, int button, int action, int mods);
 
-        static void mouseEventScrollCallback(GLFWwindow* window, double xOffset, double yOffset);
+        static void mouseEventScrollCallback(GLFWwindow *window, double xOffset, double yOffset);
 
         static void endFrame();
 
@@ -32,19 +31,19 @@ namespace Napicu{
 
         static float getOrthoY();
 
-        static float getX() {return (float)get()->xPosition;}
+        static float getX() { return (float) get()->xPosition; }
 
-        static float getY() {return (float)get()->yPosition;}
+        static float getY() { return (float) get()->yPosition; }
 
-        static float getDx() {return (float)(get()->xLast - get()->xLast);}
+        static float getDx() { return (float) (get()->xLast - get()->xLast); }
 
-        static float getDy() {return (float)(get()->yLast - get()->yLast);}
+        static float getDy() { return (float) (get()->yLast - get()->yLast); }
 
-        static float getScrollX() {return (float)get()->xScroll;}
+        static float getScrollX() { return (float) get()->xScroll; }
 
-        static float getScrollY() {return (float)get()->yScroll;}
+        static float getScrollY() { return (float) get()->yScroll; }
 
-        static bool  getIsDragging() {return get()->isDragging;}
+        static bool getIsDragging() { return get()->isDragging; }
     };
 }
 

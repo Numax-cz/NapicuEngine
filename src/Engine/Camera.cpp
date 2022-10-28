@@ -8,15 +8,15 @@ namespace Napicu {
     }
 
     void Camera::recalculateVMatrix() {
-        glm::vec3 cameraFront = *new glm::vec3 (0.0f, 0.0f, -1.0f);
-        glm::vec3  cameraUp = *new glm::vec3 (0.0f, 1.0f, 0.0f);
-        this->vMatrix =  {};
+        glm::vec3 cameraFront = *new glm::vec3(0.0f, 0.0f, -1.0f);
+        glm::vec3 cameraUp = *new glm::vec3(0.0f, 1.0f, 0.0f);
+        this->vMatrix = {};
 
         this->vMatrix = glm::lookAt(
 
-                *new glm::vec3 (position.x, position.y, 20.0f),
-                          cameraFront + *new glm::vec3(position.x, position.y, 0.0f),
-                          cameraUp);
+                *new glm::vec3(position.x, position.y, 20.0f),
+                cameraFront + *new glm::vec3(position.x, position.y, 0.0f),
+                cameraUp);
 
         this->vpMatrix = pMatrix * vMatrix;
         this->vpMatrixInverse = glm::inverse(pMatrix * vMatrix);

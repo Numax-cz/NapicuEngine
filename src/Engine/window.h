@@ -4,7 +4,9 @@
 
 
 #if !defined(__gl_h_)
-    #include "glad/glad.h"
+
+#include "glad/glad.h"
+
 #endif
 
 #include "GLFW/glfw3.h"
@@ -35,21 +37,25 @@ namespace Napicu {
 
         void run();
 
-        static Window* get() {
-            if(Window::window == nullptr){
+        static Window *get() {
+            if (Window::window == nullptr) {
                 Window::window = new Window();
             }
             return Window::window;
         }
 
-        int static getWidth() {return Window::get()->width;}
-        int static getHeight() {return Window::get()->height;}
-        void static setWidth(int width) {Window::get()->width = width;}
-        void static setHeight(int height) {Window::get()->height = height;}
+        int static getWidth() { return Window::get()->width; }
+
+        int static getHeight() { return Window::get()->height; }
+
+        void static setWidth(int width) { Window::get()->width = width; }
+
+        void static setHeight(int height) { Window::get()->height = height; }
 
 
     protected:
-        static void windowSizeCallback(GLFWwindow* window, int width, int height);
+        static void windowSizeCallback(GLFWwindow *window, int width, int height);
+
         void Loop();
 
         void Init();
