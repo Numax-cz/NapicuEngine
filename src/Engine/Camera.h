@@ -10,7 +10,7 @@ namespace Napicu {
     private:
         //projection - view
         glm::mat4 pMatrix, vMatrix, vpMatrix, vpMatrixInverse = {};
-        glm::vec3 position = {-200, 0, 0};
+        glm::vec3 position = {0, 0, 0};
         float rotation = 0.0f;
 
 
