@@ -43,11 +43,16 @@ namespace Napicu{
     }
 
     float MouseEvent::getOrthoX() {
-
-        return 0;
+        glm::mat4 invMat = Window::current_scene->getCamera().getViewProjectionMatrixInverse();
+        glm::vec4 near = glm::vec4 ((getX() / Window::getWidth()) * 2 - 1, 0, 0, 1.0);
+        glm::vec4 nearResult = invMat * near;
+        return nearResult.x;
     }
 
     float MouseEvent::getOrthoY() {
-        return 0;
+        glm::mat4 invMat = Window::current_scene->getCamera().getViewProjectionMatrixInverse();
+        glm::vec4 near = glm::vec4 (0, (getY() / Window::getHeight()) * 2 - 1, 0, 1.0);
+        glm::vec4 nearResult = invMat * near;
+        return nearResult.y;
     }
 }

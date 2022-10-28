@@ -4,29 +4,21 @@
 namespace Napicu {
     Camera::Camera(float left, float right, float bottom, float top)
             : pMatrix(glm::ortho(left, right, bottom, top, 0.0f, 100.0f)), vMatrix(1.0f) {
-
+        this->recalculateVMatrix();
     }
 
-    glm::mat4 Camera::getViewMatrix() {
-        glm::vec3 front = * new glm::vec3(0.0f, 0.0f, -1.0f);
-        glm::vec3 up = * new glm::vec3(0.0f, 1.0f, 0.0f);
+    void Camera::recalculateVMatrix() {
+        glm::vec3 cameraFront = *new glm::vec3 (0.0f, 0.0f, -1.0f);
+        glm::vec3  cameraUp = *new glm::vec3 (0.0f, 1.0f, 0.0f);
+        this->vMatrix =  {};
 
-        //this->vMatrix = * new glm::mat4(1.0f);
+        this->vMatrix = glm::lookAt(
 
-        this->vMatrix = glm::lookAt(position, position + front, up);
+                *new glm::vec3 (position.x, position.y, 20.0f),
+                          cameraFront + *new glm::vec3(position.x, position.y, 0.0f),
+                          cameraUp);
 
-
-
-        return this->vMatrix;
+        this->vpMatrix = pMatrix * vMatrix;
+        this->vpMatrixInverse = glm::inverse(pMatrix * vMatrix);
     }
-
-    glm::mat4 Camera::getProjectionMatrix() {
-        return this->pMatrix;
-    }
-
-    glm::mat4 Camera::getViewProjectionMatrix() {
-        return this->getViewMatrix() * this->getProjectionMatrix();
-    }
-
-
 }

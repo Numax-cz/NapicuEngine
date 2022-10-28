@@ -67,6 +67,7 @@ namespace Napicu {
         glfwSetMouseButtonCallback(this->glfwWindow, MouseEvent::mouseEventButtonCallback);
         glfwSetCursorPosCallback(this->glfwWindow, MouseEvent::mouseEventPositionCallback);
         glfwSetScrollCallback(this->glfwWindow, MouseEvent::mouseEventScrollCallback);
+        glfwSetWindowSizeCallback(this->glfwWindow, Window::windowSizeCallback);
 
         glfwMakeContextCurrent(this->glfwWindow);
 
@@ -117,6 +118,11 @@ namespace Napicu {
     void Window::Destroy() {
         this->imGuiLayout->destroy();
 
+    }
+
+    void Window::windowSizeCallback(GLFWwindow* window, int width, int height) {
+        Window::get()->setWidth(width);
+        Window::get()->setHeight(height);
     }
 
 

@@ -2,6 +2,7 @@
 
 #include "LevelEditor.h"
 #include "../Components/Rigid.h"
+#include "../Events/MouseEvent.h"
 
 namespace Napicu {
 
@@ -20,7 +21,6 @@ namespace Napicu {
 
         this->addObjectToScene(ob);
         this->activeGameObject = ob;
-
 
     }
 

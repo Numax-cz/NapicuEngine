@@ -32,6 +32,7 @@ namespace Napicu {
 
         static void ChangeScene(int scene_index);
 
+
         void run();
 
         static Window* get() {
@@ -41,11 +42,14 @@ namespace Napicu {
             return Window::window;
         }
 
-        float static getWidth() {return Window::get()->width;}
+        int static getWidth() {return Window::get()->width;}
         int static getHeight() {return Window::get()->height;}
+        void static setWidth(int width) {Window::get()->width = width;}
+        void static setHeight(int height) {Window::get()->height = height;}
 
 
     protected:
+        static void windowSizeCallback(GLFWwindow* window, int width, int height);
         void Loop();
 
         void Init();
