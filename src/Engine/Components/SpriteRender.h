@@ -1,14 +1,12 @@
 #pragma once
 
-#ifndef OPENGL_SPRITERENDER_H
-#define OPENGL_SPRITERENDER_H
 
 #include "../Object/Component.h"
 #include "../Utils/Console.h"
 #include "../Render/Texture.h"
 #include "Sprite.h"
 #include <imgui.h>
-
+#include <glm/vec4.hpp>
 
 namespace Napicu {
     class SpriteRender : public Napicu::Component {
@@ -76,6 +74,3 @@ namespace Napicu {
         }
     };
 }
-
-
-#endif //OPENGL_SPRITERENDER_H

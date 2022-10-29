@@ -3,6 +3,7 @@
 #include "LevelEditor.h"
 #include "../Components/Rigid.h"
 #include "../Events/MouseEvent.h"
+#include "../Components/Sprite.h"
 
 namespace Napicu {
 
@@ -12,6 +13,8 @@ namespace Napicu {
 //
 //            return;
 //        }
+
+        this->explorerObjectsList = {new Napicu::Sprite(new Napicu::Texture("src/assets/bird.png"))};
 
 
         Napicu::Object *ob = new Napicu::Object("Obj", new Napicu::ObjectTransform(*new glm::vec2(400, 100),
@@ -41,18 +44,27 @@ namespace Napicu {
 
         float windowXY = windowPosition.x + windowPosition.y;
 
+        for (Napicu::Sprite *sprite : this->explorerObjectsList) {
 
-        if (ImGui::ImageButton(reinterpret_cast<ImTextureID>(this->flappyBirdImage.getTexture()->getTextureID()),
-                               ImVec2(50, 50),
-                               ImVec2(this->flappyBirdImage.getTexCords()[0].x,
-                                      this->flappyBirdImage.getTexCords()[0].y),
-                               ImVec2(this->flappyBirdImage.getTexCords()[2].x,
-                                      this->flappyBirdImage.getTexCords()[2].y),
-                               0)) {
+            if (ImGui::ImageButton(reinterpret_cast<ImTextureID>(sprite->getTexture()->getTextureID()),
+                                   ImVec2(50, 50),
+                                   ImVec2(sprite->getTexCords()[0].x,
+                                          sprite->getTexCords()[0].y),
+                                   ImVec2(sprite->getTexCords()[2].x,
+                                          sprite->getTexCords()[2].y),
+                                   0))
+            {
+                Napicu::Object ob = Napicu::Sprite::generateSpriteObject(sprite, 50, 50);
 
-            //TODO CLICK
 
+
+
+                //TODO CLICK
+
+            }
         }
+
+
 
         ImGui::End();
     }

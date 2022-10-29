@@ -1,6 +1,7 @@
 
 
 #include "Sprite.h"
+#include "SpriteRender.h"
 
 namespace Napicu {
 
@@ -15,5 +16,15 @@ namespace Napicu {
 
     Sprite::Sprite(Napicu::Texture *texture, std::vector<glm::vec2> texCords) : texture(texture), texCords(texCords) {
 
+    }
+
+    Napicu::Object Sprite::generateSpriteObject(Sprite* sprite, float sizeX, float sizeY) {
+        Napicu::SpriteRender *render = new Napicu::SpriteRender();
+        Napicu::ObjectTransform *objectTransform = new Napicu::ObjectTransform(*new glm::vec2(sizeX, sizeY), *new glm::vec2(), 0);
+        Napicu::Object object = *new Napicu::Object("NewObject", objectTransform);
+        render->setSprite(sprite);
+        object.addComponent(render);
+
+        return object;
     }
 }
