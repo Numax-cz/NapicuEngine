@@ -5,7 +5,7 @@
 
 #include <list>
 #include <glm/vec2.hpp>
-#include "Component.h"
+#include "../Components/Component.h"
 #include "../Utils/Console.h"
 #include "Transform.h"
 

@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "../Object/Component.h"
+#include "../Components/Component.h"
 #include "../Utils/Console.h"
 #include "../Render/Texture.h"
 #include "Sprite.h"
