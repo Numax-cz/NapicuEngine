@@ -25,6 +25,8 @@ namespace Napicu {
 
         static void mouseEventScrollCallback(GLFWwindow *window, double xOffset, double yOffset);
 
+        static bool mouseButtonDown(int key);
+
         static void endFrame();
 
         static float getOrthoX();

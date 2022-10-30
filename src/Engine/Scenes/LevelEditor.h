@@ -2,6 +2,7 @@
 
 #include "../Scene.h"
 #include <iostream>
+#include "../Components/MouseEventControls.h"
 
 namespace Napicu {
 
@@ -15,6 +16,8 @@ namespace Napicu {
         LevelEditor() : Napicu::Scene() {
 
         };
+
+        Napicu::MouseEventControls mouseControls = *new Napicu::MouseEventControls();
 
         void update(double delta_time) override;
 

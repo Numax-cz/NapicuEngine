@@ -19,6 +19,7 @@ namespace Napicu {
 
         Napicu::Object *ob = new Napicu::Object("Obj", new Napicu::ObjectTransform(*new glm::vec2(400, 100),
                                                                                    *new glm::vec2(500, 500), 1));
+
         ob->addComponent(new Napicu::SpriteRender());
         ob->addComponent(new Napicu::Rigid());
 
@@ -28,6 +29,7 @@ namespace Napicu {
     }
 
     void LevelEditor::update(double delta_time) {
+        this->mouseControls.update(delta_time);
         for (Napicu::Object *object: this->sceneObjects) {
             object->update(delta_time);
         }
@@ -54,9 +56,9 @@ namespace Napicu {
                                           sprite->getTexCords()[2].y),
                                    0))
             {
-                Napicu::Object ob = Napicu::Sprite::generateSpriteObject(sprite, 50, 50);
+                Napicu::Object *ob = Napicu::Sprite::generateSpriteObject(sprite, 50, 50);
 
-
+                this->mouseControls.pickUpObject(ob);
 
 
                 //TODO CLICK

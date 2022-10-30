@@ -22,7 +22,7 @@ namespace Napicu {
 
         Sprite(Napicu::Texture *texture, std::vector<glm::vec2> texCords);
 
-        static Napicu::Object generateSpriteObject(Sprite *sprite, float sizeX, float sizeY);
+        static Napicu::Object *generateSpriteObject(Sprite *sprite, float sizeX, float sizeY);
 
         std::vector<glm::vec2> getTexCords() const { return this->texCords; }
 

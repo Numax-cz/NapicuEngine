@@ -173,9 +173,6 @@ namespace Napicu {
                     spriteRender->object->transform->position.y + (yA * spriteRender->object->transform->scale.y);
 
 
-
-
-
             //Color
             this->vertexArray[offSet + 2] = color->x; //R
             this->vertexArray[offSet + 3] = color->y; //G

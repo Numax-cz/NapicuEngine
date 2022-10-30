@@ -4,13 +4,17 @@
 
 namespace Napicu{
 
-    class MouseItem : public Napicu::Component{
+class MouseEventControls : public Napicu::Component{
     private:
 
     public:
         Napicu::Object* holdingObject = nullptr;
 
         void pickUpObject(Napicu::Object* object);
+
+        void drop();
+
+        void update(double delta_time) override;
 
 
 

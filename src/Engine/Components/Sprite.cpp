@@ -18,12 +18,12 @@ namespace Napicu {
 
     }
 
-    Napicu::Object Sprite::generateSpriteObject(Sprite* sprite, float sizeX, float sizeY) {
+    Napicu::Object *Sprite::generateSpriteObject(Sprite* sprite, float sizeX, float sizeY) {
         Napicu::SpriteRender *render = new Napicu::SpriteRender();
-        Napicu::ObjectTransform *objectTransform = new Napicu::ObjectTransform(*new glm::vec2(sizeX, sizeY), *new glm::vec2(), 0);
-        Napicu::Object object = *new Napicu::Object("NewObject", objectTransform);
+        Napicu::ObjectTransform *objectTransform = new Napicu::ObjectTransform(*new glm::vec2(), *new glm::vec2(sizeX, sizeY), 0);
+        Napicu::Object *object = new Napicu::Object("NewObject", objectTransform);
         render->setSprite(sprite);
-        object.addComponent(render);
+        object->addComponent(render);
 
         return object;
     }

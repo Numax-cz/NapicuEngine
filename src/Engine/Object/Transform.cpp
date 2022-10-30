@@ -1,6 +1,5 @@
 #include "Transform.h"
 
-
 namespace Napicu {
 
     ObjectTransform *ObjectTransform::copy() {

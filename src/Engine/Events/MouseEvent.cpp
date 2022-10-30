@@ -11,6 +11,10 @@ namespace Napicu {
         return MouseEvent::mouseEvent;
     }
 
+    bool MouseEvent::mouseButtonDown(int key) {
+        return get()->mouseButtonPressed[key];
+    }
+
     void MouseEvent::mouseEventPositionCallback(GLFWwindow *window, double xPosition, double yPosition) {
         get()->xLast = get()->xPosition;
         get()->yLast = get()->yPosition;
