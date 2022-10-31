@@ -29,8 +29,8 @@ namespace Napicu {
         template<typename T, typename  = typename std::enable_if<std::is_base_of<Napicu::Component, T>::value>::type *>
         T *getComponent(T *componentClass) {
             for (Napicu::Component *c: this->components) {
-                if (dynamic_cast<const Napicu::Component *>(&(*c)) != nullptr) {
-                    return dynamic_cast<T *>(&(*c));
+                if (static_cast<const Napicu::Component *>(c) != nullptr) {
+                    return static_cast<T *>(c);
                 }
             }
             return nullptr;
