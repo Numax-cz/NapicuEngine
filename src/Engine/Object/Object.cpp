@@ -25,7 +25,7 @@ namespace Napicu {
 
     void Object::start() {
         for (Napicu::Component *i: this->components) {
-            (*i).start();
+            i->start();
         }
     }
 

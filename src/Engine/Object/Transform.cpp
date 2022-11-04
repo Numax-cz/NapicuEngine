@@ -2,13 +2,13 @@
 
 namespace Napicu {
 
-    ObjectTransform *ObjectTransform::copy() {
-        return new ObjectTransform(*new glm::vec2(this->position), *new glm::vec2(this->scale));
+    ObjectTransform ObjectTransform::copy() {
+        return *new ObjectTransform(this->position, this->scale);
     }
 
-    void ObjectTransform::copy(ObjectTransform *to) {
-        this->scale = to->scale;
-        this->position = to->position;
+    void ObjectTransform::copy(ObjectTransform &to) {
+        to.scale = this->scale;
+        to.position = this->position;
     }
 
     bool ObjectTransform::equals(ObjectTransform *obj) {

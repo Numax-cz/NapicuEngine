@@ -26,6 +26,7 @@ namespace Napicu {
         this->addObjectToScene(ob);
         this->activeGameObject = ob;
 
+
     }
 
     void LevelEditor::update(double delta_time) {

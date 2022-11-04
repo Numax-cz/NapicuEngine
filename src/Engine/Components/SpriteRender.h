@@ -14,7 +14,7 @@ namespace Napicu {
     protected:
         glm::vec4 *color = new glm::vec4(0, 1, 1, 1);
         Napicu::Sprite *sprite = new Napicu::Sprite(nullptr);
-        Napicu::ObjectTransform *lastTransform;
+        Napicu::ObjectTransform lastTransform;
         bool dirty = true;
 
     public:
@@ -26,7 +26,7 @@ namespace Napicu {
 
         }
 
-        SpriteRender(Napicu::Sprite *sprite) : sprite(sprite), lastTransform(this->object->transform) {
+        SpriteRender(Napicu::Sprite *sprite) : sprite(sprite), lastTransform(*this->object->transform) {
 
         }
 
@@ -35,7 +35,7 @@ namespace Napicu {
         }
 
         void update(double delta_time) override {
-            if (!this->lastTransform->equals(this->object->transform)) {
+            if (!this->lastTransform.equals(this->object->transform)) {
                 this->object->transform->copy(this->lastTransform);
                 this->dirty = true;
             }

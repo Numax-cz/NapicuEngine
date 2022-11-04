@@ -10,7 +10,7 @@ class MouseEventControls : public Napicu::Component{
     public:
         Napicu::Object* holdingObject = nullptr;
 
-        void pickUpObject(Napicu::Object* object);
+        void pickUpObject(Napicu::Object *object);
 
         void drop();
 
