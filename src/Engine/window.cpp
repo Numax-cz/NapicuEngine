@@ -96,7 +96,7 @@ namespace Napicu {
             this->last_frame = current_frame;
 
             this->imGuiLayout->update(this->current_scene);
-
+            Napicu::Select::beginFrame();
 
             glfwPollEvents();
 
@@ -104,6 +104,7 @@ namespace Napicu {
             glClear(GL_COLOR_BUFFER_BIT);
 
             if (this->delta_time >= 0) {
+                Napicu::Select::draw();
                 Napicu::Window::current_scene->update(this->delta_time);
             }
 

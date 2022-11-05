@@ -4,11 +4,13 @@
 
 namespace Napicu {
 
-    Object::Object(std::string name) : name(std::move(name)), transform(new Napicu::ObjectTransform()) {
+    Object::Object(std::string name) :
+    name(std::move(name)), transform(new Napicu::ObjectTransform()), id(this->idCounter++) {
 
     }
 
-    Object::Object(std::string name, Napicu::ObjectTransform *transform) : name(std::move(name)), transform(transform) {
+    Object::Object(std::string name, Napicu::ObjectTransform *transform) :
+    name(std::move(name)), transform(transform), id(this->idCounter++) {
 
     }
 
@@ -35,5 +37,11 @@ namespace Napicu {
         }
     }
 
+    void Object::init(int maxID) {
+        Object::idCounter = maxID;
+    }
 
+    std::list<Component *> Object::getAllComponents() {
+        return this->components;
+    }
 }

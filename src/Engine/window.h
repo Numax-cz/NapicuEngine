@@ -12,6 +12,7 @@
 #include "GLFW/glfw3.h"
 #include "Scene.h"
 #include "ImGuiLayout.h"
+#include "Render/Select.h"
 
 namespace Napicu {
     class Scene;

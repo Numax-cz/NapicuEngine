@@ -12,6 +12,9 @@ namespace Napicu {
 
 
     private:
+        inline static int idCounter = 0;
+        int id = -1;
+
 
     public:
         Napicu::Object *object{};
@@ -20,9 +23,14 @@ namespace Napicu {
 
         virtual void start() {};
 
-        virtual void imGui() {
+        virtual void imGui() {};
 
-        };
+        void generateId() {
+            if(this->id == -1) this->id = idCounter++;
+        }
+
+        int getId() {return this->id;}
+        
     };
 
 

@@ -15,6 +15,9 @@ namespace Napicu {
     class Object {
 
     private:
+        inline static int idCounter = 0;
+        int id = -1;
+
         std::list<Component *> components;
         std::string name;
 
@@ -53,6 +56,10 @@ namespace Napicu {
         void imGui();
 
         void start();
+
+        std::list<Component *> getAllComponents();
+
+        static void init(int maxID);
     };
 
 }
