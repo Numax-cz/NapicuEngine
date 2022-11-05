@@ -2,7 +2,7 @@
 #include "../window.h"
 #include <glm/vec2.hpp>
 
-namespace Napicu{
+namespace Napicu {
 
     void Select::start() {
         glGenBuffers(1, &Select::vboID);
@@ -11,13 +11,13 @@ namespace Napicu{
         glBindBuffer(GL_ARRAY_BUFFER, Select::vboID);
         glBindVertexArray(Select::vaoID);
 
-        glBufferData(GL_ARRAY_BUFFER, (GLsizeiptr)((Select::max_lines * 6 * 2) * sizeof(float)),
+        glBufferData(GL_ARRAY_BUFFER, (GLsizeiptr) ((Select::max_lines * 6 * 2) * sizeof(float)),
                      Select::vertexArray, GL_STATIC_DRAW);
 
         glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), nullptr);
         glEnableVertexAttribArray(0);
 
-        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void *)(3 * sizeof(float)));
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void *) (3 * sizeof(float)));
         glEnableVertexAttribArray(1);
 
         glLineWidth(2.0f);
@@ -28,7 +28,7 @@ namespace Napicu{
     }
 
     void Select::beginFrame() {
-        if(!Select::started) Select::start();
+        if (!Select::started) Select::start();
 //        for(std::list<Napicu::Line*>::iterator i = Select::lines.begin(); i!= Select::lines.end(); i++){
 //
 //
@@ -38,11 +38,11 @@ namespace Napicu{
     }
 
     void Select::draw() {
-        if(Select::lines.size() <= 0) return;
+        if (Select::lines.size() <= 0) return;
         int index = 0;
 
-        for(Napicu::Line *line : Select::lines){
-            for(int i = 0; i < 2; i++){
+        for (Napicu::Line *line: Select::lines) {
+            for (int i = 0; i < 2; i++) {
                 glm::vec2 position = (i == 0) ? line->getFrom() : line->getTo();
                 glm::vec3 color = line->getColor();
                 //Position
@@ -59,13 +59,14 @@ namespace Napicu{
         }
 
         glBindBuffer(GL_ARRAY_BUFFER, Select::vboID);
-        glBufferSubData(GL_ARRAY_BUFFER, 0, (GLsizeiptr)((Select::lines.size() * 2 * 6) * sizeof(float)),
-                Select::vertexArray);
+        glBufferSubData(GL_ARRAY_BUFFER, 0, (GLsizeiptr) ((Select::lines.size() * 2 * 6) * sizeof(float)),
+                        Select::vertexArray);
         glBindVertexArray(Select::vaoID);
 
         //Shader
         Select::shader.use();
-        Select::shader.uploadUniformMat4("uViewProjection", Napicu::Window::current_scene->getCamera().getViewProjectionMatrix());
+        Select::shader.uploadUniformMat4("uViewProjection",
+                                         Napicu::Window::current_scene->getCamera().getViewProjectionMatrix());
 
         glEnableVertexAttribArray(0);
         glEnableVertexAttribArray(1);
@@ -81,7 +82,7 @@ namespace Napicu{
     }
 
     void Select::addLine(glm::vec2 from, glm::vec2 to) {
-        Select::addLine(from, to, *new glm::vec3(1, 0,0), 1);
+        Select::addLine(from, to, *new glm::vec3(1, 0, 0), 1);
     }
 
     void Select::addLine(glm::vec2 from, glm::vec2 to, glm::vec3 color) {
@@ -89,7 +90,7 @@ namespace Napicu{
     }
 
     void Select::addLine(glm::vec2 from, glm::vec2 to, glm::vec3 color, int lifeTime) {
-        if(Select::lines.size() >= Select::max_lines) return;
+        if (Select::lines.size() >= Select::max_lines) return;
         Select::lines.push_back(new Napicu::Line(from, to, color, lifeTime));
     }
 

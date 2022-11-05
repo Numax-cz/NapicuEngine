@@ -1,16 +1,17 @@
 #pragma once
+
 #include <iostream>
 #include <list>
 #include "Line.h"
 #include "Shader.h"
 
-namespace Napicu{
-    class Select{
+namespace Napicu {
+    class Select {
 
     private:
         inline static int max_lines = 500;
         inline static std::list<Napicu::Line *> lines = {};
-        inline static float* vertexArray = new float[max_lines * 6 * 2];
+        inline static float *vertexArray = new float[max_lines * 6 * 2];
         inline static Napicu::Shader shader = *new Napicu::Shader("src/Engine/shaders/line.glsl");
         inline static bool started = false;
 

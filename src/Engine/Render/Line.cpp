@@ -2,9 +2,9 @@
 
 #include "Line.h"
 
-namespace Napicu{
+namespace Napicu {
     Line::Line(glm::vec2 from, glm::vec2 to, glm::vec3 color, int lifeTime)
-    : from(from), to(to), color(color), lifeTime(lifeTime) {}
+            : from(from), to(to), color(color), lifeTime(lifeTime) {}
 
     int Line::beginFrame() {
         this->lifeTime--;

@@ -26,11 +26,11 @@ namespace Napicu {
         virtual void imGui() {};
 
         void generateId() {
-            if(this->id == -1) this->id = idCounter++;
+            if (this->id == -1) this->id = idCounter++;
         }
 
-        int getId() {return this->id;}
-        
+        int getId() { return this->id; }
+
     };
 
 

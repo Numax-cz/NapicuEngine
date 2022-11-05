@@ -14,7 +14,7 @@ namespace Napicu {
         for (Napicu::Batch *const batch: this->batches) {
             if (batch->hasRoom() && batch->getZIndex() == sprite->object->transform->getZIndex()) {
                 batch->addSprite(sprite);
-               //batch->start(); // TODO
+                //batch->start(); // TODO
                 add = true;
                 break;
             }

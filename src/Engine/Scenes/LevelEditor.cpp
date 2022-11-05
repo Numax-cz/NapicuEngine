@@ -15,7 +15,7 @@ namespace Napicu {
 //        }
 
         this->explorerObjectsList = {new Napicu::Sprite(new Napicu::Texture("src/assets/bird.png"))};
-        Napicu::Select::addLine(*new glm::vec2(200, 800), *new glm::vec2(700, 800), *new glm::vec3(1,0,0),1020);
+        Napicu::Select::addLine(*new glm::vec2(200, 800), *new glm::vec2(700, 800), *new glm::vec3(1, 0, 0), 1020);
 
 
         Napicu::Object *ob = new Napicu::Object("Obj", new Napicu::ObjectTransform(*new glm::vec2(400, 100),
@@ -26,7 +26,6 @@ namespace Napicu {
 
         this->addObjectToScene(ob);
         this->activeGameObject = ob;
-
 
 
     }
@@ -49,7 +48,7 @@ namespace Napicu {
 
         float windowXY = windowPosition.x + windowPosition.y;
 
-        for (Napicu::Sprite *sprite : this->explorerObjectsList) {
+        for (Napicu::Sprite *sprite: this->explorerObjectsList) {
 
             if (ImGui::ImageButton(reinterpret_cast<ImTextureID>(sprite->getTexture()->getTextureID()),
                                    ImVec2(50, 50),
@@ -57,8 +56,7 @@ namespace Napicu {
                                           sprite->getTexCords()[0].y),
                                    ImVec2(sprite->getTexCords()[2].x,
                                           sprite->getTexCords()[2].y),
-                                   0))
-            {
+                                   0)) {
                 Napicu::Object *ob = Napicu::Sprite::generateSpriteObject(sprite, 50, 50);
 
                 this->mouseControls.pickUpObject(ob);
@@ -68,7 +66,6 @@ namespace Napicu {
 
             }
         }
-
 
 
         ImGui::End();

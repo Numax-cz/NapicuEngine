@@ -1,4 +1,5 @@
 #pragma once
+
 #include <glm/vec2.hpp>
 
 namespace Napicu {
@@ -11,7 +12,7 @@ namespace Napicu {
         int zIndex;
 
     public:
-        ObjectTransform(): zIndex(0) {}
+        ObjectTransform() : zIndex(0) {}
 
         ObjectTransform(glm::vec2 position) : position(position) {}
 
@@ -20,25 +21,25 @@ namespace Napicu {
         ObjectTransform(glm::vec2 position, glm::vec2 scale, int zIndex) : position(position), scale(scale),
                                                                            zIndex(zIndex) {}
 
-        void setPositionX(float x) {this->position.x = x;}
+        void setPositionX(float x) { this->position.x = x; }
 
-        void setPositionY(float y) {this->position.y = y;}
+        void setPositionY(float y) { this->position.y = y; }
 
-        void setScaleX(float x) {this->scale.x = x;}
+        void setScaleX(float x) { this->scale.x = x; }
 
-        void setScaleY(float y) {this->scale.y = y;}
+        void setScaleY(float y) { this->scale.y = y; }
 
-        void setZIndex(int zIndex) {this->zIndex = zIndex;}
+        void setZIndex(int zIndex) { this->zIndex = zIndex; }
 
-        glm::vec2 getPosition() {return this->position;}
+        glm::vec2 getPosition() { return this->position; }
 
-        glm::vec2 getScale() {return this->scale;}
+        glm::vec2 getScale() { return this->scale; }
 
-        int getZIndex() {return this->zIndex;}
+        int getZIndex() { return this->zIndex; }
 
         ObjectTransform copy();
 
-        void copy(ObjectTransform& to);
+        void copy(ObjectTransform &to);
 
         bool equals(ObjectTransform *obj);
     };

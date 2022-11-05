@@ -1,9 +1,10 @@
 #pragma once
+
 #include <glm/vec2.hpp>
 #include <glm/vec3.hpp>
 
-namespace Napicu{
-    class Line{
+namespace Napicu {
+    class Line {
     private:
         glm::vec2 from;
         glm::vec2 to;

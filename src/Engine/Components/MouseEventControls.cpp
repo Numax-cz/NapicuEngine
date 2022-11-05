@@ -2,7 +2,7 @@
 #include "../window.h"
 #include "../Events/MouseEvent.h"
 
-namespace Napicu{
+namespace Napicu {
 
     void MouseEventControls::pickUpObject(Napicu::Object *object) {
         this->holdingObject = object;
@@ -14,11 +14,11 @@ namespace Napicu{
     }
 
     void MouseEventControls::update(double delta_time) {
-        if(this->holdingObject != nullptr){
+        if (this->holdingObject != nullptr) {
             this->holdingObject->transform->setPositionX(Napicu::MouseEvent::getOrthoX() - 16);
             this->holdingObject->transform->setPositionY(Napicu::MouseEvent::getOrthoY() - 16);
 
-            if(Napicu::MouseEvent::mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)){
+            if (Napicu::MouseEvent::mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
                 this->drop();
             }
         }

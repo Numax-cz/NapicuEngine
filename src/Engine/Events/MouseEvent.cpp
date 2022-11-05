@@ -56,7 +56,7 @@ namespace Napicu {
 
     float MouseEvent::getOrthoY() {
         glm::mat4 invMat = Window::current_scene->getCamera().getViewProjectionMatrixInverse();
-        glm::vec4 near = glm::vec4(0, ((Window::getHeight() - getY()) / Window::getHeight() ) * 2 - 1, 0, 1.0);
+        glm::vec4 near = glm::vec4(0, ((Window::getHeight() - getY()) / Window::getHeight()) * 2 - 1, 0, 1.0);
         glm::vec4 nearResult = invMat * near;
         return nearResult.y;
     }
