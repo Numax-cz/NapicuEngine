@@ -73,10 +73,10 @@ namespace Napicu {
 
         if (bf) {
             glBindBuffer(GL_ARRAY_BUFFER, this->vboID);
-            glBufferSubData(GL_ARRAY_BUFFER, 0, (GLsizeiptr) ((this->batchSize * 4 * VERTEX_SIZE) * sizeof(float)),
-                            this->vertexArray);
         }
 
+        glBufferSubData(GL_ARRAY_BUFFER, 0, (GLsizeiptr) ((this->batchSize * 4 * VERTEX_SIZE) * sizeof(float)),
+                        this->vertexArray);
 
         glBindVertexArray(this->vaoID);
         if (this->eboID > 0) glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->eboID);
@@ -87,7 +87,7 @@ namespace Napicu {
         this->shader->use();
 
 
-        this->shader->uploadUniformMat4("uProjection",
+        this->shader->uploadUniformMat4("uViewProjection",
                                         Napicu::Window::current_scene->getCamera().getViewProjectionMatrix());
 
         for (int i = 0; i < this->textures.size(); i++) {
