@@ -31,14 +31,10 @@ namespace Napicu {
         if (!Select::started) Select::start();
         Select::lines.size();
         for(int i = 0; i < Select::lines.size(); i++){
-
-            if(Select::lines[i]->beginFrame() < 0){
+            if(Select::lines[i]->beginFrame() < 0) {
                 Select::lines.erase(Select::lines.begin() + i);
                 i--;
             }
-
-
-
         }
     }
 
