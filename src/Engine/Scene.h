@@ -4,6 +4,7 @@
 #include "Camera.h"
 #include "Object/Object.h"
 #include "Render/Render.h"
+#include "Utils/Config.h"
 #include <imgui.h>
 
 namespace Napicu {
@@ -23,7 +24,7 @@ namespace Napicu {
     public:
         Scene() {};
 
-        Napicu::Camera camera = *new Napicu::Camera(0.0f, 1920.0f, 0.0f, 1080.0f);
+        Napicu::Camera camera = *new Napicu::Camera(0.0f, Napicu::Config::CAMERA_PROJECTION_SIZE_X, 0.0f, Napicu::Config::CAMERA_PROJECTION_SIZE_Y);
 
         virtual void update(double delta_time) {};
 
