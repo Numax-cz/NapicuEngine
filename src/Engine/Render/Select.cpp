@@ -29,12 +29,17 @@ namespace Napicu {
 
     void Select::beginFrame() {
         if (!Select::started) Select::start();
-//        for(std::list<Napicu::Line*>::iterator i = Select::lines.begin(); i!= Select::lines.end(); i++){
-//
-//
-//
-//
-//        }
+        Select::lines.size();
+        for(int i = 0; i < Select::lines.size(); i++){
+
+            if(Select::lines[i]->beginFrame() < 0){
+                Select::lines.erase(Select::lines.begin() + i);
+                i--;
+            }
+
+
+
+        }
     }
 
     void Select::draw() {

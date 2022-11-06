@@ -15,7 +15,7 @@ namespace Napicu {
 //        }
 
         this->explorerObjectsList = {new Napicu::Sprite(new Napicu::Texture("src/assets/bird.png"))};
-        Napicu::Select::addLine(*new glm::vec2(200, 800), *new glm::vec2(700, 800), *new glm::vec3(1, 0, 0), 1020);
+        Napicu::Select::addLine(*new glm::vec2(200, 800), *new glm::vec2(700, 800), *new glm::vec3(1, 0, 0), 102);
 
 
         Napicu::Object *ob = new Napicu::Object("Obj", new Napicu::ObjectTransform(*new glm::vec2(400, 100),
