@@ -4,6 +4,7 @@
 #include "../Components/Rigid.h"
 #include "../Events/MouseEvent.h"
 #include "../Components/Sprite.h"
+#include "../Components/Grid.h"
 
 namespace Napicu {
 
@@ -13,9 +14,11 @@ namespace Napicu {
 //
 //            return;
 //        }
+        levelEditor.addComponent(new Napicu::MouseEventControls());
+        levelEditor.addComponent(new Napicu::Grid());
 
         this->explorerObjectsList = {new Napicu::Sprite(new Napicu::Texture("src/assets/bird.png"))};
-        Napicu::Select::addLine(*new glm::vec2(200, 800), *new glm::vec2(700, 800), *new glm::vec3(1, 0, 0), 102);
+        Napicu::Line::addLine(*new glm::vec2(200, 800), *new glm::vec2(700, 800), *new glm::vec3(1, 0, 0), 102);
 
 
         Napicu::Object *ob = new Napicu::Object("Obj", new Napicu::ObjectTransform(*new glm::vec2(400, 100),
@@ -26,12 +29,10 @@ namespace Napicu {
 
         this->addObjectToScene(ob);
         this->activeGameObject = ob;
-
-
     }
 
     void LevelEditor::update(double delta_time) {
-        this->mouseControls.update(delta_time);
+        this->levelEditor.update(delta_time);
         for (Napicu::Object *object: this->sceneObjects) {
             object->update(delta_time);
         }
@@ -59,10 +60,9 @@ namespace Napicu {
                                    0)) {
                 Napicu::Object *ob = Napicu::Sprite::generateSpriteObject(sprite, 50, 50);
 
-                this->mouseControls.pickUpObject(ob);
+                this->levelEditor.getComponent(new Napicu::MouseEventControls)->pickUpObject(ob);
 
 
-                //TODO CLICK
 
             }
         }

@@ -96,7 +96,7 @@ namespace Napicu {
             this->last_frame = current_frame;
 
             this->imGuiLayout->update(this->current_scene);
-            Napicu::Select::beginFrame();
+            Napicu::Line::beginFrame();
 
             glfwPollEvents();
 
@@ -104,7 +104,7 @@ namespace Napicu {
             glClear(GL_COLOR_BUFFER_BIT);
 
             if (this->delta_time >= 0) {
-                Napicu::Select::draw();
+                Napicu::Line::draw();
                 Napicu::Window::current_scene->update(this->delta_time);
             }
 
@@ -124,6 +124,7 @@ namespace Napicu {
     void Window::windowSizeCallback(GLFWwindow *window, int width, int height) {
         Window::get()->setWidth(width);
         Window::get()->setHeight(height);
+        Window::current_scene->getCamera().recalculateVMatrix();
     }
 
 

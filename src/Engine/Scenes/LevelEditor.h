@@ -17,7 +17,8 @@ namespace Napicu {
 
         };
 
-        Napicu::MouseEventControls mouseControls = *new Napicu::MouseEventControls();
+        //Napicu::MouseEventControls mouseControls = *new Napicu::MouseEventControls();
+        Napicu::Object levelEditor = *new Napicu::Object("LevelEditor");
 
         void update(double delta_time) override;
 
