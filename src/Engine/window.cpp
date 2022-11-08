@@ -124,7 +124,7 @@ namespace Napicu {
     void Window::windowSizeCallback(GLFWwindow *window, int width, int height) {
         Window::get()->setWidth(width);
         Window::get()->setHeight(height);
-        Window::current_scene->getCamera().recalculateVMatrix();
+        glViewport(0, 0, width, height);
     }
 
 
