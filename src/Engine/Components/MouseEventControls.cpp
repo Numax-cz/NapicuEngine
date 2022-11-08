@@ -1,6 +1,7 @@
 #include "MouseEventControls.h"
 #include "../window.h"
 #include "../Events/MouseEvent.h"
+#include "../Utils/Config.h"
 
 namespace Napicu {
 
@@ -15,8 +16,13 @@ namespace Napicu {
 
     void MouseEventControls::update(double delta_time) {
         if (this->holdingObject != nullptr) {
-            this->holdingObject->transform->setPositionX(Napicu::MouseEvent::getOrthoX() - 16);
-            this->holdingObject->transform->setPositionY(Napicu::MouseEvent::getOrthoY() - 16);
+
+            int x = (int)(Napicu::MouseEvent::getOrthoX() / Napicu::Config::GRID_WIDTH) *  Napicu::Config::GRID_WIDTH;
+            int y = (int)(Napicu::MouseEvent::getOrthoY() / Napicu::Config::GRID_HEIGHT) *  Napicu::Config::GRID_HEIGHT;
+
+
+            this->holdingObject->transform->setPositionX(x);
+            this->holdingObject->transform->setPositionY(y);
 
             if (Napicu::MouseEvent::mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
                 this->drop();

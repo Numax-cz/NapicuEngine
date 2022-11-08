@@ -18,7 +18,6 @@ namespace Napicu {
         levelEditor.addComponent(new Napicu::Grid());
 
         this->explorerObjectsList = {new Napicu::Sprite(new Napicu::Texture("src/assets/bird.png"))};
-        Napicu::Line::addLine(*new glm::vec2(200, 800), *new glm::vec2(700, 800), *new glm::vec3(1, 0, 0), 102);
 
 
         Napicu::Object *ob = new Napicu::Object("Obj", new Napicu::ObjectTransform(*new glm::vec2(400, 100),
@@ -58,7 +57,7 @@ namespace Napicu {
                                    ImVec2(sprite->getTexCords()[2].x,
                                           sprite->getTexCords()[2].y),
                                    0)) {
-                Napicu::Object *ob = Napicu::Sprite::generateSpriteObject(sprite, 50, 50);
+                Napicu::Object *ob = Napicu::Sprite::generateSpriteObject(sprite, 32, 32);
 
                 this->levelEditor.getComponent(new Napicu::MouseEventControls)->pickUpObject(ob);
 
