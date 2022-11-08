@@ -83,7 +83,7 @@ namespace Napicu {
     }
 
     void Line::addLine(glm::vec2 from, glm::vec2 to) {
-        Line::addLine(from, to, *new glm::vec3(1, 0, 0), 1);
+        Line::addLine(from, to, *new glm::vec3(1, 1, 1), 1);
     }
 
     void Line::addLine(glm::vec2 from, glm::vec2 to, glm::vec3 color) {
