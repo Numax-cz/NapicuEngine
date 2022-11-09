@@ -3,7 +3,7 @@
 #include "Scenes/LevelEditor.h"
 #include "Scenes/Level.h"
 #include "Events/MouseEvent.h"
-
+#include "Render/Draw.h"
 
 namespace Napicu {
     inline Napicu::Scene Window::*current_scene = nullptr;
@@ -96,7 +96,7 @@ namespace Napicu {
             this->last_frame = current_frame;
 
             this->imGuiLayout->update(this->current_scene);
-            Napicu::Line::beginFrame();
+            Napicu::Draw::beginFrame();
 
             glfwPollEvents();
 
@@ -104,7 +104,7 @@ namespace Napicu {
             glClear(GL_COLOR_BUFFER_BIT);
 
             if (this->delta_time >= 0) {
-                Napicu::Line::draw();
+                Napicu::Draw::draw();
                 Napicu::Window::current_scene->update(this->delta_time);
             }
 
