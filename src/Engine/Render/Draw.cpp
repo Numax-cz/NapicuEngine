@@ -93,6 +93,28 @@ namespace Napicu{
         Draw::lines.push_back(new Napicu::LineVector(from, to, color, lifeTime));
     }
 
+    void Draw::addBox(const glm::vec2 position, const glm::vec2 dimensions, const float angle, const glm::vec3 color, const int lifeTime) {
+        glm::vec2 min = position - (dimensions * 0.5f);
+        glm::vec2 max = position + (dimensions * 0.5f);
+
+        std::vector<glm::vec2> vrtcs =  {
+                *new glm::vec2(min.x, min.y), *new glm::vec2(min.x, max.y),
+                *new glm::vec2(max.x, max.y), *new glm::vec2(max.x, min.y)
+        };
+
+        if(angle != 0.0f){
+            for(glm::vec2 &vert : vrtcs){
+                vert = glm::rotate(glm::vec3(vert, 0.0f),
+                                   glm::radians(angle), glm::vec3(position, 0.0f));
+
+            }
+        }
+
+        Draw::addLine(vrtcs[0], vrtcs[1], color, lifeTime);
+        Draw::addLine(vrtcs[0], vrtcs[3], color, lifeTime);
+        Draw::addLine(vrtcs[1], vrtcs[2], color, lifeTime);
+        Draw::addLine(vrtcs[2], vrtcs[3], color, lifeTime);
+    }
 
 
 }

@@ -1,10 +1,9 @@
-
-
 #include "LevelEditor.h"
 #include "../Components/Rigid.h"
 #include "../Events/MouseEvent.h"
 #include "../Components/Sprite.h"
 #include "../Components/Grid.h"
+#include "../Render/Draw.h"
 
 namespace Napicu {
 
@@ -18,6 +17,8 @@ namespace Napicu {
         levelEditor.addComponent(new Napicu::Grid());
 
         this->explorerObjectsList = {new Napicu::Sprite(new Napicu::Texture("src/assets/bird.png"))};
+
+
 
 
         Napicu::Object *ob = new Napicu::Object("Obj", new Napicu::ObjectTransform(*new glm::vec2(400, 100),
@@ -35,6 +36,13 @@ namespace Napicu {
         for (Napicu::Object *object: this->sceneObjects) {
             object->update(delta_time);
         }
+
+
+        this->angle += 30.0f * delta_time;
+
+
+        Napicu::Draw::addBox(
+                *new glm::vec2(200.0f, 200.0f), *new glm::vec2(64, 32), this->angle, *new glm::vec3(1, 0, 0), 1);
 
 
         this->render->render();

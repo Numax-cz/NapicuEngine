@@ -23,6 +23,8 @@ namespace Napicu{
 
         static void addLine(glm::vec2 from, glm::vec2 to, glm::vec3 color, int lifeTime);
 
+        static void addBox(glm::vec2 position, glm::vec2 dimensions, float angle, glm::vec3 color, int lifeTime);
+
         static void beginFrame();
 
         static void draw();
