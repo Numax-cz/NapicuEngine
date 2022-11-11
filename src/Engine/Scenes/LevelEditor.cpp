@@ -37,12 +37,8 @@ namespace Napicu {
             object->update(delta_time);
         }
 
-
-        this->angle += 30.0f * delta_time;
-
-
         Napicu::Draw::addBox(
-                *new glm::vec2(200.0f, 200.0f), *new glm::vec2(64, 32), this->angle, *new glm::vec3(1, 0, 0), 1);
+                *new glm::vec2(200.0f, 200.0f), *new glm::vec2(64, 32), *new glm::vec3(1, 0, 0), 1);
 
 
         this->render->render();

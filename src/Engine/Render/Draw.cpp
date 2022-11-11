@@ -80,20 +80,20 @@ namespace Napicu{
         Draw::shader.detach();
     }
 
-    void Draw::addLine(glm::vec2 from, glm::vec2 to) {
+    void Draw::addLine(const glm::vec2 from, const glm::vec2 to) {
         Draw::addLine(from, to, *new glm::vec3(1, 1, 1), 1);
     }
 
-    void Draw::addLine(glm::vec2 from, glm::vec2 to, glm::vec3 color) {
+    void Draw::addLine(const glm::vec2 from, const glm::vec2 to, const glm::vec3 color) {
         Draw::addLine(from, to, color, 1);
     }
 
-    void Draw::addLine(glm::vec2 from, glm::vec2 to, glm::vec3 color, int lifeTime) {
+    void Draw::addLine(const glm::vec2 from, const glm::vec2 to, const glm::vec3 color, const int lifeTime) {
         if (Draw::lines.size() >= Draw::max_lines) return;
         Draw::lines.push_back(new Napicu::LineVector(from, to, color, lifeTime));
     }
 
-    void Draw::addBox(const glm::vec2 position, const glm::vec2 dimensions, const float angle, const glm::vec3 color, const int lifeTime) {
+    void Draw::addBox(const glm::vec2 position, const glm::vec2 dimensions, const glm::vec3 color, const int lifeTime) {
         glm::vec2 min = position - (dimensions * 0.5f);
         glm::vec2 max = position + (dimensions * 0.5f);
 
@@ -102,13 +102,12 @@ namespace Napicu{
                 *new glm::vec2(max.x, max.y), *new glm::vec2(max.x, min.y)
         };
 
-        if(angle != 0.0f){
-            for(glm::vec2 &vert : vrtcs){
-                vert = glm::rotate(glm::vec3(vert, 0.0f),
-                                   glm::radians(angle), glm::vec3(position, 0.0f));
-
-            }
-        }
+//        if(angle != 0.0f){
+//            for(glm::vec2 &vert : vrtcs){
+//                vert = glm::rotate(glm::vec3(vert, 0.0f),
+//                                   glm::radians(90.0f), glm::vec3(position, 0.0f));
+//            }
+//        }
 
         Draw::addLine(vrtcs[0], vrtcs[1], color, lifeTime);
         Draw::addLine(vrtcs[0], vrtcs[3], color, lifeTime);
