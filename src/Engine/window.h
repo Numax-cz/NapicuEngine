@@ -13,6 +13,7 @@
 #include "Scene.h"
 #include "ImGuiLayout.h"
 #include "Render/Line.h"
+#include "Render/Framebuffer.h"
 
 namespace Napicu {
     class Scene;
@@ -21,7 +22,9 @@ namespace Napicu {
     private:
         GLFWwindow *glfwWindow;
         Napicu::ImGuiLayout *imGuiLayout;
+        Napicu::Framebuffer *frameBuffer;
         inline static Window *window;
+
 
         std::string title;
         int width, height;

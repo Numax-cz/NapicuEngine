@@ -83,6 +83,7 @@ namespace Napicu {
         this->imGuiLayout = new Napicu::ImGuiLayout(this->glfwWindow);
         this->imGuiLayout->initImGui();
 
+        //this->frameBuffer = new Napicu::Framebuffer(1920, 1080); //TODO FIX SCREEN SIZE FOR OTHER...
 
         this->ChangeScene(0);
 
@@ -102,12 +103,13 @@ namespace Napicu {
 
             glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT);
+            //this->frameBuffer->bind();
 
             if (this->delta_time >= 0) {
                 Napicu::Draw::draw();
                 Napicu::Window::current_scene->update(this->delta_time);
             }
-
+            //this->frameBuffer->unbind();
             //Render ImGui
             this->imGuiLayout->render();
 

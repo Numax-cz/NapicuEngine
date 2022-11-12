@@ -13,6 +13,10 @@ namespace Napicu {
         int width, height, bpp;
 
     public:
+        Texture();
+
+        Texture(int width, int height);
+
         Texture(const std::string &path);
 
         ~Texture();

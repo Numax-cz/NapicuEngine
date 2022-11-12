@@ -27,8 +27,16 @@ namespace Napicu {
         this->Unbind();
 
         if (this->buffer) stbi_image_free(this->buffer);
-
     }
+
+    Texture::Texture() : render_id(-1), width(-1), height(-1) { }
+
+    Texture::Texture(int width, int height) : width(width), height(height), file_path("GeneratedTexture") {
+        glGenTextures(1, &this->render_id);
+        glBindTexture(GL_TEXTURE_2D, this->render_id);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, this->width, this->height, 0, GL_RGB, GL_UNSIGNED_BYTE, nullptr);
+    }
+
 
     Texture::~Texture() {
         glDeleteTextures(1, &this->render_id);
@@ -42,5 +50,4 @@ namespace Napicu {
     void Texture::Unbind() const {
         glBindTexture(GL_TEXTURE_2D, 0);
     }
-
 }
