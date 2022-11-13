@@ -109,8 +109,8 @@ namespace Napicu {
         glBindVertexArray(0);
 
 
-        for (int i = 0; i < this->textures.size(); i++) {
-            this->textures[i]->Unbind();
+        for (auto & texture : this->textures) {
+            texture->Unbind();
         }
 
         this->shader->detach();

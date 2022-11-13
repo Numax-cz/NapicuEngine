@@ -7,7 +7,7 @@ namespace Napicu{
     class Draw{
     private:
         inline static int max_lines = 500;
-        inline static std::vector<Napicu::LineVector *> lines = {};
+        inline static std::vector<Napicu::LineVector*> lines = {};
         inline static float *vertexArray = new float[max_lines * 6 * 2];
         inline static Napicu::Shader shader = *new Napicu::Shader("src/Engine/shaders/line.glsl");
         inline static bool started = false;

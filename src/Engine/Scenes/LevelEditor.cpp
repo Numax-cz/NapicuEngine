@@ -1,9 +1,10 @@
 #include "LevelEditor.h"
 #include "../Components/Rigid.h"
 #include "../Events/MouseEvent.h"
-#include "../Components/Sprite.h"
 #include "../Components/Grid.h"
-#include "../Render/Draw.h"
+#include <nlohmann/json.hpp>
+#include <nlohmann/adl_serializer.hpp>
+#include "../Utils/Json.h"
 
 namespace Napicu {
 
@@ -22,7 +23,7 @@ namespace Napicu {
                                                                                    *new glm::vec2(500, 500), 1));
 
         ob->addComponent(new Napicu::SpriteRender());
-        ob->addComponent(new Napicu::Rigid());
+        //ob->addComponent(new Napicu::Rigid());
 
         this->addObjectToScene(ob);
         this->activeGameObject = ob;

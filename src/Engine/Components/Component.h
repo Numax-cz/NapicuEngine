@@ -3,7 +3,8 @@
 
 
 #include "../Object/Object.h"
-
+#include <nlohmann/json.hpp>
+#include <nlohmann/adl_serializer.hpp>
 
 namespace Napicu {
     class Object;
@@ -16,14 +17,20 @@ namespace Napicu {
         int id = -1;
 
 
+
     public:
-        Napicu::Object *object{};
+        Napicu::Object *object;
 
         virtual void update(double delta_time) {};
 
         virtual void start() {};
 
         virtual void imGui() {};
+
+        virtual nlohmann::json toJson(){
+            return nlohmann::json();
+        }
+
 
         void generateId() {
             if (this->id == -1) this->id = idCounter++;
@@ -32,6 +39,8 @@ namespace Napicu {
         int getId() { return this->id; }
 
     };
+
+
 
 
 }

@@ -18,12 +18,11 @@ namespace Napicu {
         inline static int idCounter = 0;
         int id = -1;
 
-        std::list<Component *> components;
-        std::string name;
-
 
     public:
         Napicu::ObjectTransform *transform;
+        std::list<Component *> components;
+        std::string name;
 
         Object(std::string name);
 

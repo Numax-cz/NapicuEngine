@@ -48,6 +48,20 @@ namespace Napicu {
             }
         }
 
+        nlohmann::json toJson() override{
+            nlohmann::json i;
+            i["name"] = "SpriteRender";
+            i["color"]["x"] = this->color->x;
+            i["color"]["y"] = this->color->y;
+            i["color"]["z"] = this->color->z;
+            i["color"]["w"] = this->color->w;
+
+            for (glm::vec2 vector : this->sprite->getTexCords()) {
+                i["sprite"]["x"] = vector.x;
+                i["sprite"]["y"] = vector.y;
+            }
+            return i;
+        }
 
         glm::vec4 *getColor() const { return this->color; }
 

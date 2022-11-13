@@ -28,7 +28,6 @@ namespace Napicu{
 
     void Draw::beginFrame() {
         if (!Draw::started) Draw::start();
-        Draw::lines.size();
         for(int i = 0; i < Draw::lines.size(); i++){
             if(Draw::lines[i]->beginFrame() < 0) {
                 Draw::lines.erase(Draw::lines.begin() + i);
@@ -38,7 +37,7 @@ namespace Napicu{
     }
 
     void Draw::draw() {
-        if (Draw::lines.size() <= 0) return;
+        if (Draw::lines.empty()) return;
         int index = 0;
 
         for (Napicu::LineVector *Draw: Draw::lines) {

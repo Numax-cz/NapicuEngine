@@ -8,7 +8,7 @@ namespace Napicu{
         Napicu::Texture *texture = nullptr;
 
     public:
-        Framebuffer(int widht, int height);
+        Framebuffer(int width, int height);
 
         void bind();
 

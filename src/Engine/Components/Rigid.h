@@ -2,7 +2,7 @@
 
 #include <glm/vec3.hpp>
 #include <glm/vec4.hpp>
-
+#include "Component.h"
 
 namespace Napicu {
 
@@ -12,8 +12,5 @@ namespace Napicu {
         glm::vec4 *tmp = new glm::vec4(0, 0, 0, 0);
         int colliderType = 0;
         float friction = 0.8f;
-
-
     };
-
 }

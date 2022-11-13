@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.18)
 project(OpenGL)
-
 find_package(OpenGL REQUIRED)
 
 include_directories(
         PUBLIC external/glfw/include
         PUBLIC external/glad/include
         PUBLIC external/imgui/
+        PUBLIC external/jsoncpp/include
 )
 
 add_library(IMGUI
@@ -23,6 +23,7 @@ add_subdirectory(external/glfw)
 #add_subdirectory(external/imgui)
 add_subdirectory(external/glm)
 add_subdirectory(external/stb)
+add_subdirectory(external/json/)
 
 file(GLOB_RECURSE SOURCES src/*.cpp src/**/*.cpp )
 add_executable(${PROJECT_NAME} src/main.cpp ${SOURCES})
@@ -35,6 +36,7 @@ target_include_directories(${PROJECT_NAME}
         PUBLIC external/imgui/
         PUBLIC external/imgui/backends/
         PUBLIC external/glm/
+        PUBLIC external/json/include
         )
 
 
@@ -45,6 +47,6 @@ target_link_directories(${PROJECT_NAME}
         PRIVATE external/imgui/
         PRIVATE external/glm/
         PRIVATE external/stb/
+        PRIVATE external/json/
         )
-
-target_link_libraries(${PROJECT_NAME} opengl32 glfw IMGUI GLAD glm STB)
+target_link_libraries(${PROJECT_NAME} opengl32 glfw IMGUI GLAD glm STB nlohmann_json )
