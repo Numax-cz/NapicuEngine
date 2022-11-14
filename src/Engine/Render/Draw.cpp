@@ -30,6 +30,7 @@ namespace Napicu{
         if (!Draw::started) Draw::start();
         for(int i = 0; i < Draw::lines.size(); i++){
             if(Draw::lines[i]->beginFrame() < 0) {
+                delete Draw::lines[i];
                 Draw::lines.erase(Draw::lines.begin() + i);
                 i--;
             }
@@ -80,7 +81,7 @@ namespace Napicu{
     }
 
     void Draw::addLine(const glm::vec2 from, const glm::vec2 to) {
-        Draw::addLine(from, to, *new glm::vec3(1, 1, 1), 1);
+        Draw::addLine(from, to, glm::vec3(1, 1, 1), 1);
     }
 
     void Draw::addLine(const glm::vec2 from, const glm::vec2 to, const glm::vec3 color) {
@@ -97,8 +98,8 @@ namespace Napicu{
         glm::vec2 max = position + (dimensions * 0.5f);
 
         std::vector<glm::vec2> vrtcs =  {
-                *new glm::vec2(min.x, min.y), *new glm::vec2(min.x, max.y),
-                *new glm::vec2(max.x, max.y), *new glm::vec2(max.x, min.y)
+                glm::vec2(min.x, min.y), glm::vec2(min.x, max.y),
+                glm::vec2(max.x, max.y), glm::vec2(max.x, min.y)
         };
 
 //        if(angle != 0.0f){

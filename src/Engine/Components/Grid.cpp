@@ -22,14 +22,15 @@ namespace Napicu{
             int y = fY + (Napicu::Config::GRID_HEIGHT * i);
 
             if(i < numVerticalLines){
-                Napicu::Draw::addLine(*new glm::vec2(x, fY),
-                                      *new glm::vec2(x, fY + (Napicu::Config::CAMERA_PROJECTION_SIZE_Y + Napicu::Config::CAMERA_PROJECTION_SIZE_Y * 2)));
+                Napicu::Draw::addLine(glm::vec2(x, fY),
+                                      glm::vec2(x, fY + (Napicu::Config::CAMERA_PROJECTION_SIZE_Y + Napicu::Config::CAMERA_PROJECTION_SIZE_Y * 2)));
             }
 
             if(i < numHorizontalLines){
-                Napicu::Draw::addLine(*new glm::vec2(fX, y),
-                                      *new glm::vec2(fX + (Napicu::Config::CAMERA_PROJECTION_SIZE_X + Napicu::Config::CAMERA_PROJECTION_SIZE_X  * 2), y));
+                Napicu::Draw::addLine(glm::vec2(fX, y),
+                                      glm::vec2(fX + (Napicu::Config::CAMERA_PROJECTION_SIZE_X + Napicu::Config::CAMERA_PROJECTION_SIZE_X  * 2), y));
             }
         }
+
     }
 }
