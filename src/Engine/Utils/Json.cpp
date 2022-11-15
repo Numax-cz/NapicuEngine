@@ -35,8 +35,8 @@ namespace Napicu{
 
     Napicu::Object Json::jsonToObject(nlohmann::json json) {
         std::string name = json["object"]["name"];
-        glm::vec2 position = *new glm::vec2(json["transform"]["position"]["x"], json["transform"]["position"]["y"]);
-        glm::vec2 scale = *new glm::vec2(json["transform"]["scale"]["x"], json["transform"]["scale"]["y"]);
+        glm::vec2 position = glm::vec2(json["transform"]["position"]["x"], json["transform"]["position"]["y"]);
+        glm::vec2 scale = glm::vec2(json["transform"]["scale"]["x"], json["transform"]["scale"]["y"]);
         int zIndex = json["object"]["zIndex"];
 
         return Napicu::Object(name, new Napicu::ObjectTransform(position, scale, zIndex));
