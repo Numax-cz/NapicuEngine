@@ -39,7 +39,7 @@ namespace Napicu{
         glm::vec2 scale = *new glm::vec2(json["transform"]["scale"]["x"], json["transform"]["scale"]["y"]);
         int zIndex = json["object"]["zIndex"];
 
-        return *new Napicu::Object(name, new Napicu::ObjectTransform(position, scale, zIndex));
+        return Napicu::Object(name, new Napicu::ObjectTransform(position, scale, zIndex));
     }
 
 
