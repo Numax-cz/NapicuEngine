@@ -1,7 +1,23 @@
+#include <fstream>
 #include "Json.h"
+#include "Console.h"
 
 
 namespace Napicu{
+    nlohmann::json Json::readEngineData() {
+        nlohmann::json j;
+        std::ifstream i("config.json");
+        if(i) i >> j;
+        else Napicu::Console::Error("Config does not exist!");
+        return j;
+    }
+
+    void Json::writeEngineData(nlohmann::json json) {
+        std::ofstream i("config.json");
+        if(i.is_open()){
+            i << json;
+        }else Napicu::Console::Error("Config does not exist!");
+    }
 
     nlohmann::json Json::objectToJson(Napicu::Component* ob) {
         return ob->toJson();
@@ -34,13 +50,17 @@ namespace Napicu{
     }
 
     Napicu::Object Json::jsonToObject(nlohmann::json json) {
-        std::string name = json["object"]["name"];
+        std::string name = json["name"];
         glm::vec2 position = glm::vec2(json["transform"]["position"]["x"], json["transform"]["position"]["y"]);
         glm::vec2 scale = glm::vec2(json["transform"]["scale"]["x"], json["transform"]["scale"]["y"]);
-        int zIndex = json["object"]["zIndex"];
+        int zIndex = json["transform"]["zIndex"];
 
         return Napicu::Object(name, new Napicu::ObjectTransform(position, scale, zIndex));
     }
+
+
+
+
 
 
 }
