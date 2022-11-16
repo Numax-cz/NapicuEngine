@@ -8,12 +8,10 @@
 namespace Napicu{
 
     class Json{
-    private:
-        static nlohmann::json readData();
-
-        static void writeData(nlohmann::json json);
-
     public:
+
+        static void addObjectToConfig(Napicu::Object ob);
+
         static nlohmann::json objectToJson(Napicu::Component* ob);
 
         static nlohmann::json objectToJson(Napicu::Object ob);
@@ -21,10 +19,5 @@ namespace Napicu{
         static nlohmann::json objectToJson(Napicu::ObjectTransform ob);
 
         static Napicu::Object jsonToObject(nlohmann::json json);
-
     };
-
-
-
-
 }

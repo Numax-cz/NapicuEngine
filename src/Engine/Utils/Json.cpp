@@ -4,19 +4,9 @@
 
 
 namespace Napicu{
-    nlohmann::json Json::readData() {
-        nlohmann::json j;
-        std::ifstream i("data.json");
-        if(i) i >> j;
-        else Napicu::Console::Error("Config does not exist!");
-        return j;
-    }
 
-    void Json::writeData(nlohmann::json json) {
-        std::ofstream i("data.json");
-        if(i.is_open()){
-            i << json;
-        }else Napicu::Console::Error("Config does not exist!");
+    void Json::addObjectToConfig(Napicu::Object ob) {
+     nlohmann::json i = readData();
     }
 
     nlohmann::json Json::objectToJson(Napicu::Component* ob) {
@@ -57,10 +47,4 @@ namespace Napicu{
 
         return Napicu::Object(name, new Napicu::ObjectTransform(position, scale, zIndex));
     }
-
-
-
-
-
-
 }
