@@ -4,16 +4,16 @@
 
 
 namespace Napicu{
-    nlohmann::json Json::readEngineData() {
+    nlohmann::json Json::readData() {
         nlohmann::json j;
-        std::ifstream i("config.json");
+        std::ifstream i("data.json");
         if(i) i >> j;
         else Napicu::Console::Error("Config does not exist!");
         return j;
     }
 
-    void Json::writeEngineData(nlohmann::json json) {
-        std::ofstream i("config.json");
+    void Json::writeData(nlohmann::json json) {
+        std::ofstream i("data.json");
         if(i.is_open()){
             i << json;
         }else Napicu::Console::Error("Config does not exist!");

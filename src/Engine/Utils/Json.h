@@ -9,9 +9,9 @@ namespace Napicu{
 
     class Json{
     private:
-        static nlohmann::json readEngineData();
+        static nlohmann::json readData();
 
-        static void writeEngineData(nlohmann::json json);
+        static void writeData(nlohmann::json json);
 
     public:
         static nlohmann::json objectToJson(Napicu::Component* ob);
