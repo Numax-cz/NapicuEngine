@@ -5,9 +5,7 @@
 
 namespace Napicu{
 
-    void Json::addObjectToConfig(Napicu::Object ob) {
-     nlohmann::json i = readData();
-    }
+
 
     nlohmann::json Json::objectToJson(Napicu::Component* ob) {
         return ob->toJson();

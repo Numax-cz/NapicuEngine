@@ -6,6 +6,8 @@
 #include "Render/Render.h"
 #include "Utils/Config.h"
 #include <imgui.h>
+#include "Utils/Json.h"
+#include "Utils/DataManagment.h"
 
 namespace Napicu {
 
@@ -31,7 +33,7 @@ namespace Napicu {
         virtual void init() {};
 
         void load() {
-            //TODO LOAD CONFIG DATA
+            Napicu::DataManagment::loadData();
 
             this->levelLoad = true;
         }

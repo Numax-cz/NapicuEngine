@@ -4,6 +4,7 @@
 #include "../Components/Grid.h"
 #include <nlohmann/json.hpp>
 #include <nlohmann/adl_serializer.hpp>
+#include <fstream>
 #include "../Utils/Json.h"
 
 namespace Napicu {
@@ -24,6 +25,12 @@ namespace Napicu {
 
         ob->addComponent(new Napicu::SpriteRender());
         //ob->addComponent(new Napicu::Rigid());
+
+
+        auto i = Napicu::DataManagment::getData();
+
+        std::cout << *i;
+
 
         this->addObjectToScene(ob);
         this->activeGameObject = ob;

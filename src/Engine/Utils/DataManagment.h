@@ -6,6 +6,7 @@ namespace Napicu {
     class DataManagment {
 
     private:
+        static inline const std::string DATA_FILE_NAME = "data.json";
         inline static nlohmann::json* data = nullptr;
 
     public:
