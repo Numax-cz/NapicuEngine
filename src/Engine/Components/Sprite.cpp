@@ -20,7 +20,7 @@ namespace Napicu {
 
     Napicu::Object *Sprite::generateSpriteObject(Sprite *sprite, float sizeX, float sizeY) {
         Napicu::SpriteRender *render = new Napicu::SpriteRender();
-        Napicu::ObjectTransform *objectTransform = new Napicu::ObjectTransform(*new glm::vec2(),
+        Napicu::ObjectTransform objectTransform = Napicu::ObjectTransform(*new glm::vec2(),
                                                                                *new glm::vec2(sizeX, sizeY), 0);
         Napicu::Object *object = new Napicu::Object("NewObject", objectTransform);
         render->setSprite(sprite);

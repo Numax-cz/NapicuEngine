@@ -41,6 +41,6 @@ namespace Napicu {
 
         void copy(ObjectTransform &to);
 
-        bool equals(ObjectTransform *obj);
+        bool equals(ObjectTransform obj);
     };
 }

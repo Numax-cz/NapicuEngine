@@ -20,13 +20,13 @@ namespace Napicu {
 
 
     public:
-        Napicu::ObjectTransform *transform;
+        Napicu::ObjectTransform transform;
         std::list<Component *> components;
         std::string name;
 
         Object(std::string name);
 
-        Object(std::string name, Napicu::ObjectTransform *transform);
+        Object(std::string name, Napicu::ObjectTransform transform);
 
         template<typename T, typename  = typename std::enable_if<std::is_base_of<Napicu::Component, T>::value>::type *>
         T *getComponent(T *componentClass) {

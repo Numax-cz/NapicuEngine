@@ -21,8 +21,8 @@ namespace Napicu {
             int y = (int)(Napicu::MouseEvent::getOrthoY() / Napicu::Config::GRID_HEIGHT) *  Napicu::Config::GRID_HEIGHT;
 
 
-            this->holdingObject->transform->setPositionX(x);
-            this->holdingObject->transform->setPositionY(y);
+            this->holdingObject->transform.setPositionX(x);
+            this->holdingObject->transform.setPositionY(y);
 
             if (Napicu::MouseEvent::mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
                 this->drop();

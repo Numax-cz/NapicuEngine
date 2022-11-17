@@ -39,4 +39,15 @@ namespace Napicu {
         (*DataManagment::data)["objects"].push_back(Napicu::Json::objectToJson(ob));
         DataManagment::saveData();
     }
+
+    std::list<Napicu::Object> DataManagment::getObjectsFromData() {
+        nlohmann::json j = *DataManagment::getData();
+        std::list<Napicu::Object> list = {};
+
+        for (const auto& el : j["objects"].items()) {
+            list.push_back(Napicu::Json::jsonToObject(el.value()));
+        }
+
+        return list;
+    }
 }

@@ -10,30 +10,28 @@
 namespace Napicu {
 
     void LevelEditor::init() {
-
-//        if(levelLoad){
-//
-//            return;
-//        }
         levelEditor.addComponent(new Napicu::MouseEventControls());
         levelEditor.addComponent(new Napicu::Grid());
-
         this->explorerObjectsList = {new Napicu::Sprite(new Napicu::Texture("src/assets/bird.png"))};
 
-        Napicu::Object *ob = new Napicu::Object("Obj", new Napicu::ObjectTransform(*new glm::vec2(400, 100),
-                                                                                   *new glm::vec2(500, 500), 1));
+
+        if(levelLoad) return;
+
+
+
+        Napicu::Object *ob = new Napicu::Object("Obj", Napicu::ObjectTransform(glm::vec2(400, 100),
+                                                                                   glm::vec2(500, 500), 1));
 
         ob->addComponent(new Napicu::SpriteRender());
-        //ob->addComponent(new Napicu::Rigid());
-
-
-        auto i = Napicu::DataManagment::getData();
-
-        std::cout << *i;
-
-
         this->addObjectToScene(ob);
         this->activeGameObject = ob;
+        ob->addComponent(new Napicu::Rigid());
+
+
+
+
+
+
     }
 
     void LevelEditor::update(double delta_time) {

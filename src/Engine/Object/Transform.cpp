@@ -11,12 +11,10 @@ namespace Napicu {
         to.position = this->position;
     }
 
-    bool ObjectTransform::equals(ObjectTransform *obj) {
-        if (obj != nullptr) {
-            return (obj->scale.x == this->scale.x && obj->scale.y == this->scale.y) &&
-                   (obj->position.x == this->position.x && obj->position.y == this->position.y);
-        }
-        return false;
+    bool ObjectTransform::equals(ObjectTransform obj) {
+        return (obj.scale.x == this->scale.x && obj.scale.y == this->scale.y) &&
+               (obj.position.x == this->position.x && obj.position.y == this->position.y);
+
     }
 
 

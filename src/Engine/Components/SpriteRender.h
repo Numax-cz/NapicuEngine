@@ -26,17 +26,17 @@ namespace Napicu {
 
         }
 
-        SpriteRender(Napicu::Sprite *sprite) : sprite(sprite), lastTransform(*this->object->transform) {
+        SpriteRender(Napicu::Sprite *sprite) : sprite(sprite), lastTransform(this->object->transform) {
 
         }
 
         void start() override {
-            this->lastTransform = this->object->transform->copy();
+            this->lastTransform = this->object->transform.copy();
         }
 
         void update(double delta_time) override {
             if (!this->lastTransform.equals(this->object->transform)) {
-                this->object->transform->copy(this->lastTransform);
+                this->object->transform.copy(this->lastTransform);
                 this->dirty = true;
             }
         }

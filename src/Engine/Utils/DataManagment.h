@@ -20,6 +20,8 @@ namespace Napicu {
     public:
         static void saveObjectToData(Napicu::Object ob);
 
+        static std::list<Napicu::Object> getObjectsFromData();
+
         static void loadData();
 
         static nlohmann::json* getData();

@@ -168,11 +168,11 @@ namespace Napicu {
 
             //Position
             this->vertexArray[offSet] =
-                    spriteRender->object->transform->getPosition().x +
-                    (xA * spriteRender->object->transform->getScale().x);
+                    spriteRender->object->transform.getPosition().x +
+                    (xA * spriteRender->object->transform.getScale().x);
             this->vertexArray[offSet + 1] =
-                    spriteRender->object->transform->getPosition().y +
-                    (yA * spriteRender->object->transform->getScale().y);
+                    spriteRender->object->transform.getPosition().y +
+                    (yA * spriteRender->object->transform.getScale().y);
 
 
             //Color

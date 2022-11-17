@@ -5,11 +5,11 @@
 namespace Napicu {
 
     Object::Object(std::string name) :
-            name(std::move(name)), transform(new Napicu::ObjectTransform()), id(this->idCounter++) {
+            name(std::move(name)), transform(Napicu::ObjectTransform()), id(this->idCounter++) {
 
     }
 
-    Object::Object(std::string name, Napicu::ObjectTransform *transform) :
+    Object::Object(std::string name, Napicu::ObjectTransform transform) :
             name(std::move(name)), transform(transform), id(this->idCounter++) {
 
     }

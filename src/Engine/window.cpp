@@ -116,6 +116,7 @@ namespace Napicu {
 
             glfwSwapBuffers(this->glfwWindow);
         }
+        Napicu::Window::current_scene->saveSettings();
     }
 
     void Window::Destroy() {

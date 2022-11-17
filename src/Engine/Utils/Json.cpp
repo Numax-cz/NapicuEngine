@@ -14,7 +14,7 @@ namespace Napicu{
     nlohmann::json Napicu::Json::objectToJson(Napicu::Object ob) {
         nlohmann::json j;
 
-        j["transform"] = objectToJson(*ob.transform);
+        j["transform"] = objectToJson(ob.transform);
         j["name"] = ob.name;
 
         for(Napicu::Component *c : ob.components){
@@ -42,7 +42,10 @@ namespace Napicu{
         glm::vec2 position = glm::vec2(json["transform"]["position"]["x"], json["transform"]["position"]["y"]);
         glm::vec2 scale = glm::vec2(json["transform"]["scale"]["x"], json["transform"]["scale"]["y"]);
         int zIndex = json["transform"]["zIndex"];
+        Napicu::Object obj =  Napicu::Object(name, Napicu::ObjectTransform(position, scale, zIndex));
 
-        return Napicu::Object(name, new Napicu::ObjectTransform(position, scale, zIndex));
+
+
+        return obj;
     }
 }
