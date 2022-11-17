@@ -31,6 +31,10 @@ namespace Napicu {
             return nlohmann::json();
         }
 
+        virtual Component fromJson(nlohmann::json json){
+            return Component();
+        };
+
 
         void generateId() {
             if (this->id == -1) this->id = idCounter++;

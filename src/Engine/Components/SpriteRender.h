@@ -13,7 +13,7 @@ namespace Napicu {
 
     protected:
         glm::vec4 *color = new glm::vec4(0, 1, 1, 1);
-        Napicu::Sprite *sprite = new Napicu::Sprite(nullptr);
+        Napicu::Sprite *sprite = nullptr;
         Napicu::ObjectTransform lastTransform;
         bool dirty = true;
 
@@ -21,11 +21,11 @@ namespace Napicu {
         SpriteRender() {
 
         }
-
-        SpriteRender(glm::vec4 *color) : color(color) {
-
-        }
-
+//
+//        SpriteRender(glm::vec4 *color) : color(color) {
+//
+//        }
+//
         SpriteRender(Napicu::Sprite *sprite) : sprite(sprite), lastTransform(this->object->transform) {
 
         }
@@ -56,12 +56,23 @@ namespace Napicu {
             i["color"]["z"] = this->color->z;
             i["color"]["w"] = this->color->w;
 
-            for (glm::vec2 vector : this->sprite->getTexCords()) {
-                i["sprite"]["x"] = vector.x;
-                i["sprite"]["y"] = vector.y;
+            if(this->sprite){
+                for (glm::vec2 vector : this->sprite->getTexCords()) {
+                    i["sprite"]["texCoords"]["x"] = vector.x;
+                    i["sprite"]["texCoords"]["y"] = vector.y;
+                }
+
+                i["sprite"]["texture"]["width"] = this->sprite->getTexture()->GetWidth();
+                i["sprite"]["texture"]["height"] = this->sprite->getTexture()->GetHeight();
+                i["sprite"]["texture"]["path"] = this->sprite->getTexture()->getPath();
+                i["sprite"]["texture"]["textureID"] = this->sprite->getTexture()->getTextureID();
             }
+
+
             return i;
         }
+
+
 
         glm::vec4 *getColor() const { return this->color; }
 
@@ -80,6 +91,10 @@ namespace Napicu {
         void setSprite(Napicu::Sprite *sprite) {
             this->sprite = sprite;
             this->dirty = true;
+        }
+
+        bool isSprite(){
+            return (this->sprite != nullptr);
         }
 
         void setColor(glm::vec4 *color) {

@@ -122,7 +122,7 @@ namespace Napicu {
         this->sprites.push_back(obj);
         //this->spritesNum += 1;
 
-        if (obj->getTexture() != nullptr) {
+        if (obj->isSprite()) {
             if (std::find(this->textures.begin(), this->textures.end(), obj->getTexture()) == this->textures.end()) {
                 this->textures.push_back(obj->getTexture());
             }
@@ -138,14 +138,17 @@ namespace Napicu {
 
     void Batch::loadVertexP(int index) {
         Napicu::SpriteRender *spriteRender = this->sprites[index];
+        std::vector<glm::vec2> texCoords;
         int offSet = this->VERTEX_SIZE * index * 4;
         int texId = 0;
 
         glm::vec4 *color = spriteRender->getColor();
-        std::vector<glm::vec2> texCoords = spriteRender->getTexCords();
+        if(spriteRender->isSprite()){
+            texCoords = spriteRender->getTexCords();
+        }
 
 
-        if (spriteRender->getTexture() != nullptr) {
+        if (spriteRender->isSprite()) {
             for (int i = 0; i < this->textures.size(); ++i) {
                 if (this->textures[i] == spriteRender->getTexture()) {
                     texId = i + 1;
@@ -181,9 +184,12 @@ namespace Napicu {
             this->vertexArray[offSet + 4] = color->z; //B
             this->vertexArray[offSet + 5] = color->w; //A
 
-            //TextureCoords
-            this->vertexArray[offSet + 6] = texCoords[i].x;
-            this->vertexArray[offSet + 7] = texCoords[i].y;
+
+            if(!texCoords.empty()){
+                //TextureCoords
+                this->vertexArray[offSet + 6] = texCoords[i].x;
+                this->vertexArray[offSet + 7] = texCoords[i].y;
+            }
 
             //TextureID
             this->vertexArray[offSet + 8] = texId;

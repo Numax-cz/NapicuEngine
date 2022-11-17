@@ -38,13 +38,10 @@ namespace Napicu {
             std::list<Napicu::Object> data = Napicu::DataManagment::getObjectsFromData();
 
             if(!data.empty()){
-
-                printf("xd");
                 for(const auto& ob : data){
-                    Napicu::Object nObj = *new Napicu::Object(ob);
-                    Napicu::Json::
-
-                    this->addObjectToScene(new Napicu::Object(ob));
+                    Napicu::Object *nObj = new Napicu::Object(ob);
+                    nObj->addComponent(new Napicu::SpriteRender());
+                    this->addObjectToScene(nObj);
                 }
 
                 this->levelLoad = true;
