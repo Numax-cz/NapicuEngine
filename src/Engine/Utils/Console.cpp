@@ -5,7 +5,6 @@
 namespace Napicu {
 
     void Console::Log(std::string msg) {
-        //std::cout << "\033[31m" << "Error!" << msg << "\033[0m"  << std::endl;
         std::cout << "[NAPICUENGINE]" << " - " << msg << std::endl;
     }
 
@@ -14,6 +13,6 @@ namespace Napicu {
     }
 
     void Console::Error(std::string error) {
-        std::cout << "[NAPICUENGINE - Error]" << " - " << error << std::endl;
+        std::cerr << "[NAPICUENGINE - Error]" << " - " << error << std::endl;
     }
 }
