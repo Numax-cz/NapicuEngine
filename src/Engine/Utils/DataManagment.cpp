@@ -40,6 +40,13 @@ namespace Napicu {
         DataManagment::saveData();
     }
 
+    void DataManagment::clearObjectData() {
+        if(DataManagment::data == nullptr) return;
+        (*DataManagment::data)["objects"].clear();
+        DataManagment::saveData();
+    }
+
+
     std::list<Napicu::Object> DataManagment::getObjectsFromData() {
         nlohmann::json j = *DataManagment::getData();
         std::list<Napicu::Object> list = {};
@@ -50,4 +57,6 @@ namespace Napicu {
 
         return list;
     }
+
+
 }

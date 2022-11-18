@@ -20,6 +20,8 @@ namespace Napicu {
     public:
         static void saveObjectToData(Napicu::Object ob);
 
+        static void clearObjectData();
+
         static std::list<Napicu::Object> getObjectsFromData();
 
         static void loadData();

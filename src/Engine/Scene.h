@@ -40,6 +40,7 @@ namespace Napicu {
             if(!data.empty()){
                 for(const auto& ob : data){
                     Napicu::Object *nObj = new Napicu::Object(ob);
+
                     nObj->addComponent(new Napicu::SpriteRender());
                     this->addObjectToScene(nObj);
                 }
@@ -50,7 +51,10 @@ namespace Napicu {
         }
 
         void saveSettings(){
-            //TODO SAVE data
+            Napicu::DataManagment::clearObjectData();
+            for(const Napicu::Object *ob : this->sceneObjects){
+                Napicu::DataManagment::saveObjectToData(*ob);
+            }
         }
 
 
