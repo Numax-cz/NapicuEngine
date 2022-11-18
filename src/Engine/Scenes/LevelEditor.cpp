@@ -28,7 +28,6 @@ namespace Napicu {
         ob->addComponent(new Napicu::Rigid());
 
 
-       Napicu::DataManagment::saveObjectToData(*ob);
 
 
 
