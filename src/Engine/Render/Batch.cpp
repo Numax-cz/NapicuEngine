@@ -142,7 +142,7 @@ namespace Napicu {
         int offSet = this->VERTEX_SIZE * index * 4;
         int texId = 0;
 
-        glm::vec4 *color = spriteRender->getColor();
+        glm::vec4 color = spriteRender->getColor();
         if(spriteRender->isSprite()){
             texCoords = spriteRender->getTexCords();
         }
@@ -179,11 +179,10 @@ namespace Napicu {
 
 
             //Color
-            this->vertexArray[offSet + 2] = color->x; //R
-            this->vertexArray[offSet + 3] = color->y; //G
-            this->vertexArray[offSet + 4] = color->z; //B
-            this->vertexArray[offSet + 5] = color->w; //A
-
+            this->vertexArray[offSet + 2] = color.x; //R
+            this->vertexArray[offSet + 3] = color.y; //G
+            this->vertexArray[offSet + 4] = color.z; //B
+            this->vertexArray[offSet + 5] = color.w; //A.
 
             if(!texCoords.empty()){
                 //TextureCoords

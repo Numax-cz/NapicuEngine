@@ -12,7 +12,7 @@ namespace Napicu {
     class SpriteRender : public Napicu::Component {
 
     protected:
-        glm::vec4 *color = new glm::vec4(0, 1, 1, 1);
+        glm::vec4 color = *new glm::vec4(0, 1, 1, 1);
         Napicu::Sprite *sprite = nullptr;
         Napicu::ObjectTransform lastTransform;
         bool dirty = true;
@@ -42,19 +42,19 @@ namespace Napicu {
         }
 
         void imGui() override {
-            float colors[4] = {this->color->x, this->color->y, this->color->z, this->color->w};
+            float colors[4] = {this->color.x, this->color.y, this->color.z, this->color.w};
             if (ImGui::ColorPicker4("Pico picker vole: ", (float *) &colors)) { //TODO
-                this->setColor(new glm::vec4(colors[0], colors[1], colors[2], colors[3]));
+                this->setColor(glm::vec4(colors[0], colors[1], colors[2], colors[3]));
             }
         }
 
         nlohmann::json toJson() override{
             nlohmann::json i;
             i["name"] = "SpriteRender";
-            i["color"]["x"] = this->color->x;
-            i["color"]["y"] = this->color->y;
-            i["color"]["z"] = this->color->z;
-            i["color"]["w"] = this->color->w;
+            i["color"]["x"] = this->color.x;
+            i["color"]["y"] = this->color.y;
+            i["color"]["z"] = this->color.z;
+            i["color"]["w"] = this->color.w;
 
             if(this->sprite){
                 for (glm::vec2 vector : this->sprite->getTexCords()) {
@@ -74,7 +74,7 @@ namespace Napicu {
 
 
 
-        glm::vec4 *getColor() const { return this->color; }
+        glm::vec4 getColor() const { return this->color; }
 
         const bool isDirty() const { return this->dirty; }
 
@@ -97,7 +97,7 @@ namespace Napicu {
             return (this->sprite != nullptr);
         }
 
-        void setColor(glm::vec4 *color) {
+        void setColor(glm::vec4 color) {
             this->color = color;
             this->dirty = true;
         }
