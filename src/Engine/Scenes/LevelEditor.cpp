@@ -12,7 +12,7 @@ namespace Napicu {
     void LevelEditor::init() {
         levelEditor.addComponent(new Napicu::MouseEventControls());
         levelEditor.addComponent(new Napicu::Grid());
-        this->explorerObjectsList = {new Napicu::Sprite(new Napicu::Texture("src/assets/bird.png"))};
+        this->explorerObjectsList = {new Napicu::Sprite(*new Napicu::Texture("src/assets/bird.png"))};
 
 
         if(levelLoad) return;
@@ -53,7 +53,7 @@ namespace Napicu {
 
         for (Napicu::Sprite *sprite: this->explorerObjectsList) {
 
-            if (ImGui::ImageButton(reinterpret_cast<ImTextureID>(sprite->getTexture()->getTextureID()),
+            if (ImGui::ImageButton(reinterpret_cast<ImTextureID>(sprite->getTexture().getTextureID()),
                                    ImVec2(50, 50),
                                    ImVec2(sprite->getTexCords()[0].x,
                                           sprite->getTexCords()[0].y),

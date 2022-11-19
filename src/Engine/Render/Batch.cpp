@@ -122,9 +122,9 @@ namespace Napicu {
         this->sprites.push_back(obj);
         //this->spritesNum += 1;
 
-        if (obj->isSprite()) {
-            if (std::find(this->textures.begin(), this->textures.end(), obj->getTexture()) == this->textures.end()) {
-                this->textures.push_back(obj->getTexture());
+        if (obj->isSprite()) { //TODO
+            if (std::find(this->textures.begin(), this->textures.end(), &obj->getTexture()) == this->textures.end()) {
+                this->textures.push_back(&obj->getTexture());
             }
         }
 
@@ -150,7 +150,7 @@ namespace Napicu {
 
         if (spriteRender->isSprite()) {
             for (int i = 0; i < this->textures.size(); ++i) {
-                if (this->textures[i] == spriteRender->getTexture()) {
+                if (this->textures[i] == &spriteRender->getTexture()) {
                     texId = i + 1;
                     break;
                 }

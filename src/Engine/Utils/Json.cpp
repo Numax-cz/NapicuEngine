@@ -44,7 +44,15 @@ namespace Napicu{
         int zIndex = json["transform"]["zIndex"];
         Napicu::Object obj =  Napicu::Object(name, Napicu::ObjectTransform(position, scale, zIndex));
 
+        for(const auto &j : json["components"].items()){
+            const auto val = j.value();
+            if(val.contains("sprite")){
+                std::string pth = j.value()["sprite"]["texture"]["path"];
 
+
+
+            }
+        }
 
         return obj;
     }

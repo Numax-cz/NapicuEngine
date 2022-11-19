@@ -5,7 +5,7 @@
 
 namespace Napicu {
 
-    Sprite::Sprite(Napicu::Texture *texture) : texture(texture) {
+    Sprite::Sprite(const Napicu::Texture& texture) : texture(texture) {
         this->texCords = std::vector<glm::vec2>{
                 glm::vec2(1, 1),
                 glm::vec2(1, 0),
@@ -14,7 +14,7 @@ namespace Napicu {
         };
     }
 
-    Sprite::Sprite(Napicu::Texture *texture, std::vector<glm::vec2> texCords) : texture(texture), texCords(texCords) {
+    Sprite::Sprite(const Napicu::Texture& texture, std::vector<glm::vec2> texCords) : texture(texture), texCords(texCords) {
 
     }
 

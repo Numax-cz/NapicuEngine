@@ -26,7 +26,7 @@ namespace Napicu {
 //
 //        }
 //
-        SpriteRender(Napicu::Sprite *sprite) : sprite(sprite), lastTransform(this->object->transform) {
+        SpriteRender(const Napicu::Sprite& sprite) : sprite(new Napicu::Sprite(sprite)), lastTransform(this->object->transform) {
 
         }
 
@@ -62,10 +62,10 @@ namespace Napicu {
                     i["sprite"]["texCoords"]["y"] = vector.y;
                 }
 
-                i["sprite"]["texture"]["width"] = this->sprite->getTexture()->GetWidth();
-                i["sprite"]["texture"]["height"] = this->sprite->getTexture()->GetHeight();
-                i["sprite"]["texture"]["path"] = this->sprite->getTexture()->getPath();
-                i["sprite"]["texture"]["textureID"] = this->sprite->getTexture()->getTextureID();
+                i["sprite"]["texture"]["width"] = this->sprite->getTexture().GetWidth();
+                i["sprite"]["texture"]["height"] = this->sprite->getTexture().GetHeight();
+                i["sprite"]["texture"]["path"] = this->sprite->getTexture().getPath();
+                i["sprite"]["texture"]["textureID"] = this->sprite->getTexture().getTextureID();
             }
 
 
@@ -80,7 +80,7 @@ namespace Napicu {
 
         void resetDirty() { this->dirty = false; }
 
-        Napicu::Texture *getTexture() const {
+        Napicu::Texture &getTexture() const {
             return this->sprite->getTexture();
         }
 
