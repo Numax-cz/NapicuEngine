@@ -21,12 +21,12 @@ namespace Napicu {
         SpriteRender() {
 
         }
-//
-//        SpriteRender(glm::vec4 *color) : color(color) {
-//
-//        }
-//
-        SpriteRender(const Napicu::Sprite& sprite) : sprite(new Napicu::Sprite(sprite)), lastTransform(this->object->transform) {
+
+        SpriteRender(glm::vec4 color) : color(color) {
+
+        }
+
+        SpriteRender(Napicu::Sprite* sprite) : sprite(sprite), lastTransform(this->object->transform) {
 
         }
 

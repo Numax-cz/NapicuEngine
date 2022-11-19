@@ -22,7 +22,7 @@ namespace Napicu {
 
         static void clearObjectData();
 
-        static std::list<Napicu::Object> getObjectsFromData();
+        static std::list<Napicu::Object*> generateObjectsFromData();
 
         static void loadData();
 

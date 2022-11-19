@@ -35,14 +35,12 @@ namespace Napicu {
         void load() {
             Napicu::DataManagment::loadData();
 
-            std::list<Napicu::Object> data = Napicu::DataManagment::getObjectsFromData();
+            std::list<Napicu::Object*> data = Napicu::DataManagment::generateObjectsFromData();
 
             if(!data.empty()){
-                for(const auto& ob : data){
-                    Napicu::Object *nObj = new Napicu::Object(ob);
+                for(Napicu::Object* ob : data){
 
-                    nObj->addComponent(new Napicu::SpriteRender());
-                    this->addObjectToScene(nObj);
+                    this->addObjectToScene(ob);
                 }
 
                 this->levelLoad = true;

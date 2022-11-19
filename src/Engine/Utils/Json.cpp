@@ -37,22 +37,34 @@ namespace Napicu{
         return j;
     }
 
-    Napicu::Object Json::jsonToObject(nlohmann::json json) {
+    Napicu::Object* Json::jsonToObjectPtr(nlohmann::json json) {
         std::string name = json["name"];
         glm::vec2 position = glm::vec2(json["transform"]["position"]["x"], json["transform"]["position"]["y"]);
         glm::vec2 scale = glm::vec2(json["transform"]["scale"]["x"], json["transform"]["scale"]["y"]);
         int zIndex = json["transform"]["zIndex"];
-        Napicu::Object obj =  Napicu::Object(name, Napicu::ObjectTransform(position, scale, zIndex));
+
+        Napicu::Object *obj =  new Napicu::Object(name, Napicu::ObjectTransform(position, scale, zIndex));
+        Napicu::SpriteRender *render = new Napicu::SpriteRender();
 
         for(const auto &j : json["components"].items()){
             const auto val = j.value();
-            if(val.contains("sprite")){
-                std::string pth = j.value()["sprite"]["texture"]["path"];
-
-
-
+            if(val["name"].get<std::string>() == "SpriteRender"){
+                if(val.contains("sprite")){
+                    std::string pth = val["sprite"]["texture"]["path"];
+                    render->setSprite(new Napicu::Sprite(*new Napicu::Texture(pth)));
+                    obj->addComponent(render);
+                }
+                else if(val.contains("color")){
+                    int x = val["color"]["x"];
+                    int y = val["color"]["y"];
+                    int z = val["color"]["z"];
+                    int w = val["color"]["w"];
+                    obj->addComponent(new Napicu::SpriteRender(glm::vec4(x, y, z, w)));
+                }
             }
         }
+
+
 
         return obj;
     }

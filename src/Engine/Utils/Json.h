@@ -16,6 +16,6 @@ namespace Napicu{
 
         static nlohmann::json objectToJson(Napicu::ObjectTransform ob);
 
-        static Napicu::Object jsonToObject(nlohmann::json json);
+        static Napicu::Object* jsonToObjectPtr(nlohmann::json json);
     };
 }
