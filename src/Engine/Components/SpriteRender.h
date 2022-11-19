@@ -12,7 +12,7 @@ namespace Napicu {
     class SpriteRender : public Napicu::Component {
 
     protected:
-        glm::vec4 color = *new glm::vec4(0, 1, 1, 1);
+        glm::vec4 color = glm::vec4(0, 1, 1, 1);
         Napicu::Sprite *sprite = nullptr;
         Napicu::ObjectTransform lastTransform;
         bool dirty = true;
