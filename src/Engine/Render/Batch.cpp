@@ -3,12 +3,12 @@
 #include "Texture.h"
 #include <iostream>
 #include <algorithm>
+#include "../Utils/Assets.h"
 
 namespace Napicu {
 
     Batch::Batch(int batchSize, int zIndex) : batchSize(batchSize), zIndex(zIndex) {
-        this->shader = new Napicu::Shader("src/Engine/shaders/default.glsl");
-        this->shader->compile();
+        this->shader = Napicu::Assets::getShader("src/Engine/shaders/default.glsl");
 
         this->vertexArray = new float[batchSize * 4 * VERTEX_SIZE]{};
         this->textures = {};

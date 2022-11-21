@@ -6,6 +6,7 @@
 #include <nlohmann/adl_serializer.hpp>
 #include <fstream>
 #include "../Utils/Json.h"
+#include "../Utils/Assets.h"
 
 namespace Napicu {
 
@@ -15,7 +16,11 @@ namespace Napicu {
         this->explorerObjectsList = {new Napicu::Sprite(*new Napicu::Texture("src/assets/bird.png"))};
 
 
-        if(levelLoad) return;
+        if(levelLoad) {
+            if(!this->sceneObjects.empty()) this->activeGameObject = *(this->sceneObjects.begin());
+
+            return;
+        }
 
 
 
@@ -29,7 +34,7 @@ namespace Napicu {
 
 
 
-
+        Napicu::Assets::getShader("src/Engine/shaders/default.glsl");
 
 
     }
