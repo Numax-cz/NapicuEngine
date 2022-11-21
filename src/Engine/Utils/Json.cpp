@@ -2,11 +2,7 @@
 #include "Json.h"
 #include "Console.h"
 
-
 namespace Napicu{
-
-
-
     nlohmann::json Json::objectToJson(Napicu::Component* ob) {
         return ob->toJson();
     }
@@ -63,8 +59,6 @@ namespace Napicu{
                 }
             }
         }
-
-
 
         return obj;
     }
