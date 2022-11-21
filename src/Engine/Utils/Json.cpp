@@ -51,11 +51,11 @@ namespace Napicu{
                     obj->addComponent(render);
                 }
                 else if(val.contains("color")){
-                    float x = val["color"]["x"];
-                    float y = val["color"]["y"];
-                    float z = val["color"]["z"];
-                    float w = val["color"]["w"];
-                    obj->addComponent(new Napicu::SpriteRender(glm::vec4(x, y, z, w)));
+                    float r = val["color"]["x"];
+                    float g = val["color"]["y"];
+                    float b = val["color"]["z"];
+                    float a = val["color"]["w"];
+                    obj->addComponent(new Napicu::SpriteRender(glm::vec4(r, g, b, a)));
                 }
             }
         }
