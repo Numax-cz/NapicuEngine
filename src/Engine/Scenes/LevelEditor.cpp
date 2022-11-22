@@ -11,9 +11,12 @@
 namespace Napicu {
 
     void LevelEditor::init() {
+        this->loadAssets();
         levelEditor.addComponent(new Napicu::MouseEventControls());
         levelEditor.addComponent(new Napicu::Grid());
-        this->explorerObjectsList = {new Napicu::Sprite(*new Napicu::Texture("src/assets/bird.png"))};
+
+
+        this->explorerObjectsList = {new Napicu::Sprite(*Napicu::Assets::getTexture("src/assets/bird.png"))};
 
 
         if(levelLoad) {
@@ -30,12 +33,18 @@ namespace Napicu {
         ob->addComponent(new Napicu::SpriteRender());
         this->addObjectToScene(ob);
         this->activeGameObject = ob;
-        ob->addComponent(new Napicu::Rigid());
+        //ob->addComponent(new Napicu::Rigid());
 
 
 
+
+
+    }
+
+    void LevelEditor::loadAssets() {
         Napicu::Assets::getShader("src/Engine/shaders/default.glsl");
 
+        Napicu::Assets::getTexture("src/assets/bird.png");
 
     }
 

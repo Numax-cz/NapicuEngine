@@ -11,6 +11,7 @@ namespace Napicu {
     private:
         std::list<Napicu::Sprite *> explorerObjectsList = {};
         float angle = 0;
+        void loadAssets();
 
 
     public:

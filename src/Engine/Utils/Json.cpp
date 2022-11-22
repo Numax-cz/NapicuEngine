@@ -1,6 +1,7 @@
 #include <fstream>
 #include "Json.h"
 #include "Console.h"
+#include "Assets.h"
 
 namespace Napicu{
     nlohmann::json Json::objectToJson(Napicu::Component* ob) {
@@ -47,7 +48,7 @@ namespace Napicu{
             if(val["name"].get<std::string>() == "SpriteRender"){
                 if(val.contains("sprite")){
                     std::string pth = val["sprite"]["texture"]["path"];
-                    render->setSprite(new Napicu::Sprite(*new Napicu::Texture(pth)));
+                    render->setSprite(new Napicu::Sprite(*Napicu::Assets::getTexture(pth)));
                     obj->addComponent(render);
                 }
                 else if(val.contains("color")){

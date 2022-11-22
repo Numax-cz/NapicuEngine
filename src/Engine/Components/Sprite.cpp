@@ -28,4 +28,8 @@ namespace Napicu {
 
         return object;
     }
+
+    void Sprite::setTexture(const Napicu::Texture& texture) {
+        this->texture = texture;
+    }
 }

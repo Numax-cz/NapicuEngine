@@ -101,5 +101,9 @@ namespace Napicu {
             this->color = color;
             this->dirty = true;
         }
+
+        void setTexture(const Napicu::Texture& texture){
+            this->sprite->setTexture(texture);
+        }
     };
 }
