@@ -7,6 +7,7 @@
 [submodule "external/imgui"]
 	path = external/imgui
 	url = https://github.com/ocornut/imgui
+    branch = docking
 
 [submodule "external/json"]
 	path = external/json

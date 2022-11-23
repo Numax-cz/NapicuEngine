@@ -22,6 +22,8 @@ namespace Napicu {
         void render();
 
         void destroy();
+
+        void dockSpace();
     };
 }
 
