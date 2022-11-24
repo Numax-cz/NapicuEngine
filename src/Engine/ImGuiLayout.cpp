@@ -60,5 +60,7 @@ namespace Napicu {
 
         ImGui::Begin("Menu",&open, iw);
         ImGui::PopStyleVar(2);
+
+        ImGui::DockSpace(ImGui::GetID("Dockspace"));
     }
 }
