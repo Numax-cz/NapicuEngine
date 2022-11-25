@@ -34,6 +34,10 @@ namespace Napicu {
     Texture::Texture(int width, int height) : width(width), height(height), file_path("GeneratedTexture") {
         glGenTextures(1, &this->render_id);
         glBindTexture(GL_TEXTURE_2D, this->render_id);
+
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, this->width, this->height, 0, GL_RGB, GL_UNSIGNED_BYTE, nullptr);
     }
 

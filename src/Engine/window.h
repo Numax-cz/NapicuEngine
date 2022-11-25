@@ -56,6 +56,9 @@ namespace Napicu {
 
         void static setHeight(int height) { Window::get()->height = height; }
 
+        Napicu::Framebuffer static *getFramebuffer();
+
+        float static getAspectRation();
 
     protected:
         static void windowSizeCallback(GLFWwindow *window, int width, int height);

@@ -2,7 +2,7 @@
 #include <imgui.h>
 #include <imgui_impl_glfw.h>
 #include "imgui_impl_opengl3.h"
-
+#include "Scenes/Editor/EditorView.h"
 #include "window.h"
 
 namespace Napicu {
@@ -15,7 +15,6 @@ namespace Napicu {
         ImGui::StyleColorsDark();
         ImGui_ImplGlfw_InitForOpenGL(this->glfWwindow, true);
         ImGui_ImplOpenGL3_Init("#version 460");
-
         ImGui::GetIO().ConfigFlags |= ImGuiConfigFlags_DockingEnable;
     }
 
@@ -25,6 +24,7 @@ namespace Napicu {
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
         this->dockSpace();
+        Napicu::EditorView::imgui();
 
         scene->imGuiScene();
         ImGui::End();
