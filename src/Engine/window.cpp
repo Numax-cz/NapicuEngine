@@ -84,6 +84,7 @@ namespace Napicu {
         this->imGuiLayout->initImGui();
 
         this->frameBuffer = new Napicu::Framebuffer(1920, 1080); //TODO FIX SCREEN SIZE FOR OTHER...
+        glViewport(0, 0, 1920, 1080);
 
         this->ChangeScene(0);
 
@@ -127,7 +128,6 @@ namespace Napicu {
     void Window::windowSizeCallback(GLFWwindow *window, int width, int height) {
         Window::get()->setWidth(width);
         Window::get()->setHeight(height);
-        glViewport(0, 0, width, height);
     }
 
     Napicu::Framebuffer* Window::getFramebuffer() {
