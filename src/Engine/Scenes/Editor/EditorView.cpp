@@ -38,6 +38,6 @@ namespace Napicu{
         float viewportX = (size.x / 2.0f) - (aspect.x / 2.0f);
         float viewportY = (size.y / 2.0f) - (aspect.y / 2.0f);
 
-        return {viewportX, viewportY};
+        return {viewportX + ImGui::GetCursorPosX(), viewportY + ImGui::GetCursorPosY()};
     }
 }

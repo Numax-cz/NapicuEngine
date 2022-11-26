@@ -24,18 +24,11 @@ namespace Napicu {
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
         this->dockSpace();
+
         Napicu::EditorView::imgui();
 
         scene->imGuiScene();
         ImGui::End();
-
-    }
-
-    void ImGuiLayout::render() {
-
-        //TODO RENDER
-
-
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
     }

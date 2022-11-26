@@ -97,14 +97,13 @@ namespace Napicu {
             this->delta_time = current_frame - this->last_frame;
             this->last_frame = current_frame;
 
-            this->imGuiLayout->update(this->current_scene);
             Napicu::Draw::beginFrame();
 
             glfwPollEvents();
 
+            this->frameBuffer->bind();
             glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT);
-            this->frameBuffer->bind();
 
             if (this->delta_time >= 0) {
                 Napicu::Draw::draw();
@@ -112,7 +111,7 @@ namespace Napicu {
             }
             this->frameBuffer->unbind();
             //Render ImGui
-            this->imGuiLayout->render();
+            this->imGuiLayout->update(this->current_scene);
 
 
             glfwSwapBuffers(this->glfwWindow);

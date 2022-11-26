@@ -9,7 +9,8 @@ namespace Napicu{
         glBindFramebuffer(GL_FRAMEBUFFER, this->fboID);
 
         this->texture = new Napicu::Texture(width, height);
-        glad_glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, this->texture->getTextureID(), 0);
+        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, this->texture->getTextureID(), 0);
+
 
         unsigned int rboID;
         glGenFramebuffers(1, &rboID);

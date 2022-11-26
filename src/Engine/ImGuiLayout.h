@@ -19,8 +19,6 @@ namespace Napicu {
 
         void update(Napicu::Scene *scene);
 
-        void render();
-
         void destroy();
 
         void dockSpace();
