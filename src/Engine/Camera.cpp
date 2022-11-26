@@ -12,10 +12,12 @@ namespace Napicu {
         glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
         this->vMatrix = {};
         this->vMatrix = glm::lookAt(
-                glm::vec3(position.x, position.y, 20.0f),
-                cameraFront + glm::vec3(position.x, position.y, 0.0f),
+                glm::vec3(this->position.x, this->position.y, 20.0f),
+                cameraFront + glm::vec3(this->position.x, this->position.y, 0.0f),
                 cameraUp);
-        this->vpMatrix = pMatrix * vMatrix;
-        this->vpMatrixInverse = glm::inverse(pMatrix * vMatrix);
+        this->vpMatrix = this->pMatrix * this->vMatrix;
+        this->vpMatrixInverse = glm::inverse(this->pMatrix * this->vMatrix);
+        this->vMatrixInverse = glm::inverse(this->vMatrix);
+        this->pMatrixInverse = glm::inverse(this->pMatrix);
     }
 }

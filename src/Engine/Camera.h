@@ -9,10 +9,9 @@ namespace Napicu {
     class Camera {
     private:
         //projection - view
-        glm::mat4 pMatrix, vMatrix, vpMatrix, vpMatrixInverse = {};
+        glm::mat4 pMatrix, vMatrix, vpMatrix, vpMatrixInverse, vMatrixInverse, pMatrixInverse = {};
         glm::vec3 position = {0, 0, 0};
         float rotation = 0.0f;
-
 
     public:
         Camera(float left, float right, float bottom, float top);
@@ -37,9 +36,14 @@ namespace Napicu {
 
         const glm::mat4 getViewProjectionMatrixInverse() const { return this->vpMatrixInverse; }
 
+        const glm::mat4 getViewProjectionInverseMatrix() const { return this->vMatrixInverse; }
+
+        const glm::mat4 getPositionProjectionInverseMatrix() const { return this->pMatrixInverse; }
+
         const float getRotation() const { return this->rotation; }
 
         const glm::vec3 getPosition() const { return this->position; }
+
 
     };
 }
