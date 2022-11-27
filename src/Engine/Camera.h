@@ -36,9 +36,9 @@ namespace Napicu {
 
         const glm::mat4 getViewProjectionMatrixInverse() const { return this->vpMatrixInverse; }
 
-        const glm::mat4 getViewProjectionInverseMatrix() const { return this->vMatrixInverse; }
+        const glm::mat4 getViewInverseMatrix() const { return this->vMatrixInverse; }
 
-        const glm::mat4 getPositionProjectionInverseMatrix() const { return this->pMatrixInverse; }
+        const glm::mat4 getProjectionInverseMatrix() const { return this->pMatrixInverse; }
 
         const float getRotation() const { return this->rotation; }
 

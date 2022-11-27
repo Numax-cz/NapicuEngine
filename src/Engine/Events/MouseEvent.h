@@ -11,6 +11,7 @@ namespace Napicu {
         double xPosition, yPosition, xLast, yLast;
         bool mouseButtonPressed[3] = {};
         bool isDragging;
+        glm::vec2 screenViewportPosition, screenViewportSize;
 
         MouseEvent();
 
@@ -28,6 +29,10 @@ namespace Napicu {
         static bool mouseButtonDown(int key);
 
         static void endFrame();
+
+        static void setScreenViewportPosition(glm::vec2 position);
+
+        static void setScreenviewportSize(glm::vec2 size);
 
         static float getOrthoX();
 

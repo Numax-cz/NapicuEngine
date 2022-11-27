@@ -1,5 +1,6 @@
 #include "EditorView.h"
 #include "../../window.h"
+#include "../../Events/MouseEvent.h"
 
 namespace Napicu{
     void EditorView::imgui() {
@@ -8,8 +9,20 @@ namespace Napicu{
         ImVec2 size = EditorView::getViewportSize();
         ImVec2 position = EditorView::getCenterViewportPosition(size);
         ImGui::SetCursorPos(position);
+
+        ImVec2 tLeft = ImGui::GetCursorScreenPos();
+        tLeft.x -= ImGui::GetScrollX();
+        tLeft.y -= ImGui::GetScrollY();
+
+
+
+
         int textureID = Napicu::Window::getFramebuffer()->getTextureID();
         ImGui::Image(reinterpret_cast<ImTextureID>(textureID), ImVec2(size.x, size.y), ImVec2(0, 1), ImVec2(1, 0));
+
+        Napicu::MouseEvent::setScreenViewportPosition(glm::vec2(tLeft.x, tLeft.y));
+        Napicu::MouseEvent::setScreenviewportSize(glm::vec2(size.x, size.y));
+
         ImGui::End();
     }
 
