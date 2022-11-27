@@ -15,7 +15,7 @@ namespace Napicu {
         glm::vec3 color;
         int lifeTime;
     public:
-        LineVector(glm::vec2 from, glm::vec2 to, glm::vec3 color, int lifeTime);
+        LineVector(const glm::vec2& from, const glm::vec2& to, const glm::vec3& color, int lifeTime);
 
         int beginFrame();
 

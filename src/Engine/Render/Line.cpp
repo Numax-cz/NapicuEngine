@@ -1,10 +1,9 @@
 #include "Line.h"
 #include "../window.h"
-#include <glm/vec2.hpp>
 
 namespace Napicu {
 
-    LineVector::LineVector(glm::vec2 from, glm::vec2 to, glm::vec3 color, int lifeTime)
+    LineVector::LineVector(const glm::vec2& from, const glm::vec2& to, const glm::vec3& color, int lifeTime)
             : from(from), to(to), color(color), lifeTime(lifeTime) {}
 
     int LineVector::beginFrame() {
