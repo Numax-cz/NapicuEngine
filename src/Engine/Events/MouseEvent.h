@@ -30,9 +30,9 @@ namespace Napicu {
 
         static void endFrame();
 
-        static void setScreenViewportPosition(glm::vec2 position);
+        static void setScreenViewportPosition(const glm::vec2& position);
 
-        static void setScreenviewportSize(glm::vec2 size);
+        static void setScreenviewportSize(const glm::vec2& size);
 
         static float getOrthoX();
 

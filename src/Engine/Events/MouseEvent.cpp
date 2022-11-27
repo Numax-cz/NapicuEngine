@@ -61,11 +61,11 @@ namespace Napicu {
         return nearResult.y;
     }
 
-    void MouseEvent::setScreenViewportPosition(glm::vec2 position) {
+    void MouseEvent::setScreenViewportPosition(const glm::vec2& position) {
         MouseEvent::get()->screenViewportPosition = position;
     }
 
-    void MouseEvent::setScreenviewportSize(glm::vec2 size) {
+    void MouseEvent::setScreenviewportSize(const glm::vec2& size) {
         MouseEvent::get()->screenViewportSize = size;
     }
 }
