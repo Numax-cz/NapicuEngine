@@ -74,7 +74,7 @@ namespace Napicu {
                                    ImVec2(sprite->getTexCords()[2].x,
                                           sprite->getTexCords()[2].y),
                                    0)) {
-                Napicu::Object *ob = Napicu::Sprite::generateSpriteObject(sprite, 32, 32);
+                Napicu::Object *ob = Napicu::Sprite::generateSpriteObject(sprite, Napicu::Config::GRID_WIDTH, Napicu::Config::GRID_HEIGHT);
 
                 this->levelEditor.getComponent(new Napicu::MouseEventControls)->pickUpObject(ob);
             }
