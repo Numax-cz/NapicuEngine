@@ -14,6 +14,7 @@
 #include "ImGuiLayout.h"
 #include "Render/Line.h"
 #include "Render/Framebuffer.h"
+#include "Render/Select.h"
 
 namespace Napicu {
     class Scene;
