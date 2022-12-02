@@ -10,6 +10,7 @@ namespace Napicu {
     class Render {
     protected:
         std::list<Napicu::Batch *> batches = {};
+        static Napicu::Shader activeShader;
 
     private:
         const int BATCH_SIZE = 1000;
@@ -23,6 +24,10 @@ namespace Napicu {
         void add(Napicu::Object *object);
 
         void render();
+
+        static void bindShader(const Napicu::Shader& shader);
+
+        static Napicu::Shader& getActiveShader();
 
         static bool comp(Napicu::Batch *a, Napicu::Batch *b);
     };

@@ -8,8 +8,6 @@
 namespace Napicu {
 
     Batch::Batch(int batchSize, int zIndex) : batchSize(batchSize), zIndex(zIndex) {
-        this->shader = Napicu::Assets::getShader("src/Engine/shaders/default.glsl");
-
         this->vertexArray = new float[batchSize * 4 * VERTEX_SIZE]{};
         this->textures = {};
 
@@ -84,10 +82,8 @@ namespace Napicu {
 
 
         //Shader
-        this->shader->use();
-
-
-        this->shader->uploadUniformMat4("uViewProjection",
+        Napicu::Shader shader = Napicu::Render::getActiveShader();
+        shader.uploadUniformMat4("uViewProjection",
                                         Napicu::Window::current_scene->getCamera().getViewProjectionMatrix());
 
         for (int i = 0; i < this->textures.size(); i++) {
@@ -95,7 +91,7 @@ namespace Napicu {
         }
 
 
-        this->shader->uploadTexture("texSampler", this->texturesSlots);
+        shader.uploadTexture("texSampler", this->texturesSlots);
 
 
         glEnableVertexAttribArray(0);
@@ -113,7 +109,7 @@ namespace Napicu {
             texture->Unbind();
         }
 
-        this->shader->detach();
+        shader.detach();
     }
 
     void Batch::addSprite(Napicu::SpriteRender *obj) {

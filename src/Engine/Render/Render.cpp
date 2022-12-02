@@ -39,6 +39,7 @@ namespace Napicu {
     }
 
     void Render::render() {
+        Render::activeShader.use();
         for (Napicu::Batch *batch: this->batches) {
             batch->render();
         }
@@ -46,6 +47,14 @@ namespace Napicu {
 
     bool Render::comp(Napicu::Batch *a, Napicu::Batch *b) {
         return (a->getZIndex() < b->getZIndex());
+    }
+
+    void Render::bindShader(const Shader &shader) {
+        Render::activeShader = shader;
+    }
+
+    Napicu::Shader &Render::getActiveShader() {
+        return Render::activeShader;
     }
 
 

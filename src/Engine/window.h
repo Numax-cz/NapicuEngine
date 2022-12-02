@@ -24,6 +24,7 @@ namespace Napicu {
         GLFWwindow *glfwWindow;
         Napicu::ImGuiLayout *imGuiLayout;
         Napicu::Framebuffer *frameBuffer;
+        Napicu::Select *selectTexture;
         inline static Window *window;
 
 

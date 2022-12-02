@@ -4,6 +4,7 @@
 #include "Scenes/Level.h"
 #include "Events/MouseEvent.h"
 #include "Render/Draw.h"
+#include "Utils/Assets.h"
 
 namespace Napicu {
     inline Napicu::Scene Window::*current_scene = nullptr;
@@ -84,6 +85,7 @@ namespace Napicu {
         this->imGuiLayout->initImGui();
 
         this->frameBuffer = new Napicu::Framebuffer(1920, 1080); //TODO FIX SCREEN SIZE FOR OTHER...
+        this->selectTexture = new Napicu::Select(1920, 1080);
         glViewport(0, 0, 1920, 1080);
 
         this->ChangeScene(0);
@@ -91,11 +93,22 @@ namespace Napicu {
     }
 
     void Window::Loop() {
+        Napicu::Shader *shader = Napicu::Assets::getShader("src/Engine/shaders/default.glsl");
+        Napicu::Shader *pShader = Napicu::Assets::getShader("src/Engine/shaders/selectShader.glsl");
+
         while (!glfwWindowShouldClose(this->glfwWindow)) {
 
             double current_frame = glfwGetTime();
             this->delta_time = current_frame - this->last_frame;
             this->last_frame = current_frame;
+
+            glDisable(GL_BLEND);
+            this->selectTexture->enable();
+
+            glViewport(0, 0, 1920, 1080);
+            glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+            Napicu::Render::bindShader(*shader);
 
             Napicu::Draw::beginFrame();
 
@@ -107,6 +120,7 @@ namespace Napicu {
 
             if (this->delta_time >= 0) {
                 Napicu::Draw::draw();
+                Napicu::Render::bindShader(*shader);
                 Napicu::Window::current_scene->update(this->delta_time);
             }
             this->frameBuffer->unbind();
