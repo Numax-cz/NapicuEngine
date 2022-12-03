@@ -84,9 +84,9 @@ namespace Napicu {
         this->imGuiLayout = new Napicu::ImGuiLayout(this->glfwWindow);
         this->imGuiLayout->initImGui();
 
-        this->frameBuffer = new Napicu::Framebuffer(1920, 1080); //TODO FIX SCREEN SIZE FOR OTHER...
-        this->selectTexture = new Napicu::Select(1920, 1080);
-        glViewport(0, 0, 1920, 1080);
+        this->frameBuffer = new Napicu::Framebuffer((int)Window::SCREEN_SIZE_X, (int)Window::SCREEN_SIZE_Y);
+        this->selectTexture = new Napicu::Select((int)Window::SCREEN_SIZE_X, (int)Window::SCREEN_SIZE_Y);
+        glViewport(0, 0, (int)Window::SCREEN_SIZE_X, (int)Window::SCREEN_SIZE_Y);
 
         this->ChangeScene(0);
 
@@ -105,12 +105,18 @@ namespace Napicu {
             glDisable(GL_BLEND);
             this->selectTexture->enable();
 
-            glViewport(0, 0, 1920, 1080);
+
             glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-            Napicu::Render::bindShader(*shader);
-
+            Napicu::Render::bindShader(*pShader);
             Napicu::Draw::beginFrame();
+
+            if(Napicu::MouseEvent::mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)){
+                int x = (int)Napicu::MouseEvent::getX();
+                int y = (int)Napicu::MouseEvent::getY();
+                std::cout << y << std::endl;
+            }
+
 
             glfwPollEvents();
 

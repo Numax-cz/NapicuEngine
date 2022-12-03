@@ -26,6 +26,9 @@ namespace Napicu {
         Napicu::Framebuffer *frameBuffer;
         Napicu::Select *selectTexture;
         inline static Window *window;
+        //TODO FIX SCREEN SIZE FOR OTHER...
+        static inline const float SCREEN_SIZE_X = 1920.0f;
+        static inline const float SCREEN_SIZE_Y = 1080.0f;
 
 
         std::string title;

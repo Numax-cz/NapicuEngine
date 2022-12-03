@@ -10,7 +10,7 @@ namespace Napicu {
     class Render {
     protected:
         std::list<Napicu::Batch *> batches = {};
-        static Napicu::Shader activeShader;
+        static inline Napicu::Shader activeShader = Napicu::Shader("src/Engine/shaders/default.glsl");
 
     private:
         const int BATCH_SIZE = 1000;
