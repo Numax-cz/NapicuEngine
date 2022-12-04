@@ -59,6 +59,9 @@ namespace Napicu {
         std::list<Component *> getAllComponents();
 
         static void init(int maxID);
+
+        int getId() { return this->id; }
+
     };
 
 }

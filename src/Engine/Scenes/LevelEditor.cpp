@@ -54,7 +54,10 @@ namespace Napicu {
             object->update(delta_time);
         }
 
-        this->render->render();
+    }
+
+    void LevelEditor::render() {
+        this->sRender->render();
     }
 
     void LevelEditor::imGui() {

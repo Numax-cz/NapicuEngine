@@ -38,6 +38,10 @@ namespace Napicu {
 
         static float getOrthoY();
 
+        static float getScreenX();
+
+        static float getScreenY();
+
         static float getX() { return (float) get()->xPosition; }
 
         static float getY() { return (float) get()->yPosition; }

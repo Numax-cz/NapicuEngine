@@ -52,11 +52,11 @@ namespace Napicu {
         glBindFramebuffer(GL_READ_FRAMEBUFFER, this->fboID);
         glReadBuffer(GL_COLOR_ATTACHMENT0);
 
-        float pxs[3];
+        float pxs[3] = {};
 
         glReadPixels(x, y, 1, 1, GL_RGB, GL_FLOAT, &pxs);
 
-        return (int)pxs[0];
+        return (int)(pxs[0]) - 1;
     }
 
     void Select::enable() {

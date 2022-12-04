@@ -27,7 +27,7 @@ namespace Napicu {
 
         bool room;
 
-        const int VERTEX_SIZE = 9;
+        const int VERTEX_SIZE = 10;
         const int VERTEX_SIZE_BYTES = VERTEX_SIZE * sizeof(float);
 
 

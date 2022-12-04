@@ -10,6 +10,10 @@ namespace Napicu {
 
     }
 
+    void Level::render() {
+
+    }
+
     void Level::init() {
 
     }

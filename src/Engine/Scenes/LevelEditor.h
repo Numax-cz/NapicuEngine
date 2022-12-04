@@ -24,6 +24,8 @@ namespace Napicu {
 
         void update(double delta_time) override;
 
+        void render() override;
+
         void imGui() override;
 
         void init() override;

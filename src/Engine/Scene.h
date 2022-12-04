@@ -15,7 +15,7 @@ namespace Napicu {
     class Scene {
     protected:
         std::list<Napicu::Object *> sceneObjects = {};
-        Napicu::Render *render = new Napicu::Render();
+        Napicu::Render *sRender = new Napicu::Render();
         Napicu::Object *activeGameObject = nullptr;
         bool levelLoad = false;
 
@@ -29,6 +29,9 @@ namespace Napicu {
         Napicu::Camera camera = *new Napicu::Camera(0.0f, Napicu::Config::CAMERA_PROJECTION_SIZE_X, 0.0f, Napicu::Config::CAMERA_PROJECTION_SIZE_Y);
 
         virtual void update(double delta_time) {};
+        virtual void render() {};
+        virtual void imGui() {}
+
 
         virtual void init() {};
 
@@ -55,7 +58,6 @@ namespace Napicu {
             }
         }
 
-
         void imGuiScene() {
             if (this->activeGameObject != nullptr) {
                 ImGui::Begin("Inspector");
@@ -65,13 +67,10 @@ namespace Napicu {
             this->imGui();
         }
 
-        virtual void imGui() {}
-
-
         void start() {
             for (Object *object: this->sceneObjects) {
                 object->start();
-                this->render->add(object);
+                this->sRender->add(object);
             }
 
             this->isRunning = true;
@@ -81,7 +80,7 @@ namespace Napicu {
             this->sceneObjects.push_back(sceneObject);
             if (this->isRunning) {
                 sceneObject->start();
-                this->render->add(sceneObject);
+                this->sRender->add(sceneObject);
             }
         };
 

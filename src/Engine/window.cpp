@@ -97,29 +97,33 @@ namespace Napicu {
         Napicu::Shader *pShader = Napicu::Assets::getShader("src/Engine/shaders/selectShader.glsl");
 
         while (!glfwWindowShouldClose(this->glfwWindow)) {
+            glfwPollEvents();
+
 
             double current_frame = glfwGetTime();
             this->delta_time = current_frame - this->last_frame;
             this->last_frame = current_frame;
 
-            glDisable(GL_BLEND);
             this->selectTexture->enable();
 
 
             glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
             Napicu::Render::bindShader(*pShader);
-            Napicu::Draw::beginFrame();
+            Napicu::Window::current_scene->render();
 
             if(Napicu::MouseEvent::mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)){
-                int x = (int)Napicu::MouseEvent::getX();
-                int y = (int)Napicu::MouseEvent::getY();
-                std::cout << y << std::endl;
+                int x = (int)Napicu::MouseEvent::getScreenX();
+                int y = (int)Napicu::MouseEvent::getScreenY();
+                std::cout << this->selectTexture->read(x, y) << std::endl;
             }
 
+            this->selectTexture->disable();
 
-            glfwPollEvents();
 
+            glDisable(GL_BLEND);
+            Napicu::Draw::beginFrame();
             this->frameBuffer->bind();
             glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT);
@@ -128,7 +132,12 @@ namespace Napicu {
                 Napicu::Draw::draw();
                 Napicu::Render::bindShader(*shader);
                 Napicu::Window::current_scene->update(this->delta_time);
+                Napicu::Window::current_scene->render();
             }
+
+
+
+
             this->frameBuffer->unbind();
             //Render ImGui
             this->imGuiLayout->update(this->current_scene);

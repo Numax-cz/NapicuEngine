@@ -47,6 +47,14 @@ namespace Napicu {
         get()->yLast = get()->yPosition;
     }
 
+    float MouseEvent::getScreenX() {
+        return ((MouseEvent::getX() - MouseEvent::get()->screenViewportPosition.x) / MouseEvent::get()->screenViewportSize.x) * Napicu::Window::SCREEN_SIZE_X;
+    }
+
+    float MouseEvent::getScreenY() {
+        return Napicu::Window::SCREEN_SIZE_Y - (((MouseEvent::getY() - MouseEvent::get()->screenViewportPosition.y) / MouseEvent::get()->screenViewportSize.y) * Napicu::Window::SCREEN_SIZE_Y);
+    }
+
     float MouseEvent::getOrthoX() {
         glm::mat4 invMat = Window::current_scene->getCamera().getViewProjectionMatrixInverse();
         glm::vec4 near = glm::vec4(((MouseEvent::getX() - MouseEvent::get()->screenViewportPosition.x) / MouseEvent::get()->screenViewportSize.x) * 2 - 1, 0, 0, 1.0);

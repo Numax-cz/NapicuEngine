@@ -48,8 +48,11 @@ namespace Napicu {
         glEnableVertexAttribArray(2);
 
         //Set Texcoords attribute pointers
-        glVertexAttribPointer(3, 1, GL_FLOAT, GL_FALSE, this->VERTEX_SIZE_BYTES, (void *) (8 * sizeof(float))); //6
+        glVertexAttribPointer(3, 1, GL_FLOAT, GL_FALSE, this->VERTEX_SIZE_BYTES, (void *) (8 * sizeof(float)));
         glEnableVertexAttribArray(3);
+
+        glVertexAttribPointer(4, 1, GL_FLOAT, GL_FALSE, this->VERTEX_SIZE_BYTES, (void *) (9 * sizeof(float)));
+        glEnableVertexAttribArray(4);
 
         //Unbind all
         glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -188,6 +191,11 @@ namespace Napicu {
 
             //TextureID
             this->vertexArray[offSet + 8] = texId;
+
+            this->vertexArray[offSet + 9] = spriteRender->object->getId();
+
+
+
 
 
             offSet += this->VERTEX_SIZE;
