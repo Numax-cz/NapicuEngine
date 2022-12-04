@@ -40,10 +40,7 @@ namespace Napicu {
         glReadBuffer(GL_NONE);
         glDrawBuffer(GL_COLOR_ATTACHMENT0);
 
-        if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE){
-            Napicu::Console::Error("FrameBuffer is not complete");
-            return false;
-        }
+        if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) return false;
 
         glBindTexture(GL_TEXTURE_2D, 0);
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
