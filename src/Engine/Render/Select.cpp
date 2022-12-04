@@ -5,7 +5,9 @@
 namespace Napicu {
 
     Select::Select(int width, int height) {
-
+        if(!this->init(width, height)){
+            Napicu::Console::Error("(SelectTexture) Texture selecting failed");
+        }
     }
 
     bool Select::init(int width, int height) {
