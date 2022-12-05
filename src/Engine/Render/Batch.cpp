@@ -192,11 +192,7 @@ namespace Napicu {
             //TextureID
             this->vertexArray[offSet + 8] = texId;
 
-            this->vertexArray[offSet + 9] = spriteRender->object->getId();
-
-
-
-
+            this->vertexArray[offSet + 9] = spriteRender->object->getId() + 1;
 
             offSet += this->VERTEX_SIZE;
         }
