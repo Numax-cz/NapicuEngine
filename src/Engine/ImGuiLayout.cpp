@@ -2,13 +2,11 @@
 #include <imgui.h>
 #include <imgui_impl_glfw.h>
 #include "imgui_impl_opengl3.h"
-#include "Scenes/Editor/EditorView.h"
 #include "window.h"
 
 namespace Napicu {
-    ImGuiLayout::ImGuiLayout(GLFWwindow *glfWwindow) : glfWwindow(glfWwindow) {
-
-    }
+    ImGuiLayout::ImGuiLayout(GLFWwindow *glfWwindow, Napicu::Select *selectedTexture) :
+        glfWwindow(glfWwindow), editorView(*new Napicu::EditorView()), inspectorView(*new Napicu::Inspector(selectedTexture)) { }
 
     void ImGuiLayout::initImGui() {
         ImGui::CreateContext();
@@ -18,16 +16,18 @@ namespace Napicu {
         ImGui::GetIO().ConfigFlags |= ImGuiConfigFlags_DockingEnable;
     }
 
-
-    void ImGuiLayout::update(Napicu::Scene *scene) {
+    void ImGuiLayout::update(float delta_time, Napicu::Scene *scene) {
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
         this->dockSpace();
 
-        Napicu::EditorView::imgui();
+        scene->imGui();
+        this->editorView.imgui();
 
-        scene->imGuiScene();
+        inspectorView.update(delta_time, scene);
+        inspectorView.imgui();
+
         ImGui::End();
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

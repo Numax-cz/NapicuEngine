@@ -6,16 +6,13 @@ namespace Napicu{
     void EditorView::imgui() {
         ImGui::Begin("Viewport", nullptr ,ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse );
 
-        ImVec2 size = EditorView::getViewportSize();
-        ImVec2 position = EditorView::getCenterViewportPosition(size);
+        ImVec2 size = this->getViewportSize();
+        ImVec2 position = this->getCenterViewportPosition(size);
         ImGui::SetCursorPos(position);
 
         ImVec2 tLeft = ImGui::GetCursorScreenPos();
         tLeft.x -= ImGui::GetScrollX();
         tLeft.y -= ImGui::GetScrollY();
-
-
-
 
         int textureID = Napicu::Window::getFramebuffer()->getTextureID();
         ImGui::Image(reinterpret_cast<ImTextureID>(textureID), ImVec2(size.x, size.y), ImVec2(0, 1), ImVec2(1, 0));

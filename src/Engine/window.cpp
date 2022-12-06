@@ -81,7 +81,7 @@ namespace Napicu {
         glEnable(GL_BLEND);
         glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 
-        this->imGuiLayout = new Napicu::ImGuiLayout(this->glfwWindow);
+        this->imGuiLayout = new Napicu::ImGuiLayout(this->glfwWindow, this->selectTexture);
         this->imGuiLayout->initImGui();
 
         this->frameBuffer = new Napicu::Framebuffer((int)Window::SCREEN_SIZE_X, (int)Window::SCREEN_SIZE_Y);
@@ -113,12 +113,6 @@ namespace Napicu {
             Napicu::Render::bindShader(*pShader);
             Napicu::Window::current_scene->render();
 
-            if(Napicu::MouseEvent::mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)){
-                int x = (int)Napicu::MouseEvent::getScreenX();
-                int y = (int)Napicu::MouseEvent::getScreenY();
-                std::cout << this->selectTexture->read(x, y) << std::endl;
-            }
-
             this->selectTexture->disable();
 
 
@@ -140,7 +134,7 @@ namespace Napicu {
 
             this->frameBuffer->unbind();
             //Render ImGui
-            this->imGuiLayout->update(this->current_scene);
+            this->imGuiLayout->update(delta_time, this->current_scene);
 
 
             glfwSwapBuffers(this->glfwWindow);

@@ -18,12 +18,12 @@ namespace Napicu {
 
         this->explorerObjectsList = {new Napicu::Sprite(*Napicu::Assets::getTexture("src/assets/bird.png"))};
 
-
-        if(levelLoad) {
-            if(!this->sceneObjects.empty()) this->activeGameObject = *(this->sceneObjects.begin());
-
-            return;
-        }
+//
+//        if(levelLoad) {
+//            if(!this->sceneObjects.empty()) this->activeGameObject = *(this->sceneObjects.begin());
+//
+//            return;
+//        }
 
 
 
@@ -32,7 +32,6 @@ namespace Napicu {
 
         ob->addComponent(new Napicu::SpriteRender());
         this->addObjectToScene(ob);
-        this->activeGameObject = ob;
         //ob->addComponent(new Napicu::Rigid());
 
 
