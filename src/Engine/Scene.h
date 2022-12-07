@@ -79,7 +79,7 @@ namespace Napicu {
             std::copy_if(this->sceneObjects.begin(), this->sceneObjects.end(), std::back_inserter(sub),[objectId](Napicu::Object* ob) {
                 return ob->getId() == objectId;
             });
-
+            if(sub.empty()) return nullptr;
             return sub[0];
         }
 

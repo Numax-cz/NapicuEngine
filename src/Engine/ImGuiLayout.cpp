@@ -6,7 +6,7 @@
 
 namespace Napicu {
     ImGuiLayout::ImGuiLayout(GLFWwindow *glfWwindow, Napicu::Select *selectedTexture) :
-        glfWwindow(glfWwindow), editorView(*new Napicu::EditorView()), inspectorView(*new Napicu::Inspector(selectedTexture)) { }
+        glfWwindow(glfWwindow), editorView(*new Napicu::EditorView()), inspectorView(*new Napicu::Inspector(selectedTexture)) { } //TODO
 
     void ImGuiLayout::initImGui() {
         ImGui::CreateContext();

@@ -81,13 +81,13 @@ namespace Napicu {
         glEnable(GL_BLEND);
         glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 
-        this->imGuiLayout = new Napicu::ImGuiLayout(this->glfwWindow, this->selectTexture);
-        this->imGuiLayout->initImGui();
 
         this->frameBuffer = new Napicu::Framebuffer((int)Window::SCREEN_SIZE_X, (int)Window::SCREEN_SIZE_Y);
         this->selectTexture = new Napicu::Select((int)Window::SCREEN_SIZE_X, (int)Window::SCREEN_SIZE_Y);
-        glViewport(0, 0, (int)Window::SCREEN_SIZE_X, (int)Window::SCREEN_SIZE_Y);
+        this->imGuiLayout = new Napicu::ImGuiLayout(this->glfwWindow, this->selectTexture);
 
+        glViewport(0, 0, (int)Window::SCREEN_SIZE_X, (int)Window::SCREEN_SIZE_Y);
+        this->imGuiLayout->initImGui();
         this->ChangeScene(0);
 
     }

@@ -25,6 +25,7 @@ namespace Napicu{
         if(Napicu::MouseEvent::mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)){
             int y = (int)Napicu::MouseEvent::getScreenY();
             int x = (int)Napicu::MouseEvent::getScreenX();
+            this->activeGameObject = scene->getSceneObject(this->selectedTexture->read(x, y));
         }
     }
 
