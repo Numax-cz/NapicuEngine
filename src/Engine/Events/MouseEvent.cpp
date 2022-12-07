@@ -15,13 +15,21 @@ namespace Napicu {
         return get()->mouseButtonPressed[key];
     }
 
+    void MouseEvent::mouseButtonDownEvent(int key, const std::function<void()>& callBack) {
+        if(get()->mouseButtonPressed[key]) {
+            callBack();
+            get()->mouseButtonPressed[key] = false;
+        }
+    }
+
     void MouseEvent::mouseEventPositionCallback(GLFWwindow *window, double xPosition, double yPosition) {
         get()->xLast = get()->xPosition;
         get()->yLast = get()->yPosition;
         get()->xPosition = xPosition;
         get()->yPosition = yPosition;
-        get()->isDragging =
-                get()->mouseButtonPressed[0] || get()->mouseButtonPressed[1] || get()->mouseButtonPressed[2];
+        get()->isDragging = get()->mouseButtonPressed[0]
+                        || get()->mouseButtonPressed[1]
+                        || get()->mouseButtonPressed[2];
     }
 
     void MouseEvent::mouseEventButtonCallback(GLFWwindow *window, int button, int action, int mods) {

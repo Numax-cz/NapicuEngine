@@ -22,11 +22,15 @@ namespace Napicu{
     }
 
     void Inspector::update(float delta_time, Scene *scene) {
-        if(Napicu::MouseEvent::mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)){
-            int y = (int)Napicu::MouseEvent::getScreenY();
-            int x = (int)Napicu::MouseEvent::getScreenX();
+
+        Napicu::MouseEvent::mouseButtonDownEvent(GLFW_MOUSE_BUTTON_LEFT, [scene, this]() {
+            int y = (int) Napicu::MouseEvent::getScreenY();
+            int x = (int) Napicu::MouseEvent::getScreenX();
             this->activeGameObject = scene->getSceneObject(this->selectedTexture->read(x, y));
-        }
+        });
+
+
+
     }
 
 
