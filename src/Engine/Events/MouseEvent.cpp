@@ -84,4 +84,8 @@ namespace Napicu {
     void MouseEvent::setScreenviewportSize(const glm::vec2& size) {
         MouseEvent::get()->screenViewportSize = size;
     }
+
+    bool MouseEvent::inViewport(int x, int y) {
+        return (x > 0 && y < Napicu::Config::CAMERA_PROJECTION_SIZE_Y && y > 0);
+    }
 }

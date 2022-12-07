@@ -30,6 +30,8 @@ namespace Napicu {
 
         static void mouseButtonDownEvent(int key, const std::function<void()>& callBack);
 
+        static bool inViewport(int x, int y);
+
         static void endFrame();
 
         static void setScreenViewportPosition(const glm::vec2& position);
