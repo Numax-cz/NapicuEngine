@@ -77,6 +77,10 @@ namespace Napicu {
         return nearResult.y;
     }
 
+    glm::vec2 MouseEvent::getOrthoPosition() {
+        return glm::vec2(MouseEvent::getOrthoX(), MouseEvent::getOrthoY());
+    }
+
     void MouseEvent::setScreenViewportPosition(const glm::vec2& position) {
         MouseEvent::get()->screenViewportPosition = position;
     }

@@ -42,6 +42,8 @@ namespace Napicu {
 
         static float getOrthoY();
 
+        static glm::vec2  getOrthoPosition();
+
         static float getScreenX();
 
         static float getScreenY();
