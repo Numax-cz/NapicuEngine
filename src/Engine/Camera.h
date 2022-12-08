@@ -18,8 +18,8 @@ namespace Napicu {
 
         void recalculateVMatrix();
 
-        void setPosition(glm::vec3 newPosition) {
-            this->position = newPosition;
+        void setPosition(const glm::vec3& position) {
+            this->position = position;
             this->recalculateVMatrix();
         }
 
