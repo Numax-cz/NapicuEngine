@@ -10,7 +10,7 @@ namespace Napicu {
     private:
         //projection - view
         glm::mat4 pMatrix, vMatrix, vpMatrix, vpMatrixInverse, vMatrixInverse, pMatrixInverse = {};
-        glm::vec3 position = {0, 0, 0};
+        glm::vec2 position = {0, 0};
         float rotation = 0.0f;
 
     public:
@@ -18,7 +18,7 @@ namespace Napicu {
 
         void recalculateVMatrix();
 
-        void setPosition(const glm::vec3& position) {
+        void setPosition(const glm::vec2& position) {
             this->position = position;
             this->recalculateVMatrix();
         }
@@ -42,9 +42,7 @@ namespace Napicu {
 
         const float getRotation() const { return this->rotation; }
 
-        const glm::vec3 getPosition() const { return this->position; }
-
-
+        const glm::vec2 getPosition() const { return this->position; }
     };
 }
 
