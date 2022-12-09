@@ -8,7 +8,7 @@ namespace Napicu{
             editorCamera(camera) { }
 
     void EditorCamera::update(double delta_time) {
-        if(Napicu::MouseEvent::mouseButtonDown(GLFW_MOUSE_BUTTON_MIDDLE)){
+        if(Napicu::MouseEvent::mouseButtonDown(Napicu::Config::LEVEL_EDITOR_CAMERA_DRAG_KEY)){
             if(this->dragDebounce > 0){
                 this->originPosition = glm::vec2(Napicu::MouseEvent::getOrthoX(),Napicu::MouseEvent::getOrthoY());
                 this->dragDebounce -= (float)delta_time;
@@ -22,6 +22,8 @@ namespace Napicu{
 
                 this->editorCamera->setPosition(cameraPosition);
             }
+        }else if(this->dragDebounce <= 0.0f){
+            this->dragDebounce = 0.1f;
         }
     }
 }
