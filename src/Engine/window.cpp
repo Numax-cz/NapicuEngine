@@ -138,6 +138,8 @@ namespace Napicu {
 
 
             glfwSwapBuffers(this->glfwWindow);
+            Napicu::MouseEvent::endFrame();
+
         }
         Napicu::Window::current_scene->saveSettings();
     }
