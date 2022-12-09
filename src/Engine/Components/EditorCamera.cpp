@@ -1,5 +1,6 @@
 #include "EditorCamera.h"
 #include "../Events/MouseEvent.h"
+#include "../Utils/Config.h"
 
 namespace Napicu{
 
@@ -15,7 +16,9 @@ namespace Napicu{
             }else {
                 glm::vec2 mousePosition = Napicu::MouseEvent::getOrthoPosition();
                 glm::vec2 d = mousePosition - this->originPosition;
-                glm::vec2 cameraPosition = this->editorCamera->getPosition() - (d * glm::vec2((float)delta_time));
+                glm::vec2 cameraPosition = this->editorCamera->getPosition()
+                        - (d * glm::vec2((float)delta_time)
+                        * glm::vec2(Napicu::Config::LEVEL_EDITOR_CAMERA_DRAG_SPEED));
 
                 this->editorCamera->setPosition(cameraPosition);
             }
