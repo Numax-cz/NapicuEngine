@@ -10,8 +10,10 @@ namespace Napicu {
     private:
         //projection - view
         glm::mat4 pMatrix, vMatrix, vpMatrix, vpMatrixInverse, vMatrixInverse, pMatrixInverse = {};
+        float left, right, bottom, top;
         glm::vec2 position = {0, 0};
         float rotation = 0.0f;
+        float zoom = 1.0f;
 
     public:
         Camera(float left, float right, float bottom, float top);
@@ -26,6 +28,14 @@ namespace Napicu {
         void setRotation(float angle) {
             this->rotation = angle;
             this->recalculateVMatrix();
+        }
+
+        void setZoomLevel(float zoomLevel){
+            this->zoom = zoomLevel;
+        }
+
+        void addZoomLevel(float zoomLevel){
+            this->zoom += zoomLevel;
         }
 
         const glm::mat4 getProjectionMatrix() const { return this->pMatrix; }
@@ -43,6 +53,8 @@ namespace Napicu {
         const float getRotation() const { return this->rotation; }
 
         const glm::vec2 getPosition() const { return this->position; }
+
+        const float getZoomLevel() const { return this->zoom; }
     };
 }
 
