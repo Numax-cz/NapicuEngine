@@ -7,7 +7,7 @@
 namespace Napicu{
 
     void Grid::update(double delta_time) {
-        glm::vec2 cameraPosition = Napicu::Window::current_scene->getCamera().getPosition();
+        glm::vec2 cameraPosition = Napicu::Window::current_scene->getCamera()->getPosition();
 
         int fX = ((int)(cameraPosition.x / Napicu::Config::GRID_WIDTH ) - 1) * Napicu::Config::GRID_HEIGHT;
         int fY = ((int)(cameraPosition.y / Napicu::Config::GRID_HEIGHT) - 1) * Napicu::Config::GRID_HEIGHT;

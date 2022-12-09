@@ -87,7 +87,7 @@ namespace Napicu {
         //Shader
         Napicu::Shader shader = Napicu::Render::getActiveShader();
         shader.uploadUniformMat4("uViewProjection",
-                                        Napicu::Window::current_scene->getCamera().getViewProjectionMatrix());
+                                        Napicu::Window::current_scene->getCamera()->getViewProjectionMatrix());
 
         for (int i = 0; i < this->textures.size(); i++) {
             this->textures[i]->Bind(i + 1);

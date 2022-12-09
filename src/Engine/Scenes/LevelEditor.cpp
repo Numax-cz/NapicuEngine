@@ -7,13 +7,15 @@
 #include <fstream>
 #include "../Utils/Json.h"
 #include "../Utils/Assets.h"
+#include "../Components/EditorCamera.h"
 
 namespace Napicu {
 
     void LevelEditor::init() {
         this->loadAssets();
-        levelEditor.addComponent(new Napicu::MouseEventControls());
-        levelEditor.addComponent(new Napicu::Grid());
+        this->levelEditor.addComponent(new Napicu::MouseEventControls());
+        this->levelEditor.addComponent(new Napicu::Grid());
+        this->levelEditor.addComponent(new Napicu::EditorCamera(this->camera));
 
 
         this->explorerObjectsList = {new Napicu::Sprite(*Napicu::Assets::getTexture("src/assets/bird.png"))};

@@ -66,7 +66,7 @@ namespace Napicu{
         //Shader
         Draw::shader.use();
         Draw::shader.uploadUniformMat4("uViewProjection",
-                                       Napicu::Window::current_scene->getCamera().getViewProjectionMatrix());
+                                       Napicu::Window::current_scene->getCamera()->getViewProjectionMatrix());
 
         glEnableVertexAttribArray(0);
         glEnableVertexAttribArray(1);

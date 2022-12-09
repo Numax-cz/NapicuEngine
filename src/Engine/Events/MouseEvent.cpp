@@ -64,14 +64,14 @@ namespace Napicu {
     }
 
     float MouseEvent::getOrthoX() {
-        glm::mat4 invMat = Window::current_scene->getCamera().getViewProjectionMatrixInverse();
+        glm::mat4 invMat = Window::current_scene->getCamera()->getViewProjectionMatrixInverse();
         glm::vec4 near = glm::vec4(((MouseEvent::getX() - MouseEvent::get()->screenViewportPosition.x) / MouseEvent::get()->screenViewportSize.x) * 2 - 1, 0, 0, 1.0);
         glm::vec4 nearResult = invMat * near;
         return nearResult.x;
     }
 
     float MouseEvent::getOrthoY() {
-        glm::mat4 invMat = Window::current_scene->getCamera().getViewProjectionMatrixInverse();
+        glm::mat4 invMat = Window::current_scene->getCamera()->getViewProjectionMatrixInverse();
         glm::vec4 near = glm::vec4(0, -(((MouseEvent::getY() - MouseEvent::get()->screenViewportPosition.y ) / MouseEvent::get()->screenViewportSize.y) * 2 - 1), 0, 1.0);
         glm::vec4 nearResult = invMat * near;
         return nearResult.y;

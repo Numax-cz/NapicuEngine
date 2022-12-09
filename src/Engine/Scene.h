@@ -25,7 +25,7 @@ namespace Napicu {
     public:
         Scene() {};
 
-        Napicu::Camera camera = *new Napicu::Camera(0.0f, Napicu::Config::CAMERA_PROJECTION_SIZE_X, 0.0f, Napicu::Config::CAMERA_PROJECTION_SIZE_Y);
+        Napicu::Camera* camera = new Napicu::Camera(0.0f, Napicu::Config::CAMERA_PROJECTION_SIZE_X, 0.0f, Napicu::Config::CAMERA_PROJECTION_SIZE_Y);
 
         virtual void update(double delta_time) {};
         virtual void render() {};
@@ -83,7 +83,7 @@ namespace Napicu {
             return sub[0];
         }
 
-        Napicu::Camera getCamera() { return this->camera; }
+        Napicu::Camera* getCamera() { return this->camera; }
     };
 }
 
