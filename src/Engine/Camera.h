@@ -32,10 +32,12 @@ namespace Napicu {
 
         void setZoomLevel(float zoomLevel){
             this->zoom = zoomLevel;
+            this->recalculateVMatrix();
         }
 
         void addZoomLevel(float zoomLevel){
             this->zoom += zoomLevel;
+            this->recalculateVMatrix();
         }
 
         const glm::mat4 getProjectionMatrix() const { return this->pMatrix; }
