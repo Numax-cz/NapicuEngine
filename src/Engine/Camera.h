@@ -40,6 +40,10 @@ namespace Napicu {
             this->recalculateVMatrix();
         }
 
+        void resetZoomLevel(){
+            this->zoom = 1.0f;
+        }
+
         const glm::mat4 getProjectionMatrix() const { return this->pMatrix; }
 
         const glm::mat4 getViewMatrix() const { return this->vMatrix; }
@@ -57,6 +61,7 @@ namespace Napicu {
         const glm::vec2 getPosition() const { return this->position; }
 
         const float getZoomLevel() const { return this->zoom; }
+
     };
 }
 

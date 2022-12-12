@@ -9,6 +9,7 @@ namespace Napicu{
         Napicu::Camera* editorCamera;
         glm::vec2  originPosition;
 
+        float lerpTime = 0.0f;
         float dragDebounce = 0.032f;
 
     public:

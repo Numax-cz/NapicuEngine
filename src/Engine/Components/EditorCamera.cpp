@@ -36,5 +36,12 @@ namespace Napicu{
 
             this->editorCamera->addZoomLevel(zoomLevel);
         }
+
+        if(Napicu::MouseEvent::mouseButtonDown(GLFW_MOUSE_BUTTON_RIGHT)){
+            this->editorCamera->setPosition(glm::vec2(0.0f, 0.0f));
+            this->editorCamera->resetZoomLevel();
+        }
+
+
     }
 }
